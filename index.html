@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1E6BFF">
-<meta name="description" content="Ôn tập Tin học 12 giữa học kỳ I: AI, mạng máy tính, ứng xử số và HTML. Luyện tập, thi thử, đảo đề, giải thích đáp án và tự chấm tự luận.">
+<meta name="description" content="Ôn tập Tin học 12 giữa học kỳ I: AI, mạng máy tính và ứng xử số. Luyện tập, thi thử, đảo đề, giải thích đáp án.">
 <title>Tin học 12 · Trạm ôn tập</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E6BFF'/%3E%3Ctext x='32' y='45' font-size='42' text-anchor='middle' fill='white'%3ET%3C/text%3E%3C/svg%3E">
 <style>
@@ -45,7 +45,7 @@ button,.card,select{border-radius:12px}
 .hero p{max-width:530px;color:var(--muted);margin-bottom:18px}
 .hero-chips{display:flex;flex-wrap:wrap;gap:8px}
 .overview{background:white;border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow);display:flex;align-items:center;gap:24px}
-.overview .ring{width:116px;height:116px;flex-shrink:0;background:conic-gradient(var(--blue) 0% 60.98%,#B7CFFF 60.98% 85.37%,var(--green) 85.37% 100%);padding:9px}
+.overview .ring{width:116px;height:116px;flex-shrink:0;background:conic-gradient(var(--blue) 0% 71.43%,#B7CFFF 71.43% 100%);padding:9px}
 .ring{border-radius:50%;display:grid;place-items:center}
 .ring-inner{background:white;border-radius:50%;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column}
 .overview .ring strong{font-size:32px;line-height:1.2}
@@ -349,44 +349,12 @@ html{scroll-padding-top:78px}
 }
 
 
-/* Tự luận và mã HTML chỉ hiển thị dạng văn bản, không thực thi bài nhập. */
-.essay-label{display:flex;justify-content:space-between;gap:12px;font-weight:650;font-size:14px;margin-bottom:10px}
-.essay-label span{font-weight:400;color:var(--muted);font-size:12px}
-.essay-input{display:block;width:100%;min-height:170px;resize:vertical;padding:16px;border:1px solid #CFD9E8;border-radius:12px;font:inherit;line-height:1.8;background:white;color:var(--ink);overflow-y:hidden}
-.essay-input:focus{outline:2px solid #A8C6FF;border-color:var(--blue)}
-.essay-input[readonly]{background:#FAFBFE}
-.code-input{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:14px;tab-size:2}
-.essay-meta{display:flex;justify-content:space-between;gap:12px;margin:8px 0 18px;font-size:11px;color:var(--muted)}
-.model-answer{background:#EEF7FF;border:1px solid #DCEAFF;border-radius:12px;margin-top:18px;padding:20px}
-.model-answer h3,.rubric h3{font-size:15px;margin-bottom:12px}
-.model-text{white-space:pre-line;font-size:14px;line-height:1.85}
-.model-answer pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;line-height:1.8;font-size:13px;color:#194A85}
-.rubric{border:1px solid var(--line);border-radius:12px;margin-top:15px;padding:20px}
-.rubric .aside-note{margin:0 0 14px}
-.criterion{display:flex;gap:10px;align-items:flex-start;font-size:13px;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
-.criterion input{flex-shrink:0;margin:5px 0 0;width:17px;height:17px;accent-color:var(--blue)}
-.criterion span{flex:1}
-.criterion strong{font-size:11px;white-space:nowrap;color:var(--muted)}
-.rubric-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:15px;margin-top:4px;font-size:13px;color:var(--blue)}
-.rubric-bottom .btn{font-size:11px;padding:8px 11px}
-.rubric #assess-note{margin-top:12px}
-.q-number.self-assess{background:#E4EEFF;color:var(--blue);border-color:var(--blue)}
-.essay-result{text-align:left;background:#F3F7FF;border-radius:12px;padding:16px 18px;margin-top:22px;font-size:13px}
-.essay-result p{color:var(--muted);margin:6px 0 0}
-.exam-card .description{min-height:0}
-
-@media(min-width:1100px){.exam-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:1100px){.exam-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
 .exam-card.comprehensive{grid-template-columns:54px 1fr 155px 270px}
 .comprehensive .card-bottom{gap:12px}
-.comprehensive .card-bottom>span{max-width:130px}
 }
 
 @media(max-width:440px){.tabs .tab{padding:8px 11px}
-.essay-meta{flex-wrap:wrap;gap:4px}
-.essay-label{display:block}
-.essay-label span{display:block;margin-top:3px}
-.model-answer,.rubric{padding:15px}
-.rubric-bottom{align-items:stretch;flex-direction:column}
 .overview{padding:18px 16px}
 .overview h2{font-size:14px}
 .overview .ring{width:76px;height:76px}
@@ -407,7 +375,6 @@ html{scroll-padding-top:78px}
 <script>
 /* DỮ LIỆU ĐỀ: answer là chỉ số 0–3 của phương án đúng trước khi đảo.
    Câu đúng–sai có statements[].answer là true/false.
-   Tự luận có modelAnswer và criteria (các tiêu chí có trọng số tổng 1).
    Các trường original… và editNote lưu nội dung trước khi biên tập. */
 const QUESTIONS = [
   {
@@ -1288,167 +1255,6 @@ const QUESTIONS = [
       "Công cụ giao tiếp trong không gian mạng thường ít đa dạng."
     ],
     "editNote": "Giới hạn ý a ở giao tiếp chủ yếu bằng văn bản, vì gọi thoại và gọi video vẫn truyền được một phần tín hiệu phi ngôn ngữ."
-  },
-  {
-    "id": "it-e1",
-    "chapter": 3,
-    "type": "essay",
-    "number": 1,
-    "prompt": "Trình bày các quy tắc ứng xử cơ bản trên không gian mạng giúp duy trì môi trường giao tiếp văn minh, an toàn. Phân biệt sự khác nhau cơ bản trong thái độ ứng xử giữa hành vi giao tiếp có văn hóa và hành vi ứng xử thiếu văn hóa trên mạng xã hội.",
-    "modelAnswer": "1. Các quy tắc ứng xử cơ bản:\n• Tôn trọng người khác: dùng ngôn từ lịch sự; không xúc phạm, miệt thị, phân biệt đối xử hoặc bắt nạt trên mạng.\n• Tuân thủ pháp luật: không phát tán thông tin giả, không xâm phạm quyền riêng tư hay bản quyền; không đăng tải nội dung trái pháp luật.\n• Bảo đảm an toàn: bảo vệ mật khẩu và dữ liệu cá nhân; không công khai thông tin, hình ảnh riêng tư của người khác khi chưa được phép.\n• Có trách nhiệm: kiểm chứng thông tin và cân nhắc hậu quả trước khi đăng, bình luận hoặc chia sẻ; sẵn sàng đính chính khi đăng sai.\n\n2. Phân biệt thái độ ứng xử:\n• Giao tiếp có văn hóa: lịch sự, tôn trọng khác biệt, biết lắng nghe; phản biện dựa trên lý lẽ và thông tin có căn cứ, không công kích con người.\n• Giao tiếp thiếu văn hóa: dùng lời tục tĩu, chế giễu, xúc phạm, công kích cá nhân; tung tin đồn hoặc kích động người khác bắt nạt, gây tổn hại danh dự và tinh thần.\nVí dụ: góp ý “Mình chưa đồng ý vì số liệu này chưa có nguồn” là phản biện văn minh; chửi bới người viết là ứng xử thiếu văn hóa.",
-    "criteria": [
-      {
-        "text": "Nêu được các quy tắc tôn trọng, tuân thủ pháp luật, an toàn/bảo mật và trách nhiệm khi đăng/chia sẻ.",
-        "weight": 0.5
-      },
-      {
-        "text": "Phân biệt rõ thái độ lịch sự, lắng nghe, phản biện có lý lẽ với xúc phạm, công kích và bắt nạt.",
-        "weight": 0.5
-      }
-    ],
-    "needReview": false
-  },
-  {
-    "id": "it-e2",
-    "chapter": 3,
-    "type": "essay",
-    "number": 2,
-    "prompt": "Hiện nay, tình trạng thông tin giả (fake news), tin đồn thất thiệt và nội dung kích động bạo lực xuất hiện khá phổ biến trên các nền tảng mạng xã hội. Em hãy phân tích những tác hại tiêu cực của các hành vi trên đối với cá nhân và cộng đồng. Từ đó, đưa ra các giải pháp/hành động cụ thể mà một học sinh THPT cần thực hiện khi tiếp nhận một thông tin chưa được kiểm chứng trên mạng.",
-    "modelAnswer": "1. Tác hại:\n• Với cá nhân: tin giả có thể gây lo âu, hoang mang; làm tổn hại danh dự, uy tín và các mối quan hệ; dẫn đến lừa đảo, mất tiền hoặc quyết định sai. Nội dung kích động có thể thúc đẩy hành vi bạo lực và gây tổn thương tinh thần.\n• Với cộng đồng: làm sai lệch nhận thức, gây chia rẽ, kích động thù ghét, ảnh hưởng an ninh trật tự; làm giảm niềm tin vào các nguồn thông tin đáng tin cậy và khiến môi trường mạng độc hại.\n\n2. Hành động của học sinh khi gặp thông tin chưa kiểm chứng:\n• Dừng lại, không vội tin hay bấm thích, bình luận cổ vũ và chia sẻ; không phát tán lại chỉ để hỏi người khác xem có thật hay không.\n• Kiểm tra tác giả, cơ quan đăng, địa chỉ trang, thời điểm, ngữ cảnh và bằng chứng. Đọc toàn bộ nội dung, đối chiếu với nhiều nguồn độc lập đáng tin cậy, thông báo của cơ quan liên quan hoặc hỏi thầy cô/người lớn. Không coi một tên miền hay ảnh chụp màn hình là bằng chứng duy nhất về độ chính xác.\n• Nếu chưa xác minh được, không chia sẻ và nêu rõ chưa có căn cứ khi cần trao đổi riêng.\n• Dùng tính năng báo cáo đối với nội dung giả mạo/kích động; thông báo cho quản trị viên hoặc người lớn. Nếu đã chia sẻ sai, gỡ hoặc đính chính rõ ràng, tránh tiếp tục lan truyền nội dung gây hại.",
-    "criteria": [
-      {
-        "text": "Phân tích tác hại đối với cá nhân: tinh thần, danh dự, tài sản hoặc quyết định/hành vi.",
-        "weight": 0.25
-      },
-      {
-        "text": "Phân tích tác hại đối với cộng đồng: chia rẽ, trật tự xã hội, niềm tin và môi trường mạng.",
-        "weight": 0.25
-      },
-      {
-        "text": "Đề xuất dừng chia sẻ và kiểm chứng tác giả, nguồn, thời điểm, bằng chứng bằng nhiều nguồn đáng tin cậy.",
-        "weight": 0.25
-      },
-      {
-        "text": "Nêu cách báo cáo, nhờ hỗ trợ và gỡ/đính chính nếu đã chia sẻ sai; không khuếch tán nội dung gây hại.",
-        "weight": 0.25
-      }
-    ],
-    "needReview": false
-  },
-  {
-    "id": "it-e3",
-    "chapter": 3,
-    "type": "essay",
-    "number": 3,
-    "prompt": "Một người bạn trong lớp của em vô tình bị kẻ xấu đăng tải những hình ảnh cá nhân nhạy cảm/chế giễu lên mạng xã hội, dẫn đến việc bạn bị nhiều tài khoản mạng lăng mạ, bắt nạt trực tuyến (cyberbullying). Em hãy đề xuất các bước xử lý văn minh, đúng pháp luật và phù hợp với quy tắc ứng xử trên không gian mạng để giúp bạn giải quyết tình huống trên.",
-    "modelAnswer": "Bước 1. Bình tĩnh, hỗ trợ bạn và giữ bằng chứng phù hợp: lắng nghe, khẳng định bạn không đáng bị bắt nạt; ghi lại đường dẫn, tên tài khoản, thời gian và các tin nhắn/bình luận cần thiết. Giữ bằng chứng riêng để nhờ người có trách nhiệm hỗ trợ; không đăng lại hoặc chuyển tiếp hình ảnh nhạy cảm, ảnh chế giễu.\n\nBước 2. Không trả đũa: không chửi bới, đe dọa hay kêu gọi người khác công kích ngược. Không tiếp tục tranh cãi với tài khoản bắt nạt; tránh bình luận làm bài viết lan rộng.\n\nBước 3. Hạn chế tổn hại và báo cáo: báo cáo bài viết, tài khoản vi phạm với nền tảng/quản trị viên, đề nghị gỡ nội dung xâm phạm quyền riêng tư; chặn hoặc hạn chế liên hệ sau khi giữ thông tin cần thiết. Cùng bạn kiểm tra quyền riêng tư, đổi mật khẩu nếu có dấu hiệu lộ tài khoản, bật xác thực hai yếu tố.\n\nBước 4. Tìm sự giúp đỡ: trao đổi ngay với cha mẹ, giáo viên chủ nhiệm hoặc nhà trường để được bảo vệ và hỗ trợ tâm lý. Nếu có đe dọa, tống tiền hoặc phát tán nội dung nghiêm trọng, nhờ người lớn liên hệ cơ quan có thẩm quyền; nếu có nguy hiểm tức thời, ưu tiên đến nơi an toàn và tìm trợ giúp ngay. Chỉ cung cấp bằng chứng qua kênh phù hợp, bảo vệ danh tính và sự riêng tư của bạn.",
-    "criteria": [
-      {
-        "text": "Giữ bình tĩnh, hỗ trợ nạn nhân, ghi lại bằng chứng riêng tư và không lan truyền hình ảnh gây hại.",
-        "weight": 0.25
-      },
-      {
-        "text": "Không trả đũa, đe dọa hoặc kêu gọi tấn công ngược.",
-        "weight": 0.25
-      },
-      {
-        "text": "Báo cáo/gỡ nội dung, chặn liên hệ và bảo vệ tài khoản, quyền riêng tư.",
-        "weight": 0.25
-      },
-      {
-        "text": "Nhờ cha mẹ, thầy cô/nhà trường và cơ quan có thẩm quyền khi cần; quan tâm an toàn và tinh thần của bạn.",
-        "weight": 0.25
-      }
-    ],
-    "needReview": false
-  },
-  {
-    "id": "it-e4",
-    "chapter": 3,
-    "type": "essay",
-    "number": 4,
-    "prompt": "Trong các buổi thảo luận nhóm trực tuyến (qua Zoom, Google Meet hay nhóm Zalo/Facebook của lớp), một số học sinh thường có thói quen bật mic ngắt lời người khác, gửi các hình ảnh meme chế giễu hoặc dùng ngôn ngữ suồng sã, thiếu tôn trọng. Em hãy xây dựng một 'Bộ quy tắc ứng xử văn minh trong học tập trực tuyến' gồm 4 quy định ngắn gọn, thiết thực dành cho học sinh THPT.",
-    "modelAnswer": "BỘ QUY TẮC ỨNG XỬ VĂN MINH TRONG HỌC TẬP TRỰC TUYẾN\n\n1. Vào lớp đúng giờ, dùng tên nhận diện phù hợp, trang phục lịch sự; tắt micro khi không phát biểu để tránh làm ồn. Bật camera theo yêu cầu phù hợp của lớp và điều kiện riêng tư.\n2. Tôn trọng lượt nói: dùng tính năng giơ tay hoặc xin phép trước khi phát biểu; không ngắt lời; lắng nghe và góp ý dựa trên nội dung, không công kích cá nhân.\n3. Dùng ngôn ngữ lịch sự trong lời nói và khung chat; không gửi spam, ảnh chế giễu, lời xúc phạm hoặc liên kết không liên quan đến bài học.\n4. Bảo vệ lớp học và quyền riêng tư: không đưa đường dẫn/mật khẩu phòng học cho người ngoài; không tự ý ghi âm, quay/chụp hoặc phát tán hình ảnh, thông tin của thầy cô và bạn học khi chưa được phép.",
-    "criteria": [
-      {
-        "text": "Quy định đúng giờ, tác phong và sử dụng micro/camera phù hợp.",
-        "weight": 0.25
-      },
-      {
-        "text": "Quy định giơ tay, tôn trọng lượt nói và lắng nghe.",
-        "weight": 0.25
-      },
-      {
-        "text": "Quy định ngôn từ lịch sự, không spam hay gửi nội dung chế giễu.",
-        "weight": 0.25
-      },
-      {
-        "text": "Quy định bảo mật lớp học và bảo vệ quyền riêng tư, không tự ý ghi/phát tán hình ảnh.",
-        "weight": 0.25
-      }
-    ],
-    "needReview": false
-  },
-  {
-    "id": "it-e5",
-    "chapter": 4,
-    "type": "essay",
-    "number": 5,
-    "prompt": "Trình bày khái niệm ngôn ngữ đánh dấu siêu văn bản HTML. Cho biết vai trò của khai báo <!DOCTYPE html> và các thẻ <html>, <head>, <body> trong cấu trúc cơ bản của một trang web HTML5.",
-    "modelAnswer": "HTML là viết tắt của HyperText Markup Language (ngôn ngữ đánh dấu siêu văn bản). HTML dùng các thẻ để mô tả và tổ chức cấu trúc, ý nghĩa của nội dung trang web như tiêu đề, đoạn văn, liên kết, hình ảnh và danh sách. HTML là ngôn ngữ đánh dấu, không phải ngôn ngữ lập trình.\n\n• <!DOCTYPE html>: là khai báo kiểu tài liệu đặt ở đầu tài liệu HTML5, giúp trình duyệt xử lý trang ở chế độ chuẩn. Đây không phải thẻ HTML và không có thẻ đóng.\n• <html>...<\/html>: là phần tử gốc bao bọc các phần tử của tài liệu, thường gồm <head> và <body>. Có thể thêm lang=\"vi\" để khai báo ngôn ngữ tiếng Việt.\n• <head>...<\/head>: chứa siêu dữ liệu và thông tin thiết lập của tài liệu, như bảng mã <meta charset=\"UTF-8\">, tiêu đề <title>, liên kết CSS. Nội dung phần này không hiển thị như nội dung chính của trang; riêng <title> thể hiện trên thẻ/cửa sổ trình duyệt.\n• <body>...<\/body>: chứa nội dung chính hiển thị trong trang, chẳng hạn tiêu đề, đoạn văn, hình ảnh, liên kết, bảng và danh sách.",
-    "criteria": [
-      {
-        "text": "Nêu đúng tên đầy đủ HTML và chức năng đánh dấu, tổ chức cấu trúc nội dung trang web.",
-        "weight": 0.4
-      },
-      {
-        "text": "Giải thích <!DOCTYPE html> là khai báo HTML5/chế độ chuẩn, không phải cặp thẻ.",
-        "weight": 0.15
-      },
-      {
-        "text": "Giải thích <html> là phần tử gốc của tài liệu.",
-        "weight": 0.15
-      },
-      {
-        "text": "Giải thích <head> chứa siêu dữ liệu, tiêu đề, bảng mã và các thiết lập.",
-        "weight": 0.15
-      },
-      {
-        "text": "Giải thích <body> chứa nội dung chính hiển thị của trang.",
-        "weight": 0.15
-      }
-    ],
-    "needReview": false,
-    "originalPrompt": "Trình bày khái niệm ngôn ngữ đánh dấu siêu văn bản HTML. Cho biết vai trò của cặp thẻ <!DOCTYPE html>, <html>, <head> và <body> trong cấu trúc cơ bản của một trang web HTML5.",
-    "editNote": "Thay “cặp thẻ <!DOCTYPE html>, ...” bằng “khai báo <!DOCTYPE html> và các thẻ ...”: DOCTYPE là khai báo, không phải một thẻ hay cặp thẻ HTML."
-  },
-  {
-    "id": "it-e6",
-    "chapter": 4,
-    "type": "essay",
-    "number": 6,
-    "prompt": "Em hãy viết đoạn mã HTML chuẩn hoàn chỉnh để tạo một trang web đơn giản giới thiệu về bản thân. Trang web cần bao gồm:\n- Tiêu đề trang web hiển thị trên thanh tiêu đề trình duyệt: 'Giới thiệu bản thân'\n- Một thẻ tiêu đề chính (h1) chứa tên của em.\n- Một thẻ đoạn văn (p) giới thiệu ngắn gọn về sở thích hoặc mục tiêu học tập.\n- Một danh sách không phân cấp (ul/li) liệt kê 3 môn học em yêu thích nhất.",
-    "modelAnswer": "<!DOCTYPE html>\n<html lang=\"vi\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Giới thiệu bản thân<\/title>\n<\/head>\n<body>\n  <h1>Nguyễn Văn A<\/h1>\n  <p>Mình là học sinh lớp 12, yêu thích lập trình và mong muốn học tốt môn Tin học.<\/p>\n  <h2>Ba môn học yêu thích<\/h2>\n  <ul>\n    <li>Tin học<\/li>\n    <li>Toán học<\/li>\n    <li>Tiếng Anh<\/li>\n  <\/ul>\n<\/body>\n<\/html>",
-    "criteria": [
-      {
-        "text": "Có cấu trúc tài liệu hoàn chỉnh với <!DOCTYPE html>, <html>, <head>, <body>; các thẻ được đóng/lồng đúng.",
-        "weight": 0.25
-      },
-      {
-        "text": "Đặt <title>Giới thiệu bản thân<\/title> trong <head>.",
-        "weight": 0.25
-      },
-      {
-        "text": "Có <h1> chứa tên và <p> giới thiệu sở thích hoặc mục tiêu học tập.",
-        "weight": 0.25
-      },
-      {
-        "text": "Có danh sách không phân cấp <ul> gồm đúng ba mục <li> về ba môn học yêu thích.",
-        "weight": 0.25
-      }
-    ],
-    "needReview": false,
-    "modelFormat": "code"
   }
 ];
 
@@ -1457,11 +1263,10 @@ const FIGURES = {};
 const CHAPTERS = {
   1: {name:'Trí tuệ nhân tạo', description:'Khả năng, ứng dụng và rủi ro của AI'},
   2: {name:'Mạng máy tính & Internet', description:'Thiết bị mạng, giao thức và chia sẻ dữ liệu'},
-  3: {name:'Giao tiếp & ứng xử số', description:'Giao tiếp văn minh, an toàn và có trách nhiệm'},
-  4: {name:'Ngôn ngữ HTML', description:'Cấu trúc trang web và thực hành viết mã'}
+  3: {name:'Giao tiếp & ứng xử số', description:'Giao tiếp văn minh, an toàn và có trách nhiệm'}
 };
-const TYPES = {mcq:'A/B/C/D', tf:'Đúng–sai', essay:'Tự luận'};
-const PARTS = {mcq:'PHẦN I', tf:'PHẦN II', essay:'PHẦN III'};
+const TYPES = {mcq:'A/B/C/D', tf:'Đúng–sai'};
+const PARTS = {mcq:'PHẦN I', tf:'PHẦN II'};
 const LETTERS = ['A','B','C','D'];
 const HISTORY_KEY = 'tinhoc12-gk1-2026-history-v1';
 const DURATION = 45 * 60;
@@ -1499,7 +1304,7 @@ function getHistory() {
   try {
     const data = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
     if (!Array.isArray(data)) return historyMemory;
-    historyMemory = data.filter(x => x && typeof x.title === 'string' && (x.score===null || Number.isFinite(x.score)) && Number.isFinite(x.elapsed) && Number.isFinite(x.date)).slice(0,100);
+    historyMemory = data.filter(x => x && typeof x.title === 'string' && Number.isFinite(x.score) && Number.isFinite(x.elapsed) && Number.isFinite(x.date)).slice(0,100);
   } catch (e) { storageWarning = true; }
   return historyMemory;
 }
@@ -1515,7 +1320,7 @@ function renderHeader() {
 function historyHTML() {
   const history = getHistory();
   if (!history.length) return `<div class="empty">${icon('history',30)}Chưa có bài làm nào. Bắt đầu một đề để ghi lại tiến bộ của bạn.</div>`;
-  return `<table class="history-table"><thead><tr><th>Đề ôn tập</th><th>Chế độ</th><th>Trắc nghiệm / 10</th><th>Thời gian</th><th>Ngày làm</th></tr></thead><tbody>${history.map(h => `<tr><td>${escapeHTML(h.title)}</td><td>${h.mode === 'practice' ? 'Luyện tập' : 'Thi thử'}</td><td class="score-small">${h.score===null?'Tự chấm':h.score.toFixed(2)}</td><td>${formatTime(h.elapsed)}</td><td>${formatDate(h.date)}</td></tr>`).join('')}</tbody></table>`;
+  return `<table class="history-table"><thead><tr><th>Đề ôn tập</th><th>Chế độ</th><th>Trắc nghiệm / 10</th><th>Thời gian</th><th>Ngày làm</th></tr></thead><tbody>${history.map(h => `<tr><td>${escapeHTML(h.title)}</td><td>${h.mode === 'practice' ? 'Luyện tập' : 'Thi thử'}</td><td class="score-small">${h.score.toFixed(2)}</td><td>${formatTime(h.elapsed)}</td><td>${formatDate(h.date)}</td></tr>`).join('')}</tbody></table>`;
 }
 function examSpec(chapter, filter) {
   const chapterNumber = chapter === 'all' ? null : Number(chapter);
@@ -1528,15 +1333,15 @@ function renderHome() {
   const chapters=(state.chapter==='all'?['all',...Object.keys(CHAPTERS)]:[state.chapter]).filter(ch=>examSpec(ch,state.filter).list.length);
   const counts=Object.keys(TYPES).map(type=>QUESTIONS.filter(q=>q.type===type).length);
   $('#main').innerHTML=`<div class="wrap">
-  <section class="hero"><div><div class="eyebrow">TIN HỌC 12 / GIỮA HỌC KỲ I · 2026–2027</div><h1>Vững kiến thức.<br><span>Tự tin học công nghệ.</span></h1><p>Từ trí tuệ nhân tạo đến những dòng HTML đầu tiên.<br>Luyện từng câu, hiểu từng đáp án, sẵn sàng cho bài kiểm tra.</p><div class="hero-chips"><span class="pill">${icon('book',14)}4 chủ đề trọng tâm</span><span class="pill">${icon('check',14)}Đáp án & lời giải</span><span class="pill">${icon('grid',14)}Tùy chọn đảo đề</span></div></div><div class="overview"><div class="ring"><div class="ring-inner"><strong>${QUESTIONS.length}</strong><small>CÂU ÔN TẬP</small></div></div><div><h2>Trọn bộ đề cương của bạn</h2><p><i class="dot"></i>${counts[0]} câu chọn A / B / C / D</p><p><i class="dot light"></i>${counts[1]} câu đúng–sai · ${counts[1]*4} ý</p><p><i class="dot" style="background:var(--green)"></i>${counts[2]} câu tự luận có đáp án mẫu</p></div></div></section>
+  <section class="hero"><div><div class="eyebrow">TIN HỌC 12 / GIỮA HỌC KỲ I · 2026–2027</div><h1>Vững kiến thức.<br><span>Tự tin học công nghệ.</span></h1><p>AI, mạng máy tính và giao tiếp có trách nhiệm.<br>Luyện từng câu, hiểu từng đáp án, sẵn sàng cho bài kiểm tra.</p><div class="hero-chips"><span class="pill">${icon('book',14)}3 chủ đề trọng tâm</span><span class="pill">${icon('check',14)}Đáp án & lời giải</span><span class="pill">${icon('grid',14)}Tùy chọn đảo đề</span></div></div><div class="overview"><div class="ring"><div class="ring-inner"><strong>${QUESTIONS.length}</strong><small>CÂU ÔN TẬP</small></div></div><div><h2>Trọn bộ đề cương của bạn</h2><p><i class="dot"></i>${counts[0]} câu chọn A / B / C / D</p><p><i class="dot light"></i>${counts[1]} câu đúng–sai · ${counts[1]*4} ý</p><p style="margin-top:10px">${icon('clock',14)}45 phút cho mỗi đề</p></div></div></section>
   <section aria-labelledby="exam-list-title"><div class="section-heading"><div><h2 id="exam-list-title">Danh sách đề ôn tập</h2><p>Luyện tập để hiểu bài · Thi thử để kiểm tra năng lực</p></div><span class="pill green">${icon('clock',14)}45 phút / đề</span></div>
-  <div class="toolbar"><div class="tabs" role="group" aria-label="Lọc loại câu hỏi">${[['mixed','Tổng hợp'],['mcq','A/B/C/D'],['tf','Đúng–Sai'],['essay','Tự luận']].map(([key,label])=>`<button class="tab ${state.filter===key?'active':''}" data-action="filter" data-filter="${key}" aria-pressed="${state.filter===key}">${label}</button>`).join('')}</div><label class="filter" for="chapter-filter">Chủ đề <select id="chapter-filter"><option value="all">Tất cả chủ đề</option>${Object.keys(CHAPTERS).map(k=>`<option value="${k}">${CHAPTERS[k].name}</option>`).join('')}</select></label></div>
+  <div class="toolbar"><div class="tabs" role="group" aria-label="Lọc loại câu hỏi">${[['mixed','Tổng hợp'],['mcq','A/B/C/D'],['tf','Đúng–Sai']].map(([key,label])=>`<button class="tab ${state.filter===key?'active':''}" data-action="filter" data-filter="${key}" aria-pressed="${state.filter===key}">${label}</button>`).join('')}</div><label class="filter" for="chapter-filter">Chủ đề <select id="chapter-filter"><option value="all">Tất cả chủ đề</option>${Object.keys(CHAPTERS).map(k=>`<option value="${k}">${CHAPTERS[k].name}</option>`).join('')}</select></label></div>
   <div class="exam-cards">${chapters.map(ch=>{
     const spec=examSpec(ch,state.filter);
     const summary=Object.keys(TYPES).map(type=>{const n=spec.list.filter(q=>q.type===type).length;return n?`${n} ${TYPES[type]}`:'';}).filter(Boolean).join(' · ');
     return `<article class="card exam-card ${ch==='all'?'comprehensive':''}"><div class="card-top"><span class="chapter-icon">${icon(ch==='all'?'grid':ch==='4'?'code':'book',25)}</span><span class="pill">${ch==='all'?'TOÀN BỘ':'CHỦ ĐỀ '+ch}</span></div><div><h3>${ch==='all'?'Tổng ôn giữa học kỳ I':CHAPTERS[ch].name}</h3><p class="description">${ch==='all'?'Toàn bộ câu hỏi của đề cương, giữ thứ tự các phần.':CHAPTERS[ch].description}</p></div><div class="meta"><span>${icon('book',16)}${spec.list.length} câu</span><span>${icon('clock',16)}45 phút</span></div><div class="card-bottom"><span>${summary}</span><button class="btn primary" data-action="setup" data-chapter="${ch}">Làm bài ${icon('arrow',16)}</button></div></article>`;
   }).join('')||'<div class="card empty">Chủ đề này không có loại câu hỏi đã chọn. Hãy chọn tab hoặc chủ đề khác.</div>'}</div>
-  <div class="note"><strong>Cách chấm:</strong> A/B/C/D đúng = 1 điểm; mỗi ý đúng–sai đúng = 0,25 điểm. Điểm trắc nghiệm /10 = điểm đạt ÷ số câu trắc nghiệm × 10. <strong>Tự luận tự chấm riêng</strong> theo checklist, mỗi câu tối đa 1 điểm; không cộng vào điểm trắc nghiệm. Chủ đề được nhóm lại để dễ ôn, số câu gốc vẫn giữ. Câu biên tập có ghi chú và bản gốc khi xem đáp án.</div></section>
+  <div class="note"><strong>Cách chấm:</strong> A/B/C/D đúng = 1 điểm; mỗi ý đúng–sai đúng = 0,25 điểm. Điểm trắc nghiệm /10 = điểm đạt ÷ số câu trắc nghiệm × 10. Chủ đề được nhóm lại để dễ ôn, số câu gốc vẫn giữ. Câu biên tập có ghi chú và bản gốc khi xem đáp án.</div></section>
   <section class="history-section" aria-labelledby="history-title"><div class="section-heading"><div><h2 id="history-title">Lịch sử làm bài</h2><p>Chỉ lưu kết quả trên trình duyệt và thiết bị này.</p></div>${getHistory().length?'<button class="text-button" data-action="clear-history">Xóa lịch sử</button>':''}</div><div class="card history-box">${historyHTML()}</div>${storageWarning?'<p class="aside-note">Lưu trữ cục bộ không khả dụng; lịch sử chỉ giữ trong phiên mở trang này.</p>':''}</section></div>`;
   $('#chapter-filter').value=state.chapter;
 }
@@ -1554,7 +1359,7 @@ let pendingSpec = null, pendingMode = 'practice';
 function setupExam(chapter,filter=state.filter) {
   pendingSpec=examSpec(chapter,filter); pendingMode='practice';
   if(!pendingSpec.list.length){toast('Không có câu hỏi thuộc lựa chọn này.');return;}
-  showModal('Sẵn sàng làm bài?',`<p class="modal-description">${escapeHTML(pendingSpec.title)}<br>${pendingSpec.list.length} câu · 45 phút · ${filter==='mixed'?'A/B/C/D → Đúng–sai → Tự luận':TYPES[filter]}</p><div class="field"><label>Chế độ làm bài</label><div class="mode-buttons"><button class="mode-button active" data-action="mode" data-mode="practice" aria-pressed="true"><strong>Luyện tập</strong><small>Giải thích ngay sau khi trả lời. Đáp án đã kiểm tra được khóa.</small></button><button class="mode-button" data-action="mode" data-mode="exam" aria-pressed="false"><strong>Thi thử</strong><small>Tự do sửa câu trả lời. Xem đáp án sau khi nộp.</small></button></div></div><div class="field"><label for="shuffle-mode">Thứ tự câu hỏi & đáp án</label><select id="shuffle-mode"><option value="none">Giữ nguyên thứ tự</option><option value="questions">Đảo câu hỏi</option><option value="options">Đảo đáp án A/B/C/D</option><option value="both">Đảo cả câu hỏi và A/B/C/D</option></select></div><div class="modal-note">${icon('shield',16)} Luôn giữ A/B/C/D trước, đúng–sai sau, tự luận cuối cùng. Chỉ đảo câu trong từng phần; không đảo các ý a–b–c–d. Tự luận tự chấm riêng. Hết giờ sẽ tự nộp; bài đang làm không được lưu khi tải lại hoặc đóng trang.</div><div class="modal-actions"><button class="btn" data-action="close-modal">Để sau</button><button class="btn primary" data-action="start">Bắt đầu làm bài ${icon('arrow',16)}</button></div>`);
+  showModal('Sẵn sàng làm bài?',`<p class="modal-description">${escapeHTML(pendingSpec.title)}<br>${pendingSpec.list.length} câu · 45 phút · ${filter==='mixed'?'A/B/C/D → Đúng–sai':TYPES[filter]}</p><div class="field"><label>Chế độ làm bài</label><div class="mode-buttons"><button class="mode-button active" data-action="mode" data-mode="practice" aria-pressed="true"><strong>Luyện tập</strong><small>Giải thích ngay sau khi trả lời. Đáp án đã kiểm tra được khóa.</small></button><button class="mode-button" data-action="mode" data-mode="exam" aria-pressed="false"><strong>Thi thử</strong><small>Tự do sửa câu trả lời. Xem đáp án sau khi nộp.</small></button></div></div><div class="field"><label for="shuffle-mode">Thứ tự câu hỏi & đáp án</label><select id="shuffle-mode"><option value="none">Giữ nguyên thứ tự</option><option value="questions">Đảo câu hỏi</option><option value="options">Đảo đáp án A/B/C/D</option><option value="both">Đảo cả câu hỏi và A/B/C/D</option></select></div><div class="modal-note">${icon('shield',16)} Luôn giữ A/B/C/D trước, đúng–sai sau. Chỉ đảo câu trong từng phần; không đảo các ý a–b–c–d. Hết giờ sẽ tự nộp; bài đang làm không được lưu khi tải lại hoặc đóng trang.</div><div class="modal-actions"><button class="btn" data-action="close-modal">Để sau</button><button class="btn primary" data-action="start">Bắt đầu làm bài ${icon('arrow',16)}</button></div>`);
 }
 function shuffled(array) {
   const copy=array.slice();
@@ -1567,24 +1372,23 @@ function startExam() {
   let sections=Object.keys(TYPES).map(type=>spec.list.filter(q=>q.type===type).map(make));
   if(shuffle==='questions'||shuffle==='both')sections=sections.map(shuffled);
   closeModal(false);
-  state.session={spec:{chapter:spec.chapter,filter:spec.filter,title:spec.title},mode:pendingMode,shuffle,questions:[].concat(...sections),answers:{},flags:{},selfChecks:{},models:{},assessed:{},current:0,view:'single',startedAt:Date.now(),deadline:Date.now()+DURATION*1000,submitted:false};
+  state.session={spec:{chapter:spec.chapter,filter:spec.filter,title:spec.title},mode:pendingMode,shuffle,questions:[].concat(...sections),answers:{},flags:{},current:0,view:'single',startedAt:Date.now(),deadline:Date.now()+DURATION*1000,submitted:false};
   state.screen='exam'; renderExam(); window.scrollTo(0,0); updateTimer(); timerId=setInterval(updateTimer,500);
 }
 function countAnswered(q,s=state.session) {
-  const a=s.answers[q.id]; if(q.type==='essay')return typeof a==='string'&&a.trim()?1:0;
+  const a=s.answers[q.id];
   return q.type==='mcq'?(Number.isInteger(a)?1:0):(Array.isArray(a)?a.filter(v=>typeof v==='boolean').length:0);
 }
 function isComplete(q,s=state.session) {return countAnswered(q,s)===(q.type==='tf'?4:1);}
 function answerCount(s=state.session) {return s.questions.filter(q=>isComplete(q,s)).length;}
 function pointsFor(q,s=state.session) {
   const a=s.answers[q.id];
-  if(q.type==='essay')return 0; // Là bài tự chấm, không tự động chấm văn bản.
   if(q.type==='mcq')return a===q.answer?1:0;
   return q.statements.reduce((sum,st,i)=>sum+(a && a[i]===st.answer ? 0.25 : 0),0);
 }
 function questionState(q,s=state.session) {
   const count=countAnswered(q,s);
-  if(s.submitted){if(q.type==='essay')return count?'self-assess':'blank';if(!count)return 'blank';const points=pointsFor(q,s);return points===1?'correct':points>0?'partial-score':'incorrect';}
+  if(s.submitted){if(!count)return 'blank';const points=pointsFor(q,s);return points===1?'correct':points>0?'partial-score':'incorrect';}
   if(s.flags[q.id])return 'flagged';
   return isComplete(q,s)?'answered':count?'partial':'';
 }
@@ -1593,7 +1397,7 @@ function renderExam() {
   $('#footer').classList.add('hidden'); $('#header').className='exam-topbar';
   $('#header').innerHTML=`<div class="wrap"><div class="exam-title">${escapeHTML(s.spec.title)}<div class="exam-subtitle">${review?'Xem lại bài làm':s.mode==='practice'?'Luyện tập':'Thi thử'} · ${s.questions.length} câu</div></div><div class="timer-box"><div class="timer-label">${review?'Thời gian đã làm':'Thời gian còn lại'}</div><div id="timer" class="timer">${review?formatTime(s.elapsed):formatTime(Math.ceil((s.deadline-Date.now())/1000))}</div></div><div class="top-actions">${review?'<button class="btn home-review" data-action="home">Trang chủ</button><button class="btn primary" data-action="result">Kết quả</button>':`<button class="btn primary" data-action="submit">Nộp bài ${icon('check',16)}</button>`}</div></div>`;
   $('#main').innerHTML=`<div class="wrap exam-layout"><section class="question-column" aria-label="Nội dung bài làm"><div class="exam-tools"><span>${review?'Đối chiếu đáp án và lời giải':'Mỗi câu là một bước tiến bộ.'}</span><div class="tabs" role="group" aria-label="Cách hiển thị câu hỏi"><button class="tab ${s.view==='single'?'active':''}" data-action="view" data-view="single" aria-pressed="${s.view==='single'}">Từng câu</button><button class="tab ${s.view==='all'?'active':''}" data-action="view" data-view="all" aria-pressed="${s.view==='all'}">Tất cả câu</button></div></div><div id="questions-area"></div></section><aside id="question-aside" class="card question-aside" aria-label="Bảng câu hỏi"></aside></div><div id="drawer-overlay" class="drawer-overlay hidden" data-action="close-drawer"></div><button class="btn primary mobile-grid-toggle" data-action="drawer" aria-controls="question-aside" aria-expanded="false">${icon('grid',18)} Bảng câu hỏi <span id="mobile-progress"></span></button>`;
-  renderQuestions();renderGrid();resizeEssays();
+  renderQuestions();renderGrid();
 }
 function originalDetails(q) {
   if(!q.editNote && !q.needReview)return '';
@@ -1616,13 +1420,12 @@ function questionHTML(q,i) {
     }).join('');
     if(s.submitted)content+=`<div class="answer-summary">Điểm câu này: <strong>${pointsFor(q).toFixed(2)} / 1</strong> · Trả lời ${answered}/4 ý.</div>`;
   }
-  if(q.type==='essay')content=essayHTML(q,i);
-  const showNote=s.submitted||(s.mode==='practice'&&(q.type==='essay'?s.models[q.id]:isComplete(q)));
+  const showNote=s.submitted||(s.mode==='practice'&&isComplete(q));
   return `<article id="question-${i}" class="card question-card" data-qindex="${i}" aria-labelledby="question-title-${i}"><div class="question-heading"><h2 id="question-title-${i}">Câu ${i+1}:<span class="question-source">${CHAPTERS[q.chapter].name} · ${TYPES[q.type]} · Câu ${q.number} trong đề gốc</span></h2>${q.needReview?'<span class="pill orange">Cần kiểm tra</span>':''}</div>${q.needReview?'<div class="review-alert">Đáp án tham khảo cần được giáo viên đối chiếu; câu này vẫn được tính điểm theo đáp án đã soạn.</div>':''}<div class="question-text">${escapeHTML(q.prompt)}</div>${FIGURES[q.id]?`<img class="question-image" src="${FIGURES[q.id].src}" alt="${escapeHTML(FIGURES[q.id].alt)}" width="${FIGURES[q.id].width}" height="${FIGURES[q.id].height}">`:''}${content}${showNote?originalDetails(q):''}<div class="question-actions"><div class="navigation"><button class="btn" data-action="navigate" data-index="${i-1}" ${i===0?'disabled':''}>← Câu trước</button><button class="btn soft" data-action="navigate" data-index="${i+1}" ${i===s.questions.length-1?'disabled':''}>Câu sau →</button></div>${!s.submitted?`<button class="flag-button ${s.flags[q.id]?'flagged':''}" data-action="flag" data-index="${i}" aria-pressed="${!!s.flags[q.id]}">${icon('flag',14)} ${s.flags[q.id]?'Đã đánh dấu':'Đánh dấu xem lại'}</button>`:''}</div></article>`;
 }
 function renderQuestions() {
   const s=state.session;
-  const partHeading=q=>`<div class="part-label"><span>${PARTS[q.type]}</span>${q.type==='mcq'?'Trắc nghiệm nhiều lựa chọn':q.type==='tf'?'Trắc nghiệm đúng–sai':'Tự luận · Tự chấm theo đáp án mẫu'}</div>`;
+  const partHeading=q=>`<div class="part-label"><span>${PARTS[q.type]}</span>${q.type==='mcq'?'Trắc nghiệm nhiều lựa chọn':'Trắc nghiệm đúng–sai'}</div>`;
   $('#questions-area').innerHTML=s.view==='single'?partHeading(s.questions[s.current])+questionHTML(s.questions[s.current],s.current):s.questions.map((q,i)=>(i===0||q.type!==s.questions[i-1].type?partHeading(q):'')+questionHTML(q,i)).join('');
 }
 function renderGrid() {
@@ -1630,8 +1433,8 @@ function renderGrid() {
   $('#question-aside').innerHTML=`<div class="aside-title"><h2>Bảng câu hỏi</h2><button class="close-drawer" data-action="close-drawer" aria-label="Đóng bảng câu hỏi">${icon('close',18)}</button></div><p class="aside-progress">Đã hoàn thành <strong>${complete}/${total}</strong> câu</p><div class="progress-track"><div class="progress-fill" style="width:${complete/total*100}%"></div></div>${Object.keys(TYPES).map(type=>{
     const qs=s.questions.map((q,i)=>({q,i})).filter(x=>x.q.type===type);
     if(!qs.length)return '';
-    return `<div class="grid-label">${TYPES[type]}</div><div class="question-grid">${qs.map(({q,i})=>`<button class="q-number ${questionState(q)} ${i===s.current?'current':''}" data-action="navigate" data-index="${i}" ${i===s.current?'aria-current="true"':''} aria-label="Câu ${i+1}, ${s.submitted&&q.type==='essay'?(countAnswered(q)?'đã viết, tự chấm':'bỏ trống'):s.submitted?(countAnswered(q)===0?'bỏ trống':pointsFor(q)===1?'đúng':pointsFor(q)>0?'đúng một phần':'sai'):s.flags[q.id]?'đánh dấu xem lại':isComplete(q)?'đã làm':countAnswered(q)?'đã làm một phần':'chưa làm'}">${i+1}</button>`).join('')}</div>`;
-  }).join('')}<div class="legend">${s.submitted?'<span><i class="green"></i>Đúng</span><span><i class="red"></i>Sai</span><span><i class="orange"></i>Đúng một phần</span><span><i class="gray"></i>Bỏ trống</span><span><i class="blue"></i>Tự luận đã viết</span>':'<span><i></i>Chưa làm</span><span><i class="blue"></i>Đã làm</span><span><i class="orange"></i>Xem lại</span><span><i style="background:#EEF4FF;border-color:#8DB6FF"></i>Làm một phần</span>'}</div><p class="aside-note">${s.submitted?'Đúng–sai có điểm từng phần; tự luận tô xanh dương khi đã viết, cần tự chấm theo checklist.':s.mode==='practice'?'Luyện tập: câu A/B/C/D và từng ý đúng–sai đã trả lời được khóa sau khi hiện giải thích.':'Bạn có thể thay đổi đáp án trước khi nộp bài. Viền đậm đánh dấu câu đang xem.'}</p>`;
+    return `<div class="grid-label">${TYPES[type]}</div><div class="question-grid">${qs.map(({q,i})=>`<button class="q-number ${questionState(q)} ${i===s.current?'current':''}" data-action="navigate" data-index="${i}" ${i===s.current?'aria-current="true"':''} aria-label="Câu ${i+1}, ${s.submitted?(countAnswered(q)===0?'bỏ trống':pointsFor(q)===1?'đúng':pointsFor(q)>0?'đúng một phần':'sai'):s.flags[q.id]?'đánh dấu xem lại':isComplete(q)?'đã làm':countAnswered(q)?'đã làm một phần':'chưa làm'}">${i+1}</button>`).join('')}</div>`;
+  }).join('')}<div class="legend">${s.submitted?'<span><i class="green"></i>Đúng</span><span><i class="red"></i>Sai</span><span><i class="orange"></i>Đúng một phần</span><span><i class="gray"></i>Bỏ trống</span>':'<span><i></i>Chưa làm</span><span><i class="blue"></i>Đã làm</span><span><i class="orange"></i>Xem lại</span><span><i style="background:#EEF4FF;border-color:#8DB6FF"></i>Làm một phần</span>'}</div><p class="aside-note">${s.submitted?'Câu đúng–sai có thể đạt điểm từng phần. Bấm số câu để xem lời giải.':s.mode==='practice'?'Luyện tập: câu A/B/C/D và từng ý đúng–sai đã trả lời được khóa sau khi hiện giải thích.':'Bạn có thể thay đổi đáp án trước khi nộp bài. Viền đậm đánh dấu câu đang xem.'}</p>`;
   $('#mobile-progress').textContent=`${complete}/${total}`;
 }
 function updateGridCurrent() {
@@ -1641,7 +1444,7 @@ function updateGridCurrent() {
 function navigate(index) {
   const s=state.session;if(index<0||index>=s.questions.length)return;
   s.current=index;closeDrawer();
-  if(s.view==='single'){renderQuestions();resizeEssays();window.scrollTo({top:0,behavior:'auto'});}
+  if(s.view==='single'){renderQuestions();window.scrollTo({top:0,behavior:'auto'});}
   else $('#question-'+index).scrollIntoView({behavior:'smooth',block:'start'});
   updateGridCurrent();
 }
@@ -1649,7 +1452,7 @@ function updateQuestion(index) {
   const s=state.session,old=$('#question-'+index),active=document.activeElement;
   const focusData=old&&active&&old.contains(active)?Object.assign({},active.dataset):null;
   if(old)old.outerHTML=questionHTML(s.questions[index],index);
-  renderGrid();resizeEssays();
+  renderGrid();
   // Giữ vị trí bàn phím khi câu hỏi được vẽ lại sau một thao tác.
   if(focusData){
     const card=$('#question-'+index);
@@ -1677,38 +1480,20 @@ function finishExam(auto=false) {
   const s=state.session;if(!s||s.submitted)return;
   clearInterval(timerId);s.submitted=true;s.autoSubmitted=auto;
   s.elapsed=Math.min(DURATION,Math.max(0,Math.floor((Date.now()-s.startedAt)/1000)));
-  s.quiz=s.questions.filter(q=>q.type!=='essay');
-  s.totalPoints=s.quiz.reduce((sum,q)=>sum+pointsFor(q,s),0);s.score=s.quiz.length?s.totalPoints/s.quiz.length*10:null;
+  s.quiz=s.questions;
+  s.totalPoints=s.quiz.reduce((sum,q)=>sum+pointsFor(q,s),0);s.score=s.totalPoints/s.quiz.length*10;
   closeModal(false);closeDrawer();
   saveHistory({title:s.spec.title+' · '+(s.spec.filter==='mixed'?'Tổng hợp':TYPES[s.spec.filter]),mode:s.mode,score:s.score,elapsed:s.elapsed,date:Date.now()});
   renderResult();window.scrollTo(0,0);if(auto)toast('Đã hết 45 phút. Bài làm của bạn đã tự động được nộp.');
 }
-/* Tự luận: lưu trong bộ nhớ phiên; checklist là tự đánh giá, không chấm văn bản tự động. */
-function wordCount(text) {return String(text||'').trim()?String(text).trim().split(/\s+/).length:0;}
-function selfPoints(q,s=state.session) {
-  const checks=s.selfChecks[q.id]||[];
-  if(!countAnswered(q,s))return 0;
-  return q.criteria.reduce((sum,c,j)=>sum+(checks[j]?c.weight:0),0);
-}
-function essayHTML(q,i) {
-  const s=state.session,text=s.answers[q.id]||'',available=s.submitted||s.mode==='practice',open=!!s.models[q.id];
-  return `<label class="essay-label" for="essay-${i}">Bài làm của bạn <span>1,0 điểm · Tự chấm</span></label><textarea id="essay-${i}" class="essay-input ${q.modelFormat==='code'?'code-input':''}" data-essay-index="${i}" placeholder="${q.modelFormat==='code'?'Viết mã HTML tại đây…':'Viết câu trả lời của bạn tại đây…'}" spellcheck="${q.modelFormat==='code'?'false':'true'}" ${s.submitted?'readonly':''}>${escapeHTML(text)}</textarea><div class="essay-meta"><span id="words-${i}">${wordCount(text)} từ</span><span>${s.submitted?'Bài làm đã nộp':'Tự giãn theo nội dung · Chưa lưu khi đóng trang'}</span></div>${available?`<button class="btn soft" data-action="model" data-index="${i}" aria-expanded="${open}" aria-controls="model-${i}">${icon('book',16)}${open?'Ẩn đáp án mẫu':'Xem đáp án mẫu'}</button><div id="model-${i}" ${open?'':'hidden'}><div class="model-answer"><h3>Đáp án mẫu</h3>${q.modelFormat==='code'?`<pre><code>${escapeHTML(q.modelAnswer)}</code></pre>`:`<div class="model-text">${escapeHTML(q.modelAnswer)}</div>`}</div><div class="rubric"><h3>Các ý chính cần đạt</h3><p class="aside-note">Tự tick các ý bài làm của bạn đã đạt. Đây là điểm tự đánh giá, không phải kết quả chấm tự động.</p>${q.criteria.map((c,j)=>`<label class="criterion"><input type="checkbox" data-criterion="${j}" data-question-index="${i}" ${(s.selfChecks[q.id]||[])[j]?'checked':''} ${!text.trim()?'disabled':''}><span>${escapeHTML(c.text)}</span><strong>${c.weight.toFixed(2)}đ</strong></label>`).join('')}<div class="rubric-bottom"><strong id="self-score-${i}">Tự chấm: ${selfPoints(q).toFixed(2)} / 1,00</strong><button class="btn" data-action="assess" data-index="${i}" ${!text.trim()?'disabled':''}>Ghi nhận tự chấm</button></div><p id="assess-note-${i}" class="aside-note">${s.assessed&&s.assessed[q.id]?'Đã ghi nhận tự chấm trong phiên này.':text.trim()?'Đối chiếu bài viết với đáp án trước khi ghi nhận.':'Viết câu trả lời trước khi tự chấm.'}</p></div></div>`:'<div class="modal-note">Thi thử: đáp án mẫu và checklist sẽ mở sau khi nộp bài.</div>'}`;
-}
-function resizeEssays() {
-  document.querySelectorAll('.essay-input').forEach(el=>{el.style.height='auto';el.style.height=Math.max(170,el.scrollHeight+2)+'px';});
-}
 function renderResult() {
   state.screen='result';renderHeader();$('#footer').classList.remove('hidden');
-  const s=state.session,quiz=s.quiz,total=quiz.length,essays=s.questions.filter(q=>q.type==='essay');
-  const correct=quiz.filter(q=>pointsFor(q)===1).length,blank=quiz.filter(q=>!countAnswered(q)).length,wrong=total-correct-blank;
-  const partial=quiz.filter(q=>{const p=pointsFor(q);return p>0&&p<1;}).length;
-  const tf=quiz.filter(q=>q.type==='tf'),tfRight=tf.reduce((n,q)=>n+pointsFor(q)*4,0),tfBlank=tf.reduce((n,q)=>n+4-countAnswered(q),0);
-  const written=essays.filter(q=>countAnswered(q)).length,self=essays.reduce((n,q)=>n+(s.assessed[q.id]?selfPoints(q):0),0),assessed=essays.filter(q=>s.assessed&&s.assessed[q.id]).length;
-  const percentage=total?Math.round(s.totalPoints/total*100):Math.round(written/essays.length*100);
-  const headline=total?(s.score>=8?'Một bước tiến thật vững!':s.score>=5?'Tiếp tục luyện, bạn sẽ tiến bộ!':'Cùng xem lại để hiểu bài hơn.'):'Đã hoàn thành phần tự luận';
-  $('#main').innerHTML=`<div class="result-wrap"><div class="breadcrumb">Ôn tập / ${escapeHTML(s.spec.title)} / Kết quả</div><section class="card result-card"><span class="pill ${s.autoSubmitted?'orange':'green'}">${icon('check',14)}${s.autoSubmitted?'Hết giờ · Đã tự nộp':'Đã nộp bài'}</span><h1>${headline}</h1><p>${escapeHTML(s.spec.title)} · ${s.mode==='practice'?'Luyện tập có xem đáp án':'Thi thử'}</p><div class="result-main"><div class="ring result-ring" style="background:conic-gradient(var(--blue) ${percentage}%,#E9EFF8 0)"><div class="ring-inner"><strong>${percentage}%</strong><small>${total?'ĐIỂM TRẮC NGHIỆM':'TỰ LUẬN ĐÃ VIẾT'}</small></div></div><div><div class="big-score">${total?s.score.toFixed(2):written}<small> / ${total?'10':essays.length}</small></div><div class="score-caption">${total?`Trắc nghiệm · ${s.totalPoints.toFixed(2)} / ${total} điểm gốc`:'Câu tự luận đã viết · Chưa chấm tự động'}</div></div></div><div class="result-stats">${total?`<div class="stat"><strong class="green-text">${correct}</strong><span>Câu TN đúng hoàn toàn</span></div><div class="stat"><strong class="red-text">${wrong}</strong><span>Câu TN sai / chưa đủ đúng</span></div><div class="stat"><strong>${blank}</strong><span>Câu TN bỏ trống toàn bộ</span></div>`:`<div class="stat"><strong>${written}</strong><span>Tự luận đã viết</span></div><div class="stat"><strong>${essays.length-written}</strong><span>Tự luận bỏ trống</span></div><div class="stat"><strong>${assessed}/${essays.length}</strong><span>Câu đã tự chấm</span></div>`}<div class="stat"><strong style="font-size:19px">${formatTime(s.elapsed)}</strong><span>Thời gian làm bài</span></div></div>${essays.length?`<div class="essay-result"><strong>Tự luận: ${written}/${essays.length} câu đã viết</strong><p>${assessed?`Tự đánh giá hiện tại: ${self.toFixed(2)} / ${essays.length} điểm; đã ghi nhận ${assessed}/${essays.length} câu.`:'Mở “Xem lại bài làm”, xem đáp án mẫu và tự tick các ý đã đạt để tự chấm.'} Điểm tự luận không cộng vào điểm trắc nghiệm.</p></div>`:''}<div class="result-actions"><button class="btn primary" data-action="review">Xem lại bài làm ${icon('arrow',16)}</button><button class="btn" data-action="retry">Làm lại</button><button class="btn" data-action="home">Về trang chủ</button></div></section><section class="card result-detail"><h2>Cách tính điểm của bài này</h2>${total?`<p>A/B/C/D đúng = 1 điểm. Mỗi ý đúng–sai đúng = 0,25 điểm. Điểm trắc nghiệm /10 = ${s.totalPoints.toFixed(2)} ÷ ${total} × 10 = <strong>${s.score.toFixed(2)}</strong>. Không trừ điểm câu sai/bỏ trống.</p>`:'<p>Bài này chỉ có tự luận, không có điểm chấm tự động. Mỗi câu có checklist tự chấm tối đa 1 điểm theo đáp án mẫu.</p>'}${tf.length?`<p>Phần đúng–sai: <strong>${tfRight}/${tf.length*4}</strong> ý đúng, ${tf.length*4-tfRight-tfBlank} ý sai, ${tfBlank} ý bỏ trống. ${partial} câu đạt điểm một phần được gộp vào “sai / chưa đủ đúng”.</p>`:''}<p>${s.mode==='practice'?'Kết quả luyện tập có hiển thị đáp án trong lúc làm. ':''}Lịch sử chỉ lưu kết quả tổng hợp; không lưu nội dung bài tự luận hay tự chấm. Câu biên tập có ghi chú và bản gốc khi xem lại.</p></section></div>`;
+  const s=state.session,total=s.questions.length,correct=s.questions.filter(q=>pointsFor(q)===1).length,blank=s.questions.filter(q=>!countAnswered(q)).length,wrong=total-correct-blank;
+  const partial=s.questions.filter(q=>{const p=pointsFor(q);return p>0&&p<1;}).length;
+  const tf=s.questions.filter(q=>q.type==='tf'),tfRight=tf.reduce((n,q)=>n+pointsFor(q)*4,0),tfBlank=tf.reduce((n,q)=>n+4-countAnswered(q),0);
+  const percentage=Math.round(s.totalPoints/total*100);
+  $('#main').innerHTML=`<div class="result-wrap"><div class="breadcrumb">Ôn tập / ${escapeHTML(s.spec.title)} / Kết quả</div><section class="card result-card"><span class="pill ${s.autoSubmitted?'orange':'green'}">${icon('check',14)} ${s.autoSubmitted?'Hết giờ · Đã tự nộp':'Đã hoàn thành bài làm'}</span><h1>${s.score>=8?'Một bước tiến thật vững!':s.score>=5?'Tiếp tục luyện, bạn sẽ tiến bộ!':'Cùng xem lại để hiểu bài hơn.'}</h1><p>${escapeHTML(s.spec.title)} · ${s.mode==='practice'?'Luyện tập có xem đáp án':'Thi thử'}</p><div class="result-main"><div class="ring result-ring" style="background:conic-gradient(var(--blue) ${percentage}%,#E9EFF8 0)"><div class="ring-inner"><strong>${percentage}%</strong><small>ĐIỂM ĐẠT ĐƯỢC</small></div></div><div><div class="big-score">${s.score.toFixed(2)}<small> / 10</small></div><div class="score-caption">${s.totalPoints.toFixed(2)} / ${total} điểm gốc</div></div></div><div class="result-stats"><div class="stat"><strong class="green-text">${correct}</strong><span>Câu đúng hoàn toàn</span></div><div class="stat"><strong class="red-text">${wrong}</strong><span>Câu sai / chưa đủ đúng</span></div><div class="stat"><strong>${blank}</strong><span>Câu bỏ trống toàn bộ</span></div><div class="stat"><strong style="font-size:19px">${formatTime(s.elapsed)}</strong><span>Thời gian làm bài</span></div></div><div class="result-actions"><button class="btn primary" data-action="review">Xem lại bài làm ${icon('arrow',16)}</button><button class="btn" data-action="retry">Làm lại</button><button class="btn" data-action="home">Về trang chủ</button></div></section><section class="card result-detail"><h2>Cách tính điểm của bài này</h2><p>Mỗi câu A/B/C/D đúng = 1 điểm. Mỗi ý đúng–sai đúng = 0,25 điểm. Điểm thang 10 = ${s.totalPoints.toFixed(2)} ÷ ${total} × 10 = <strong>${s.score.toFixed(2)}</strong>. Không trừ điểm câu sai hoặc bỏ trống.</p>${tf.length?`<p>Phần đúng–sai: <strong>${tfRight}/${tf.length*4}</strong> ý đúng, ${tf.length*4-tfRight-tfBlank} ý sai, ${tfBlank} ý bỏ trống. Có ${partial} câu đạt điểm một phần, được gộp vào nhóm “sai / chưa đủ đúng” ở trên.</p>`:''}<p>${s.mode==='practice'?'Đây là kết quả luyện tập có hiển thị đáp án trong lúc làm. ':''}${s.questions.filter(q=>q.needReview).length?`Có ${s.questions.filter(q=>q.needReview).length} câu cần kiểm tra lại đáp án, vẫn tính điểm tham khảo. `:''}Các câu biên tập có ghi chú và bản gốc trong phần xem lại.</p></section></div>`;
 }
-
 function openDrawer() {
   drawerFocus=document.activeElement;$('#question-aside').classList.add('drawer-open');$('#drawer-overlay').classList.remove('hidden');
   $('.mobile-grid-toggle').setAttribute('aria-expanded','true');document.body.style.overflow='hidden';
@@ -1749,15 +1534,6 @@ document.addEventListener('click',event=>{
     s.answers[q.id][j]=button.dataset.value==='true';updateQuestion(i);
   } else if(action==='drawer')openDrawer();
   else if(action==='close-drawer')closeDrawer();
-  else if(action==='model'){
-    const i=Number(button.dataset.index),q=s.questions[i];
-    if(!s.submitted&&s.mode!=='practice')return;
-    s.models[q.id]=!s.models[q.id];updateQuestion(i);
-  } else if(action==='assess'){
-    const i=Number(button.dataset.index),q=s.questions[i];
-    if(!countAnswered(q))return;
-    s.assessed[q.id]=true;$('#assess-note-'+i).textContent='Đã ghi nhận tự chấm trong phiên này.';toast('Đã ghi nhận tự chấm câu '+(i+1)+'.');
-  }
   else if(action==='submit')confirmSubmit();
   else if(action==='finish')finishExam(Date.now()>=s.deadline);
   else if(action==='review'){state.screen='review';s.current=0;renderExam();window.scrollTo(0,0);}
@@ -1769,31 +1545,7 @@ document.addEventListener('click',event=>{
     closeModal();renderHome();toast('Đã xóa lịch sử làm bài.');
   }
 });
-document.addEventListener('change',e=>{
-  const el=e.target,s=state.session;
-  if(el.id==='chapter-filter'){state.chapter=el.value;renderHome();}
-  else if(el.hasAttribute('data-criterion')&&s){
-    const i=Number(el.dataset.questionIndex),q=s.questions[i],j=Number(el.dataset.criterion);
-    if(!s.submitted&&s.mode!=='practice')return;
-    if(!s.selfChecks[q.id])s.selfChecks[q.id]=[];
-    s.selfChecks[q.id][j]=el.checked;s.assessed[q.id]=false;
-    $('#assess-note-'+i).textContent='Checklist đã thay đổi. Bấm Ghi nhận tự chấm để xác nhận.';
-    $('#self-score-'+i).textContent='Tự chấm: '+selfPoints(q).toFixed(2)+' / 1,00';
-  }
-});
-document.addEventListener('input',e=>{
-  const el=e.target;if(!el.hasAttribute('data-essay-index')||!canAnswer())return;
-  const s=state.session,i=Number(el.dataset.essayIndex),q=s.questions[i];
-  s.answers[q.id]=el.value;s.assessed[q.id]=false;
-  el.style.height='auto';el.style.height=Math.max(170,el.scrollHeight+2)+'px';
-  $('#words-'+i).textContent=wordCount(el.value)+' từ';
-  const card=$('#question-'+i);
-  const note=$('#assess-note-'+i);if(note)note.textContent=el.value.trim()?'Bài viết đã thay đổi. Hãy đối chiếu checklist và ghi nhận lại tự chấm.':'Viết câu trả lời trước khi tự chấm.';
-  card.querySelectorAll('[data-criterion],[data-action="assess"]').forEach(input=>input.disabled=!el.value.trim());
-  const score=$('#self-score-'+i);if(score)score.textContent='Tự chấm: '+selfPoints(q).toFixed(2)+' / 1,00';
-  if(!el.value.trim()){s.selfChecks[q.id]=[];s.assessed[q.id]=false;card.querySelectorAll('[data-criterion]').forEach(input=>input.checked=false);}
-  renderGrid();
-});
+document.addEventListener('change',e=>{if(e.target.id==='chapter-filter'){state.chapter=e.target.value;renderHome();}});
 document.addEventListener('keydown',e=>{
   const modal=$('.modal'),drawer=$('.question-aside.drawer-open'),scope=modal||drawer;
   if(e.key==='Escape'){if(modal)closeModal();else if(drawer)closeDrawer();return;}
@@ -1820,9 +1572,9 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateTime
 /* Kiểm tra cấu trúc dữ liệu trước khi cho người dùng bắt đầu. */
 function validateQuestions() {
   const ids=new Set();
-  return QUESTIONS.length===41&&QUESTIONS.every(q=>{
+  return QUESTIONS.length===35&&QUESTIONS.every(q=>{
     if(ids.has(q.id)||!CHAPTERS[q.chapter]||!q.prompt)return false;ids.add(q.id);
-    return q.type==='mcq'?q.options.length===4&&q.options.every(x=>typeof x==='string'&&x.trim())&&Number.isInteger(q.answer)&&q.answer>=0&&q.answer<4&&!!q.explanation:q.type==='tf'?q.statements.length===4&&q.statements.every(st=>typeof st.answer==='boolean'&&st.text&&st.explanation):q.type==='essay'&&!!q.modelAnswer&&q.criteria.length>0&&q.criteria.every(c=>c.text&&c.weight>0)&&Math.abs(q.criteria.reduce((n,c)=>n+c.weight,0)-1)<1e-6;
+    return q.type==='mcq'?q.options.length===4&&q.options.every(x=>typeof x==='string'&&x.trim())&&Number.isInteger(q.answer)&&q.answer>=0&&q.answer<4&&!!q.explanation:q.type==='tf'&&q.statements.length===4&&q.statements.every(st=>typeof st.answer==='boolean'&&st.text&&st.explanation);
   });
 }
 if(validateQuestions())renderHome();

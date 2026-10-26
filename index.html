@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1E6BFF">
+<meta name="description" content="Ôn tập Tin học 12 giữa học kỳ I: AI, mạng máy tính, ứng xử số và HTML. Luyện tập, thi thử, đảo đề, giải thích đáp án và tự chấm tự luận.">
+<title>Tin học 12 · Trạm ôn tập</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E6BFF'/%3E%3Ctext x='32' y='45' font-size='42' text-anchor='middle' fill='white'%3ET%3C/text%3E%3C/svg%3E">
+<style>
+/* Màu sắc và bố cục dùng chung, không tải font hay tài nguyên bên ngoài. */
+:root{--blue:#1E6BFF;--blue-light:#EEF4FF;--green:#22B573;--red:#F04438;--orange:#F79009;--ink:#172B4D;--muted:#63718A;--line:#E3E8F0;--bg:#F4F6FA;--shadow:0 4px 24px rgba(23,43,77,.045)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:112px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select{font:inherit}
+button,select{cursor:pointer}
+button{touch-action:manipulation}
+button:disabled{cursor:default;opacity:.65}
+button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #8CB4FF;outline-offset:3px}
+a{color:var(--blue)}
+h1,h2,h3,p{margin-top:0}
+h1,h2,h3{line-height:1.3;letter-spacing:-.025em}
+button{color:inherit}
+button svg{flex-shrink:0}
+svg{vertical-align:middle}
+button,.card,select{border-radius:12px}
+.hidden,[hidden]{display:none!important}
+.wrap{max-width:1200px;margin:auto;padding:0 32px}
+.site-header{background:white;border-bottom:1px solid var(--line)}
+.brand-row{min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);background:none;border:0;padding:0;text-align:left}
+.logo{width:42px;height:42px;display:grid;place-items:center;background:var(--blue);color:white;border-radius:12px}
+.brand strong{display:block;font-size:19px;line-height:1.3}
+.brand small{display:block;font-size:11px;color:var(--muted);letter-spacing:.1em;margin-top:3px}
+.header-note{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:7px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:8px;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:650}
+.pill.orange{color:#955508;background:#FFF3DF}
+.pill.green{color:#127447;background:#E8F8EF}
+.hero{padding:48px 0 32px;display:grid;grid-template-columns:1.45fr 1fr;align-items:center;gap:48px}
+.eyebrow{color:var(--blue);font-size:11px;letter-spacing:.16em;font-weight:750;margin-bottom:14px}
+.hero h1{font-size:42px;line-height:1.2;margin-bottom:16px;letter-spacing:-.045em}
+.hero h1 span{color:var(--blue)}
+.hero p{max-width:530px;color:var(--muted);margin-bottom:18px}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px}
+.overview{background:white;border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow);display:flex;align-items:center;gap:24px}
+.overview .ring{width:116px;height:116px;flex-shrink:0;background:conic-gradient(var(--blue) 0% 60.98%,#B7CFFF 60.98% 85.37%,var(--green) 85.37% 100%);padding:9px}
+.ring{border-radius:50%;display:grid;place-items:center}
+.ring-inner{background:white;border-radius:50%;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.overview .ring strong{font-size:32px;line-height:1.2}
+.ring small{font-size:11px;color:var(--muted)}
+.overview h2{font-size:16px;margin-bottom:12px}
+.overview p{font-size:13px;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;background:var(--blue)}
+.dot.light{background:#B7CFFF}
+.section-heading{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px}
+.section-heading h2{font-size:21px;margin:0}
+.section-heading p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin:22px 0}
+.tabs{padding:4px;background:#E9EDF4;border-radius:12px;display:flex;gap:3px}
+.tab{border:0;background:transparent;color:var(--muted);padding:9px 16px;font-weight:600;font-size:13px;border-radius:9px}
+.tab.active{background:white;color:var(--blue);box-shadow:0 2px 5px #14294D0C}
+.filter{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--muted)}
+select{border:1px solid var(--line);padding:9px 30px 9px 12px;background:white;color:var(--ink);max-width:100%}
+.exam-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{background:white;border:1px solid var(--line);box-shadow:var(--shadow)}
+.exam-card{padding:23px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.exam-card.comprehensive{background:linear-gradient(135deg,#fff 35%,#EEF4FF)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:21px}
+.chapter-icon{background:var(--blue-light);color:var(--blue);border-radius:12px;width:46px;height:46px;display:grid;place-items:center}
+.exam-card h3{font-size:18px;margin-bottom:9px}
+.exam-card .description{color:var(--muted);font-size:13px;min-height:42px;margin-bottom:19px}
+.meta{display:flex;gap:20px;font-size:13px;color:var(--muted);padding-bottom:19px;margin-top:auto}
+.meta span{display:flex;align-items:center;gap:6px}
+.card-bottom{border-top:1px solid var(--line);padding-top:17px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);gap:12px}
+.btn{border:1px solid var(--line);background:white;padding:10px 16px;font-weight:650;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:8px;line-height:1.5;text-decoration:none}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:white}
+.btn.primary:hover{background:#155BE0}
+.btn:hover{filter:brightness(.98)}
+.btn.soft{background:var(--blue-light);color:var(--blue);border-color:transparent}
+.btn.danger{color:var(--red)}
+.text-button{border:0;background:none;color:var(--blue);font-size:13px;font-weight:600;padding:5px}
+.note{padding:15px 18px;color:var(--muted);background:white;border:1px solid var(--line);border-radius:12px;font-size:13px;margin-top:22px}
+.note strong{color:var(--ink)}
+.history-section{margin-top:38px}
+.history-box{overflow-x:auto}
+.history-table{width:100%;border-collapse:collapse;font-size:13px;white-space:nowrap}
+.history-table th,.history-table td{text-align:left;padding:16px 20px;border-bottom:1px solid var(--line)}
+.history-table tr:last-child td{border:0}
+.history-table th{font-weight:500;color:var(--muted);font-size:12px;background:#FBFCFE}
+.score-small{color:var(--blue);font-weight:750}
+.empty{padding:32px;text-align:center;color:var(--muted);font-size:13px}
+.empty svg{display:block;margin:0 auto 10px;color:#A2AEC1}
+.footer{padding:30px 0;color:var(--muted);font-size:12px;text-align:center}
+.footer span{color:var(--blue)}
+
+/* Thanh thi và bảng câu hỏi: hai cột trên màn hình lớn, ngăn dưới trên điện thoại. */
+.exam-topbar{position:sticky;top:0;background:white;z-index:20;border-bottom:1px solid var(--line)}
+.exam-topbar .wrap{min-height:80px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:15px}
+.exam-title{font-weight:700;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.exam-subtitle{font-size:12px;font-weight:400;color:var(--muted)}
+.timer-box{text-align:center}
+.timer-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.timer{font-size:23px;font-weight:750;font-variant-numeric:tabular-nums;color:var(--blue);line-height:1.3}
+.timer.urgent{color:var(--red)}
+.top-actions{justify-self:end;display:flex;gap:8px}
+.exam-layout{display:grid;grid-template-columns:minmax(0,7fr) minmax(265px,3fr);gap:24px;padding-top:25px;padding-bottom:35px;align-items:start}
+.exam-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px;flex-wrap:wrap}
+.exam-tools .tabs .tab{padding:7px 11px;font-size:12px}
+.exam-tools>span{color:var(--muted);font-size:12px}
+.part-label{display:flex;align-items:center;gap:10px;margin:24px 0 13px;font-weight:700;font-size:14px}
+.part-label:first-child{margin-top:0}
+.part-label span{background:#E4EBF6;color:#536783;border-radius:6px;padding:2px 7px;font-size:11px;letter-spacing:.04em}
+.question-card{padding:26px;margin-bottom:18px;scroll-margin-top:102px;overflow-wrap:anywhere}
+.question-heading{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:14px}
+.question-heading h2{font-size:17px;margin:0}
+.question-source{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:5px;letter-spacing:0}
+.question-text,.statement-text,.explanation,.original-text{white-space:pre-line}
+.question-text{font-size:16px;line-height:1.75;margin-bottom:22px}
+.question-image{display:block;max-width:100%;max-height:200px;width:auto;margin:12px 0 22px;image-rendering:auto}
+.options{display:grid;gap:11px}
+.option{width:100%;text-align:left;display:flex;align-items:center;gap:13px;line-height:1.6;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:white;font-size:15px;opacity:1!important}
+.option:hover:not(:disabled){border-color:#94BAFF;background:#FAFCFF}
+.letter{border:1px solid #CFD7E5;min-width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:650;align-self:flex-start;margin-top:1px}
+.option.selected{border-color:var(--blue);background:var(--blue-light)}
+.option.selected .letter{background:var(--blue);border-color:var(--blue);color:white}
+.option.correct{border-color:var(--green);background:#F0FBF5}
+.option.correct .letter{background:var(--green);border-color:var(--green);color:white}
+.option.incorrect{border-color:var(--red);background:#FFF3F1}
+.option.incorrect .letter{background:var(--red);border-color:var(--red);color:white}
+.choice-content{flex:1;white-space:pre-line}
+.choice-mark{font-size:11px;font-weight:700;color:#12834D;white-space:nowrap}
+.incorrect .choice-mark{color:var(--red)}
+.question-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:23px;border-top:1px solid var(--line);padding-top:18px;flex-wrap:wrap}
+.navigation{display:flex;gap:8px}
+.flag-button{border:0;background:#FFF8EC;color:#9A630B;font-size:12px;padding:8px 12px;display:inline-flex;gap:5px;align-items:center;border-radius:8px}
+.flag-button.flagged{background:#FFF0D8;color:#965207;font-weight:750}
+.question-aside{position:sticky;top:105px;padding:22px;max-height:calc(100vh - 125px);overflow-y:auto}
+.aside-title{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:15px}
+.aside-title h2{font-size:16px;margin:0}
+.aside-progress{font-size:12px;color:var(--muted);margin:0 0 6px}
+.progress-track{height:5px;border-radius:10px;background:#EDF0F6;overflow:hidden;margin-bottom:20px}
+.progress-fill{height:100%;background:var(--blue);transition:width .2s}
+.grid-label{font-size:11px;font-weight:700;color:var(--muted);margin:13px 0 9px;text-transform:uppercase;letter-spacing:.04em}
+.question-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(35px,1fr));gap:8px}
+.q-number{height:36px;min-width:0;border:1px solid #CDD6E4;background:white;border-radius:7px;font-size:12px;position:relative;padding:0}
+.q-number.answered{background:var(--blue);border-color:var(--blue);color:white}
+.q-number.partial{background:#EEF4FF;border-color:#8DB6FF;color:#1A5DCA}
+.q-number.flagged{background:var(--orange);border-color:var(--orange);color:white}
+.q-number.correct{background:var(--green);border-color:var(--green);color:white}
+.q-number.incorrect{background:var(--red);border-color:var(--red);color:white}
+.q-number.blank{background:#EEF0F4;border-color:#D4D9E2;color:#727D8D}
+.q-number.current{outline:2px solid #233B60;outline-offset:2px}
+.q-number.partial-score{background:#FFF2DD;border-color:#F79009;color:#915307}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:11px;color:var(--muted);margin-top:23px;padding-top:17px;border-top:1px solid var(--line)}
+.legend span{display:flex;align-items:center;gap:5px}
+.legend i{width:11px;height:11px;border:1px solid #CCD5E3;border-radius:3px;background:white}
+.legend .blue{background:var(--blue);border-color:var(--blue)}
+.legend .orange{background:var(--orange);border-color:var(--orange)}
+.legend .green{background:var(--green);border-color:var(--green)}
+.legend .red{background:var(--red);border-color:var(--red)}
+.legend .gray{background:#D5DAE3;border-color:#D5DAE3}
+.aside-note{font-size:11px;color:var(--muted);margin:17px 0 0}
+.mobile-grid-toggle{display:none}
+.drawer-overlay{position:fixed;inset:0;background:#172B4D66;z-index:49}
+.close-drawer{display:none;border:0;background:#EEF1F6;border-radius:8px;padding:4px 8px}
+.statement{border:1px solid var(--line);padding:15px;border-radius:10px;margin-top:12px}
+.statement.correct{border-color:var(--green);background:#F4FCF7}
+.statement.incorrect{border-color:var(--red);background:#FFF7F6}
+.statement-row{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.statement-text{flex:1}
+.tf-controls{display:flex;gap:6px;flex-shrink:0}
+.tf-choice{font-size:12px;border:1px solid #CFD7E5;background:white;border-radius:8px;padding:7px 11px;opacity:1!important}
+.tf-choice.selected{background:var(--blue);border-color:var(--blue);color:white}
+.tf-choice.right{border-color:var(--green);background:var(--green);color:white}
+.tf-choice.wrong{border-color:var(--red);background:var(--red);color:white}
+.statement-feedback{font-size:13px;margin-top:12px;border-top:1px solid #DAE4DC;padding-top:10px}
+.explanation{padding:17px 19px;background:#EEF7FF;border-radius:10px;margin-top:20px;color:#304C70;font-size:14px}
+.explanation strong{display:block;margin-bottom:5px;color:#174D93}
+.answer-summary{font-size:13px;color:var(--muted);margin-top:16px}
+.edit-details{margin-top:18px;border:1px dashed #D7DFED;border-radius:9px;font-size:12px;padding:11px 13px;background:#FCFDFE;color:var(--muted)}
+.edit-details summary{cursor:pointer;color:#536783;font-weight:650}
+.edit-details p{margin:11px 0 0}
+.original-text{padding:10px;background:#F0F3F8;border-radius:6px;margin-top:10px}
+.review-alert{font-size:12px;padding:10px 13px;background:#FFF5DF;color:#87580B;border-radius:8px;margin-bottom:16px}
+.result-wrap{max-width:950px;margin:auto;padding:35px 28px}
+.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:23px}
+.result-card{padding:35px;text-align:center}
+.result-card h1{font-size:26px;margin:12px 0 7px}
+.result-card>p{color:var(--muted);font-size:13px}
+.result-main{display:flex;align-items:center;justify-content:center;gap:40px;margin:30px 0}
+.result-ring{width:142px;height:142px;padding:10px}
+.result-ring strong{font-size:28px}
+.big-score{font-size:64px;line-height:1;font-weight:800;letter-spacing:-.06em;color:var(--blue)}
+.big-score small{font-size:24px;color:#97A4BA;letter-spacing:0}
+.score-caption{font-size:12px;color:var(--muted);margin-top:10px}
+.result-stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:28px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.stat{padding:18px 10px;border-right:1px solid var(--line)}
+.stat:last-child{border:0}
+.stat strong{display:block;font-size:23px}
+.stat span{font-size:12px;color:var(--muted)}
+.green-text{color:#14864F}
+.red-text{color:var(--red)}
+.result-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:27px}
+.result-detail{margin-top:20px;padding:23px;font-size:13px;color:var(--muted)}
+.result-detail h2{font-size:16px;color:var(--ink)}
+.result-detail p:last-child{margin-bottom:0}
+.modal-backdrop{position:fixed;inset:0;background:#172B4D77;z-index:100;display:grid;place-items:center;padding:20px}
+.modal{background:white;width:100%;max-width:520px;border-radius:18px;box-shadow:0 20px 100px #172B4D33;max-height:calc(100dvh - 40px);max-height:calc(100vh - 40px);overflow:auto}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:23px 25px 0;gap:12px}
+.modal-head h2{font-size:21px;margin:0}
+.icon-button{border:0;background:#F0F3F8;border-radius:8px;width:32px;height:32px;display:grid;place-items:center}
+.modal-body{padding:20px 25px 25px}
+.modal-description{color:var(--muted);font-size:13px;margin-bottom:18px}
+.field{margin:18px 0}
+.field label{font-size:13px;display:block;font-weight:650;margin-bottom:8px}
+.field select{width:100%;padding:11px}
+.mode-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mode-button{text-align:left;border:1px solid var(--line);padding:13px;background:white}
+.mode-button.active{border-color:var(--blue);background:var(--blue-light)}
+.mode-button strong{display:block;font-size:14px}
+.mode-button small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:25px}
+.modal-note{padding:12px 14px;background:#F4F7FC;border-radius:9px;color:var(--muted);font-size:12px}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#172B4D;color:white;border-radius:10px;box-shadow:var(--shadow);padding:12px 20px;max-width:calc(100% - 32px);z-index:200;font-size:13px;text-align:center}
+.skip-link{position:fixed;top:-100px;left:15px;z-index:300;background:white;padding:10px;border-radius:8px}
+.skip-link:focus{top:10px}
+
+@media(min-width:1100px){.exam-card.comprehensive{grid-column:1/-1;display:grid;grid-template-columns:54px 1.4fr 1fr auto;gap:18px;align-items:center}
+.comprehensive .card-top{margin:0}
+.comprehensive .card-top .pill{display:none}
+.comprehensive h3{margin-bottom:4px}
+.comprehensive .description{min-height:0;margin:0}
+.comprehensive .meta{padding:0;margin:0}
+.comprehensive .card-bottom{border:0;padding:0;gap:20px}
+}
+
+@media(max-width:1000px){.hero{gap:24px}
+.hero h1{font-size:35px}
+.overview{gap:15px;padding:20px}
+.overview .ring{width:92px;height:92px}
+.exam-cards{gap:14px}
+.exam-card{padding:19px}
+.question-card{padding:22px}
+.question-aside{padding:18px}
+.wrap{padding:0 24px}
+}
+
+@media(max-width:760px){.wrap{padding:0 16px}
+.brand-row{min-height:68px}
+.brand strong{font-size:17px}
+.logo{width:37px;height:37px}
+.header-note{font-size:11px}
+.header-note .desktop-only{display:none}
+.hero{padding:30px 0 26px;grid-template-columns:1fr;gap:22px}
+.hero h1{font-size:34px}
+.hero p{font-size:14px}
+.overview{padding:18px 22px;justify-content:space-between;flex-direction:row-reverse;gap:15px}
+.overview .ring{width:85px;height:85px;padding:7px}
+.overview .ring strong{font-size:27px}
+.overview h2{margin-bottom:6px}
+.overview p{font-size:12px}
+.toolbar{gap:13px}
+.tabs{max-width:100%;overflow:auto}
+.tab{padding:8px 13px;white-space:nowrap}
+.filter{width:100%;justify-content:space-between}
+.filter select{flex:1;min-width:0;max-width:280px}
+.exam-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.exam-card.comprehensive{grid-column:1/-1}
+.exam-card .description{min-height:42px}
+.section-heading h2{font-size:19px}
+.section-heading .pill{font-size:10px}
+.exam-topbar .wrap{min-height:75px;grid-template-columns:minmax(0,1fr) auto auto;gap:12px}
+.exam-title{font-size:13px;max-width:250px}
+.exam-subtitle{font-size:10px}
+.timer{font-size:19px}
+.timer-label{font-size:8px;letter-spacing:.03em}
+.top-actions .btn{padding:8px 10px;font-size:12px}
+.top-actions .home-review{display:none}
+.exam-layout{display:block;padding-top:18px;padding-bottom:85px}
+.question-card{padding:20px;margin-bottom:14px}
+.question-text{font-size:15px}
+.question-aside{display:none;position:fixed;z-index:50;bottom:0;top:auto;left:0;right:0;border-radius:20px 20px 0 0;max-height:76vh;overflow-y:auto;padding:22px 22px calc(22px + env(safe-area-inset-bottom))}
+.question-aside.drawer-open{display:block}
+.close-drawer{display:block}
+.question-grid{grid-template-columns:repeat(auto-fill,minmax(36px,1fr))}
+.mobile-grid-toggle{display:flex;position:fixed;bottom:calc(18px + env(safe-area-inset-bottom));right:18px;z-index:30;box-shadow:0 5px 25px #1E6BFF44}
+.statement-row{display:block}
+.tf-controls{margin-top:12px;justify-content:flex-end}
+.tf-choice{padding:8px 18px}
+.result-wrap{padding:24px 16px}
+.result-card{padding:24px 18px}
+.result-card h1{font-size:23px}
+.result-main{gap:26px}
+.result-ring{width:120px;height:120px}
+.big-score{font-size:53px}
+.stat{padding:14px 6px}
+.stat strong{font-size:20px}
+.stat span{font-size:10px}
+.question-actions{gap:12px}
+.navigation .btn{padding:9px 11px}
+.question-heading{gap:7px}
+.pill{font-size:10px}
+.toast{bottom:85px}
+.choice-mark{white-space:normal;max-width:62px;text-align:right}
+}
+
+@media(max-width:440px){.exam-cards{grid-template-columns:1fr}
+.exam-card .description{min-height:0}
+.hero h1{font-size:31px}
+.hero-chips .pill{font-size:10px}
+.exam-tools{gap:8px}
+.exam-title{max-width:145px}
+.timer{font-size:17px}
+.timer-label{display:none}
+.top-actions .btn{padding:8px}
+.exam-topbar .wrap{gap:9px}
+.question-card{padding:17px}
+.option{padding:12px;gap:10px;font-size:14px}
+.letter{min-width:28px;height:28px}
+.question-actions{align-items:stretch}
+.flag-button{width:100%;justify-content:center;order:2}
+.navigation{width:100%;justify-content:space-between}
+.result-stats{grid-template-columns:repeat(2,1fr)}
+.stat:nth-child(2){border-right:0}
+.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+.result-main{gap:21px}
+.result-ring{width:105px;height:105px}
+.big-score{font-size:46px}
+.modal-head{padding:20px 18px 0}
+.modal-body{padding:18px}
+.header-note{max-width:95px;text-align:right}
+.result-actions .btn{flex:1}
+.history-table th,.history-table td{padding:13px 15px}
+.overview h2{font-size:15px}
+}
+
+@media(max-height:500px) and (orientation:landscape){.exam-topbar .wrap{min-height:56px}
+.question-aside{max-height:85vh}
+.modal{max-height:calc(100vh - 24px)}
+.modal-backdrop{padding:12px}
+.question-card{scroll-margin-top:73px}
+html{scroll-padding-top:78px}
+}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+*{transition:none!important}
+}
+
+
+/* Tự luận và mã HTML chỉ hiển thị dạng văn bản, không thực thi bài nhập. */
+.essay-label{display:flex;justify-content:space-between;gap:12px;font-weight:650;font-size:14px;margin-bottom:10px}
+.essay-label span{font-weight:400;color:var(--muted);font-size:12px}
+.essay-input{display:block;width:100%;min-height:170px;resize:vertical;padding:16px;border:1px solid #CFD9E8;border-radius:12px;font:inherit;line-height:1.8;background:white;color:var(--ink);overflow-y:hidden}
+.essay-input:focus{outline:2px solid #A8C6FF;border-color:var(--blue)}
+.essay-input[readonly]{background:#FAFBFE}
+.code-input{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:14px;tab-size:2}
+.essay-meta{display:flex;justify-content:space-between;gap:12px;margin:8px 0 18px;font-size:11px;color:var(--muted)}
+.model-answer{background:#EEF7FF;border:1px solid #DCEAFF;border-radius:12px;margin-top:18px;padding:20px}
+.model-answer h3,.rubric h3{font-size:15px;margin-bottom:12px}
+.model-text{white-space:pre-line;font-size:14px;line-height:1.85}
+.model-answer pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;line-height:1.8;font-size:13px;color:#194A85}
+.rubric{border:1px solid var(--line);border-radius:12px;margin-top:15px;padding:20px}
+.rubric .aside-note{margin:0 0 14px}
+.criterion{display:flex;gap:10px;align-items:flex-start;font-size:13px;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
+.criterion input{flex-shrink:0;margin:5px 0 0;width:17px;height:17px;accent-color:var(--blue)}
+.criterion span{flex:1}
+.criterion strong{font-size:11px;white-space:nowrap;color:var(--muted)}
+.rubric-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:15px;margin-top:4px;font-size:13px;color:var(--blue)}
+.rubric-bottom .btn{font-size:11px;padding:8px 11px}
+.rubric #assess-note{margin-top:12px}
+.q-number.self-assess{background:#E4EEFF;color:var(--blue);border-color:var(--blue)}
+.essay-result{text-align:left;background:#F3F7FF;border-radius:12px;padding:16px 18px;margin-top:22px;font-size:13px}
+.essay-result p{color:var(--muted);margin:6px 0 0}
+.exam-card .description{min-height:0}
+
+@media(min-width:1100px){.exam-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.exam-card.comprehensive{grid-template-columns:54px 1fr 155px 270px}
+.comprehensive .card-bottom{gap:12px}
+.comprehensive .card-bottom>span{max-width:130px}
+}
+
+@media(max-width:440px){.tabs .tab{padding:8px 11px}
+.essay-meta{flex-wrap:wrap;gap:4px}
+.essay-label{display:block}
+.essay-label span{display:block;margin-top:3px}
+.model-answer,.rubric{padding:15px}
+.rubric-bottom{align-items:stretch;flex-direction:column}
+.overview{padding:18px 16px}
+.overview h2{font-size:14px}
+.overview .ring{width:76px;height:76px}
+.overview p{font-size:11px}
+.hero h1{font-size:29px}
+.section-heading>.pill{font-size:9px;padding:5px 7px}
+}
+
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Đến nội dung chính</a>
+<header id="header"></header>
+<main id="main" tabindex="-1"></main>
+<footer id="footer" class="footer">Trạm ôn tập <span>Tin học 12</span> · Học để hiểu, luyện để vững.</footer>
+<div id="modal-root"></div>
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+<script>
+/* DỮ LIỆU ĐỀ: answer là chỉ số 0–3 của phương án đúng trước khi đảo.
+   Câu đúng–sai có statements[].answer là true/false.
+   Tự luận có modelAnswer và criteria (các tiêu chí có trọng số tổng 1).
+   Các trường original… và editNote lưu nội dung trước khi biên tập. */
+const QUESTIONS = [
+  {
+    "id": "it-m1",
+    "chapter": 1,
+    "type": "mcq",
+    "number": 1,
+    "prompt": "Khả năng nào sau đây là một trong những đặc trưng của trí tuệ nhân tạo?",
+    "options": [
+      "suy luận.",
+      "hiển thị cố định một hình ảnh đã lưu.",
+      "sao chép nguyên một tệp văn bản sang thư mục khác.",
+      "thực hiện duy nhất một chuỗi lệnh cố định, không học hay thích nghi."
+    ],
+    "answer": 0,
+    "explanation": "Suy luận là một năng lực đặc trưng của AI: dùng tri thức và dữ liệu để rút ra kết luận. Chỉ phát lại dữ liệu hoặc chạy chuỗi lệnh cố định chưa thể hiện năng lực này.",
+    "needReview": false,
+    "originalPrompt": "Khả năng nào sau đây là một trong những đặc trưng của trí tuệ nhân tạo?",
+    "originalOptions": [
+      "suy luận.",
+      "nhận dạng hình ảnh.",
+      "phân tích ngôn ngữ tự nhiên.",
+      "tự động hóa các quy trình mà không cần sự giám sát."
+    ],
+    "editNote": "Bản gốc có nhiều khả năng thực sự thuộc AI (nhận dạng hình ảnh, phân tích ngôn ngữ, tự động hóa). Sửa các phương án nhiễu B/C/D thành tác vụ cố định không thể hiện năng lực AI để chỉ còn suy luận là đáp án đúng."
+  },
+  {
+    "id": "it-m2",
+    "chapter": 1,
+    "type": "mcq",
+    "number": 2,
+    "prompt": "Khi thường xuyên dùng AI trả lời thay cho việc tự suy nghĩ, năng lực nào sau đây của con người có nguy cơ suy giảm trực tiếp nhất?",
+    "options": [
+      "Khả năng tư duy độc lập.",
+      "Tính chính xác trong công việc.",
+      "Tốc độ xử lí lệnh của bộ vi xử lí.",
+      "Dung lượng lưu trữ vật lí của máy tính."
+    ],
+    "answer": 0,
+    "explanation": "Lệ thuộc AI và bỏ qua việc tự suy nghĩ có thể làm giảm khả năng tư duy độc lập. Cần kiểm chứng kết quả AI và duy trì năng lực tự phân tích.",
+    "needReview": false,
+    "originalPrompt": "Sự phụ thuộc vào AI có thể làm giảm điều gì sau đây của con người?",
+    "originalOptions": [
+      "Khả năng tư duy độc lập.",
+      "Tính chính xác trong công việc.",
+      "Khả năng ra quyết định khẩn cấp.",
+      "Kỹ năng phân tích và đánh giá thông tin."
+    ],
+    "editNote": "Bản gốc có các hệ quả cùng có thể xảy ra: giảm tư duy độc lập, khả năng ra quyết định và kĩ năng phân tích. Thay C/D bằng tác động đến hệ thống máy tính để câu hỏi về năng lực con người chỉ còn A phù hợp. Làm rõ câu dẫn hỏi năng lực suy giảm trực tiếp nhất khi bỏ qua việc tự suy nghĩ, thay vì hỏi chung mọi hệ quả có thể xảy ra."
+  },
+  {
+    "id": "it-m3",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 3,
+    "prompt": "Thiết bị có khả năng chuyển tín hiệu số thành tín hiệu tương tự và ngược lại là ……..",
+    "options": [
+      "Modem.",
+      "Router.",
+      "Hub.",
+      "Switch."
+    ],
+    "answer": 0,
+    "explanation": "Modem thực hiện điều chế và giải điều chế: chuyển đổi giữa dữ liệu số và tín hiệu phù hợp với đường truyền, trong mô hình cơ bản là tín hiệu tương tự.",
+    "needReview": false
+  },
+  {
+    "id": "it-m4",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 4,
+    "prompt": "Trong mạng LAN, khi đã biết cổng tương ứng với địa chỉ MAC đích của một frame unicast, switch có chức năng nào sau đây?",
+    "options": [
+      "Chuyển tiếp dữ liệu đến đúng thiết bị đích.",
+      "Chuyển tiếp dữ liệu đến tất cả các thiết bị trong mạng.",
+      "Chuyển đổi dữ liệu giữa các giao thức khác nhau.",
+      "Kết nối mạng trung gian giữa hub và router."
+    ],
+    "answer": 0,
+    "explanation": "Switch học địa chỉ MAC và chuyển tiếp frame unicast đến cổng có thiết bị đích khi đã biết địa chỉ. Với địa chỉ đích chưa biết hoặc frame broadcast, switch có thể gửi ra nhiều cổng.",
+    "needReview": false,
+    "originalPrompt": "Trong mạng LAN, Switch có chức năng nào sau đây?",
+    "originalOptions": [
+      "Chuyển tiếp dữ liệu đến đúng thiết bị đích.",
+      "Chuyển tiếp dữ liệu đến tất cả các thiết bị trong mạng.",
+      "Chuyển đổi dữ liệu giữa các giao thức khác nhau.",
+      "Kết nối mạng trung gian giữa hub và router."
+    ],
+    "editNote": "Làm rõ điều kiện đã biết cổng đích để không khẳng định switch luôn chỉ gửi dữ liệu tới một thiết bị; switch còn chuyển tiếp broadcast và frame chưa biết đích tới nhiều cổng."
+  },
+  {
+    "id": "it-m5",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 5,
+    "prompt": "Router có chức năng chính nào sau đây?",
+    "options": [
+      "Dẫn đường cho dữ liệu khi kết nối trên mạng diện rộng.",
+      "Chuyển tiếp dữ liệu giữa các thiết bị trong cùng một mạng.",
+      "Kết nối các thiết bị ngoại vi với máy tính.",
+      "Kết nối mạng không dây với mạng có dây."
+    ],
+    "answer": 0,
+    "explanation": "Router chuyển tiếp gói IP giữa các mạng, chọn đường đi dựa trên bảng định tuyến. Đây là chức năng cốt lõi khi kết nối LAN với các mạng khác hoặc Internet.",
+    "needReview": false
+  },
+  {
+    "id": "it-m6",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 6,
+    "prompt": "Hub khác với Switch ở đặc điểm nào sau đây?",
+    "options": [
+      "Hub gửi dữ liệu đến tất cả các cổng còn lại, không phân biệt thiết bị nhận.",
+      "Hub chỉ gửi dữ liệu đến một thiết bị cụ thể.",
+      "Hub có khả năng định tuyến dữ liệu giữa các mạng.",
+      "Hub hỗ trợ kết nối không dây cho thiết bị di động."
+    ],
+    "answer": 0,
+    "explanation": "Hub lặp lại tín hiệu đến các cổng còn lại, không học địa chỉ đích. Switch có bảng địa chỉ MAC để chuyển frame đến cổng phù hợp.",
+    "needReview": false,
+    "originalPrompt": "Hub khác với Switch ở đặc điểm nào sau đây?",
+    "originalOptions": [
+      "Hub gửi dữ liệu đến tất cả các cổng, không phân biệt thiết bị nhận.",
+      "Hub chỉ gửi dữ liệu đến một thiết bị cụ thể.",
+      "Hub có khả năng định tuyến dữ liệu giữa các mạng.",
+      "Hub hỗ trợ kết nối không dây cho thiết bị di động."
+    ],
+    "editNote": "Bổ sung “còn lại” trong phương án A: hub không phát lại tín hiệu vào chính cổng vừa nhận tín hiệu."
+  },
+  {
+    "id": "it-m7",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 7,
+    "prompt": "Giao thức IP có chức năng nào sau đây?",
+    "options": [
+      "Quy định cơ chế địa chỉ logic cho các thiết bị tham gia mạng và dẫn đường các gói tin theo địa chỉ từ thiết bị gửi đến thiết bị nhận.",
+      "Thiết lập địa chỉ cho các ứng dụng tham gia mạng và truyền các gói tin theo địa chỉ từ thiết bị gửi đến thiết bị nhận.",
+      "Thiết lập địa chỉ cho các MAC cho các thiết bị tham gia mạng và dẫn đường các gói tin theo địa chỉ từ thiết bị gửi đến thiết bị nhận.",
+      "Thiết lập địa chỉ cho các phần mềm tham gia mạng và truyền các gói tin theo địa chỉ từ thiết bị gửi đến thiết bị nhận."
+    ],
+    "answer": 0,
+    "explanation": "IP quy định cơ chế địa chỉ logic và chuyển tiếp, định tuyến gói tin giữa các mạng. DHCP hoặc cấu hình thủ công thường đảm nhiệm việc cấp địa chỉ cụ thể; IP không tự bảo đảm truyền tin cậy.",
+    "needReview": false,
+    "originalPrompt": "Giao thức IP có chức năng nào sau đây?",
+    "originalOptions": [
+      "Thiết lập địa chỉ cho các thiết bị tham gia mạng và dẫn đường các gói tin theo địa chỉ từ thiết bị gửi đến thiết bị nhận.",
+      "Thiết lập địa chỉ cho các ứng dụng tham gia mạng và truyền các gói tin theo địa chỉ từ thiết bị gửi đến thiết bị nhận.",
+      "Thiết lập địa chỉ cho các MAC cho các thiết bị tham gia mạng và dẫn đường các gói tin theo địa chỉ từ thiết bị gửi đến thiết bị nhận.",
+      "Thiết lập địa chỉ cho các phần mềm tham gia mạng và truyền các gói tin theo địa chỉ từ thiết bị gửi đến thiết bị nhận."
+    ],
+    "editNote": "Thay cách nói IP “thiết lập địa chỉ” bằng cơ chế định địa chỉ logic để phân biệt với dịch vụ tự cấp địa chỉ DHCP."
+  },
+  {
+    "id": "it-m8",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 8,
+    "prompt": "Phương án nào sau đây là cách biểu diễn của địa chỉ IPv4 ở hệ thập phân?",
+    "options": [
+      "192.168.1.15.",
+      "F2:E3:42:16:F1:A3",
+      "16:05:42:16:11:23.",
+      "11000000. 10101000. 00000001.000001."
+    ],
+    "answer": 0,
+    "explanation": "IPv4 thường được viết thành bốn số thập phân từ 0 đến 255, ngăn bằng dấu chấm. 192.168.1.15 đúng dạng đó; các chuỗi có dấu hai chấm là dạng địa chỉ MAC trong các lựa chọn đã cho.",
+    "needReview": false
+  },
+  {
+    "id": "it-m9",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 9,
+    "prompt": "Nội dung nào sau đây là nhiệm vụ của giao thức IP?",
+    "options": [
+      "Quản lí việc định địa chỉ và định tuyến của các gói dữ liệu trong mạng.",
+      "Đảm bảo truyền tải dữ liệu theo đúng thứ tự từ nguồn đến đích.",
+      "Quản lí việc thiết lập, duy trì và đóng kết nối giữa các thiết bị trên mạng.",
+      "Xác định cách chia dữ liệu thành gói, kiểm tra tính toàn vẹn của dữ liệu."
+    ],
+    "answer": 0,
+    "explanation": "IP đảm nhiệm địa chỉ logic và định tuyến gói dữ liệu. Các chức năng kết nối, đánh số thứ tự và truyền tin cậy thuộc TCP.",
+    "needReview": false,
+    "originalPrompt": "Nội dung nào sau đây là nhiệm vụ của  là giao thức IP?",
+    "originalOptions": [
+      "Quản lí việc định địa chỉ và định tuyến của các gói dữ liệu trong mạng.",
+      "Đảm bảo truyền tải dữ liệu theo đúng thứ tự từ nguồn đến đích.",
+      "Quản lí việc thiết lập, duy trì và đóng kết nối giữa các thiết bị trên mạng.",
+      "Xác định cách chia dữ liệu thành gói, kiểm tra tính toàn vẹn của dữ liệu."
+    ],
+    "editNote": "Bỏ từ bị lặp “là” trong câu dẫn; nội dung kiến thức và các lựa chọn giữ nguyên."
+  },
+  {
+    "id": "it-m10",
+    "chapter": 3,
+    "type": "mcq",
+    "number": 10,
+    "prompt": "Phương án nào sau đây không là công cụ giao tiếp trong không gian mạng?",
+    "options": [
+      "Mạng xã hội.",
+      "Hội nghị truyền hình.",
+      "Thư giấy.",
+      "FaceTime."
+    ],
+    "answer": 2,
+    "explanation": "Thư giấy được chuyển bằng phương tiện vật lí, không phải công cụ giao tiếp trực tuyến. Mạng xã hội, hội nghị truyền hình và FaceTime đều có thể dùng mạng để giao tiếp.",
+    "needReview": false
+  },
+  {
+    "id": "it-m11",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 11,
+    "prompt": "Sự khác biệt chính giữa mạng LAN và mạng WAN là gì?",
+    "options": [
+      "Mạng LAN sử dụng Wi-Fi, còn mạng WAN chỉ dùng cáp quang.",
+      "Mạng LAN có tốc độ chậm hơn mạng WAN.",
+      "Mạng WAN chỉ hoạt động trong một tòa nhà, còn mạng LAN bao phủ toàn cầu.",
+      "Mạng LAN có phạm vi nhỏ, còn mạng WAN có phạm vi rộng lớn."
+    ],
+    "answer": 3,
+    "explanation": "LAN có phạm vi địa lí nhỏ như phòng máy hoặc tòa nhà; WAN kết nối trên phạm vi rộng như liên tỉnh, liên quốc gia. Cả hai có thể dùng nhiều loại đường truyền khác nhau.",
+    "needReview": false
+  },
+  {
+    "id": "it-m12",
+    "chapter": 1,
+    "type": "mcq",
+    "number": 12,
+    "prompt": "Phương án nào sau đây định nghĩa đầy đủ nhất về trí tuệ nhân tạo (AI)?",
+    "options": [
+      "Khả năng của máy tính để thực hiện các công việc mang tính trí tuệ con người.",
+      "Khả năng của máy tính để phân tích và học hỏi từ dữ liệu.",
+      "Một hệ thống máy tính có thể tự động hóa các quy trình mà không cần sự can thiệp của con người.",
+      "Một hệ thống có khả năng hoạt động hiểu ngôn ngữ."
+    ],
+    "answer": 0,
+    "explanation": "AI là khả năng của hệ thống máy tính thực hiện các công việc thường đòi hỏi trí tuệ con người. Học từ dữ liệu và hiểu ngôn ngữ là những năng lực cụ thể, chưa phải định nghĩa bao quát nhất.",
+    "needReview": false,
+    "originalPrompt": "Phương án nào sau đây định nghĩa về trí tuệ nhân tạo (AI)?",
+    "originalOptions": [
+      "Khả năng của máy tính để thực hiện các công việc mang tính trí tuệ con người.",
+      "Khả năng của máy tính để phân tích và học hỏi từ dữ liệu.",
+      "Một hệ thống máy tính có thể tự động hóa các quy trình mà không cần sự can thiệp của con người.",
+      "Một hệ thống có khả năng hoạt động hiểu ngôn ngữ."
+    ],
+    "editNote": "Thêm “đầy đủ nhất” vì B và D mô tả các năng lực riêng của AI, còn A là định nghĩa bao quát."
+  },
+  {
+    "id": "it-m13",
+    "chapter": 1,
+    "type": "mcq",
+    "number": 13,
+    "prompt": "Khả năng nào sau đây là một trong những đặc trưng của trí tuệ nhân tạo?",
+    "options": [
+      "giải quyết vấn đề.",
+      "phát lại một tệp âm thanh có sẵn.",
+      "lưu trữ dữ liệu.",
+      "lặp lại nguyên một chuỗi thao tác cố định."
+    ],
+    "answer": 0,
+    "explanation": "Giải quyết vấn đề là năng lực đặc trưng của AI. Lưu trữ dữ liệu, phát tệp âm thanh và lặp lại chuỗi thao tác cố định có thể được thực hiện mà không cần AI.",
+    "needReview": false,
+    "originalPrompt": "Khả năng nào sau đây là một trong những đặc trưng của trí tuệ nhân tạo?",
+    "originalOptions": [
+      "giải quyết vấn đề.",
+      "nhận diện giọng nói.",
+      "lưu trữ dữ liệu.",
+      "thực hiện các tác vụ."
+    ],
+    "editNote": "Nhận diện giọng nói ở phương án B gốc cũng là khả năng của AI. Thay B và làm rõ D thành những thao tác cố định để chỉ A thể hiện năng lực giải quyết vấn đề đặc trưng."
+  },
+  {
+    "id": "it-m14",
+    "chapter": 1,
+    "type": "mcq",
+    "number": 14,
+    "prompt": "AI có thể gây ra rủi ro nào sau đây đối với quyền riêng tư?",
+    "options": [
+      "Xâm phạm dữ liệu cá nhân.",
+      "Tăng cường bảo mật thông tin cá nhân.",
+      "Cải thiện quy trình quản lý dữ liệu.",
+      "Giảm thiểu việc thu thập thông tin không cần thiết."
+    ],
+    "answer": 0,
+    "explanation": "Thu thập, suy luận hoặc sử dụng dữ liệu cá nhân không phù hợp có thể xâm phạm quyền riêng tư. Các phương án còn lại mô tả lợi ích bảo vệ dữ liệu, không phải rủi ro được hỏi.",
+    "needReview": false
+  },
+  {
+    "id": "it-m15",
+    "chapter": 1,
+    "type": "mcq",
+    "number": 15,
+    "prompt": "Trong lĩnh vực việc làm, AI có thể phân tích dữ liệu để làm gì sau đây?",
+    "options": [
+      "Dự đoán xu hướng việc làm trong tương lai.",
+      "Làm giảm thông tin về thị trường lao động và cơ hội việc làm.",
+      "Loại bỏ hoàn toàn sự không chắc chắn trong lựa chọn nghề nghiệp.",
+      "Giảm bớt sự cạnh tranh giữa ứng viên bằng cách loại bỏ dữ liệu cần thiết."
+    ],
+    "answer": 0,
+    "explanation": "AI có thể phân tích dữ liệu thị trường lao động để dự báo xu hướng nghề nghiệp và nhu cầu nhân lực. Dự báo vẫn có sai số, không thể xóa bỏ hoàn toàn sự không chắc chắn.",
+    "needReview": false,
+    "originalPrompt": "Trong lĩnh vực việc làm, AI có thể phân tích dữ liệu để làm gì sau đây?",
+    "originalOptions": [
+      "Dự đoán xu hướng việc làm trong tương lai.",
+      "Làm giảm thông tin về thị trường lao động và cơ hội việc làm.",
+      "Làm giám sự không rõ ràng trong nghề nghiệp.",
+      "Giảm bớt sự cạnh tranh giữa ứng viên bằng cách loại bỏ dữ liệu cần thiết."
+    ],
+    "editNote": "Phương án C gốc sai chính tả và có thể được hiểu là lợi ích định hướng nghề nghiệp. Viết lại C thành khẳng định tuyệt đối sai để chỉ còn A đúng."
+  },
+  {
+    "id": "it-m16",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 16,
+    "prompt": "Khi kết nối hai máy tính (có thể cách xa hàng nghìn kilômét) qua Internet, người ta sử dụng thiết bị nào để kết nối các mạng cục bộ (LAN) với nhau?",
+    "options": [
+      "Hub.",
+      "Router.",
+      "Wireless Access Point.",
+      "Switch."
+    ],
+    "answer": 1,
+    "explanation": "Router kết nối và định tuyến dữ liệu giữa các mạng LAN qua Internet. Hub, switch thông thường và access point chủ yếu phục vụ kết nối trong mạng cục bộ.",
+    "needReview": false
+  },
+  {
+    "id": "it-m17",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 17,
+    "prompt": "Chức năng “Advanced sharing” trong Windows dùng để:",
+    "options": [
+      "Cài đặt chi tiết quyền chia sẻ.",
+      "Ghi đè lên tường lửa.",
+      "Đặt mật khẩu cho thư mục.",
+      "Sao lưu dữ liệu chia sẻ."
+    ],
+    "answer": 0,
+    "explanation": "Advanced Sharing trong thuộc tính thư mục Windows cho phép bật chia sẻ, đặt tên chia sẻ và cấu hình quyền chia sẻ. Quyền truy cập thực tế còn phụ thuộc quyền hệ thống tệp và thiết lập bảo mật.",
+    "needReview": false
+  },
+  {
+    "id": "it-m18",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 18,
+    "prompt": "Trong mạng LAN, lợi ích trực tiếp nhất của switch khi chuyển tiếp frame unicast đến đúng cổng đích là gì?",
+    "options": [
+      "Giảm tắc nghẽn mạng bằng cách gửi dữ liệu đúng thiết bị.",
+      "Mở rộng phạm vi kết nối không dây.",
+      "Giảm độ trễ khi truy cập internet.",
+      "Tăng băng thông cho kết nối không dây."
+    ],
+    "answer": 0,
+    "explanation": "Switch chuyển frame đến cổng đích đã xác định thay vì phát tới mọi cổng như hub, giúp giảm lưu lượng không cần thiết và hạn chế tranh chấp đường truyền.",
+    "needReview": false,
+    "originalPrompt": "Trong mạng LAN, Switch giúp cải thiện vấn đề nào sau đây?",
+    "originalOptions": [
+      "Giảm tắc nghẽn mạng bằng cách gửi dữ liệu đúng thiết bị.",
+      "Mở rộng phạm vi kết nối không dây.",
+      "Giảm độ trễ khi truy cập internet.",
+      "Tăng băng thông cho kết nối không dây."
+    ],
+    "editNote": "Làm rõ lợi ích trực tiếp trong chuyển tiếp dữ liệu nội bộ để phân biệt với khả năng giảm độ trễ Internet gián tiếp, vốn còn tùy đường truyền và thiết bị khác."
+  },
+  {
+    "id": "it-m19",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 19,
+    "prompt": "Nguyên nhân kỹ thuật chính khiến hub truyền thống kém hiệu quả hơn switch khi nhiều thiết bị cùng trao đổi dữ liệu là gì?",
+    "options": [
+      "Do Hub gây ra tắc nghẽn khi gửi dữ liệu đến tất cả các cổng.",
+      "Vì Hub không thể hỗ trợ mạng không dây.",
+      "Do Hub không thể kết nối nhiều thiết bị cùng lúc.",
+      "Vì Hub không tương thích với internet tốc độ cao."
+    ],
+    "answer": 0,
+    "explanation": "Hub phát lại tín hiệu ra các cổng còn lại và dùng chung miền xung đột nên kém hiệu quả khi nhiều thiết bị truyền dữ liệu. Switch chuyển tiếp có chọn lọc và hỗ trợ truyền song công.",
+    "needReview": false,
+    "originalPrompt": "Lí do nào sau đây làm cho hub ít được sử dụng trong các mạng hiện đại?",
+    "originalOptions": [
+      "Do Hub gây ra tắc nghẽn khi gửi dữ liệu đến tất cả các cổng.",
+      "Vì Hub không thể hỗ trợ mạng không dây.",
+      "Do Hub không thể kết nối nhiều thiết bị cùng lúc.",
+      "Vì Hub không tương thích với internet tốc độ cao."
+    ],
+    "editNote": "Làm rõ so sánh hiệu quả chuyển tiếp dữ liệu khi nhiều thiết bị hoạt động; tránh coi việc không hỗ trợ Wi-Fi là lý do riêng của hub vì switch Ethernet thông thường cũng không phát Wi-Fi."
+  },
+  {
+    "id": "it-m20",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 20,
+    "prompt": "Bộ giao thức nào sau đây được sử dụng để truyền tải dữ liệu trên Internet?",
+    "options": [
+      "HDMI.",
+      "VGA.",
+      "USB.",
+      "TCP/IP."
+    ],
+    "answer": 3,
+    "explanation": "TCP/IP là bộ giao thức nền tảng của Internet. HDMI, VGA và USB là các chuẩn giao tiếp phần cứng, không phải bộ giao thức liên mạng được hỏi.",
+    "needReview": false,
+    "originalPrompt": "Giao thức nào sau đây được sử dụng để truyền tải dữ liệu trên Internet?",
+    "originalOptions": [
+      "HDMI.",
+      "VGA.",
+      "USB.",
+      "TCP/IP."
+    ],
+    "editNote": "TCP/IP là một bộ giao thức, không phải một giao thức đơn lẻ; sửa danh từ trong câu dẫn."
+  },
+  {
+    "id": "it-m21",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 21,
+    "prompt": "Định nghĩa giao thức mạng là phương án nào sau đây?",
+    "options": [
+      "Tập hợp các quy định về cách thức giao tiếp để truyền dữ liệu giữa các đối tượng tham gia mạng.",
+      "Tập hợp các quy định về cách thức bảo mật thông tin của các đối tượng tham gia mạng.",
+      "Tập hợp nhiều cách thức giao tiếp giúp truy cập được internet một cách nhanh nhất.",
+      "Tập hợp nhiều cách thức giúp nhận và mở mail trên ứng các ứng dụng."
+    ],
+    "answer": 0,
+    "explanation": "Giao thức mạng là tập hợp quy tắc về cách các bên giao tiếp, định dạng và trao đổi dữ liệu. Bảo mật hoặc thư điện tử chỉ là những phạm vi ứng dụng riêng.",
+    "needReview": false
+  },
+  {
+    "id": "it-m22",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 22,
+    "prompt": "Hai phiên bản địa chỉ IP đang được sử dụng phổ biến hiện nay là những phiên bản nào?",
+    "options": [
+      "2 loại: IPv4 và IPv6.",
+      "3 loại: IPv4, IPv5, và IPv6.",
+      "1 loại duy nhất IP.",
+      "4 loại: IPv1, IPv2, IPv3, và IPv4."
+    ],
+    "answer": 0,
+    "explanation": "Hai phiên bản IP được triển khai phổ biến là IPv4 với địa chỉ 32 bit và IPv6 với địa chỉ 128 bit. Đây là cách phân theo phiên bản, không phải mọi cách phân loại địa chỉ IP.",
+    "needReview": false,
+    "originalPrompt": "Địa chỉ IP được chia thành các loại nào sau đây?",
+    "originalOptions": [
+      "2 loại: IPv4 và IPv6.",
+      "3 loại: IPv4, IPv5, và IPv6.",
+      "1 loại duy nhất IP.",
+      "4 loại: IPv1, IPv2, IPv3, và IPv4."
+    ],
+    "editNote": "Làm rõ cách phân theo hai phiên bản IP phổ biến hiện nay; địa chỉ IP còn có nhiều cách phân loại khác như công cộng/riêng hoặc tĩnh/động."
+  },
+  {
+    "id": "it-m23",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 23,
+    "prompt": "Nội dung nào sau đây KHÔNG phải là một nhiệm vụ của giao thức TCP?",
+    "options": [
+      "Quản lí việc định địa chỉ và định tuyến của các gói dữ liệu trong mạng.",
+      "Đảm bảo truyền tải dữ liệu đáng tin cậy và theo đúng thứ tự từ nguồn đến đích.",
+      "Quản lí việc thiết lập, duy trì và đóng kết nối giữa các thiết bị trên mạng.",
+      "Xác định cách chia dữ liệu thành gói, kiểm tra tính toàn vẹn của dữ liệu hiện tại."
+    ],
+    "answer": 0,
+    "explanation": "Định địa chỉ IP và định tuyến là chức năng của IP, không phải TCP. TCP quản lí kết nối, phân đoạn, đánh số thứ tự, kiểm tra lỗi và truyền lại để cung cấp luồng byte tin cậy.",
+    "needReview": false,
+    "originalPrompt": "Nội dung nào sau đây KHÔNG phải là một nhiệm vụ của  là giao thức TCP?",
+    "originalOptions": [
+      "Quản lí việc định địa chỉ và định tuyến của các gói dữ liệu trong mạng.",
+      "Đảm bảo truyền tải dữ liệu đáng tin cậy và theo đúng thứ tự từ nguồn đến đích.",
+      "Quản lí việc thiết lập, duy trì và đóng kết nối giữa các thiết bị trên mạng.",
+      "Xác định cách chia dữ liệu thành gói, kiểm tra tính toàn vẹn của dữ liệu hiện tại."
+    ],
+    "editNote": "Bỏ từ “là” bị lặp trong câu dẫn, giữ nguyên các lựa chọn và đáp án."
+  },
+  {
+    "id": "it-m24",
+    "chapter": 2,
+    "type": "mcq",
+    "number": 24,
+    "prompt": "Tại sao giao thức TCP/IP được sử dụng phổ biến trong mạng máy tính?",
+    "options": [
+      "Vì nó chỉ hoạt động trên mạng LAN.",
+      "Vì nó giúp mã hóa dữ liệu để bảo mật tuyệt đối.",
+      "Vì nó chỉ hỗ trợ kết nối không dây.",
+      "Vì bộ giao thức hỗ trợ kết nối liên mạng; TCP cung cấp truyền dữ liệu tin cậy và đúng thứ tự."
+    ],
+    "answer": 3,
+    "explanation": "TCP/IP hỗ trợ kết nối giữa các mạng khác nhau. TCP cung cấp truyền dữ liệu tin cậy, có thứ tự trên nền IP; riêng IP không bảo đảm giao thành công. TCP/IP không tự mã hóa mọi dữ liệu hay bảo đảm an toàn tuyệt đối.",
+    "needReview": false,
+    "originalPrompt": "Tại sao giao thức TCP/IP được sử dụng phổ biến trong mạng máy tính?",
+    "originalOptions": [
+      "Vì nó chỉ hoạt động trên mạng LAN.",
+      "Vì nó giúp mã hóa dữ liệu để bảo mật tuyệt đối.",
+      "Vì nó chỉ hỗ trợ kết nối không dây.",
+      "Vì nó đảm bảo việc truyền dữ liệu chính xác và đáng tin cậy."
+    ],
+    "editNote": "Làm rõ vai trò của TCP trong bộ TCP/IP; riêng IP là dịch vụ best effort, không bảo đảm truyền tin cậy."
+  },
+  {
+    "id": "it-m25",
+    "chapter": 3,
+    "type": "mcq",
+    "number": 25,
+    "prompt": "Các quy tắc ứng xử trên mạng xã hội phù hợp với quy định của pháp luật được nêu trong văn bản nào?",
+    "options": [
+      "Quyết định số 874-QĐ-BTTTT ngày 17/6/2021.",
+      "Quyết định số 874-QĐ-BTTTT ngày 17/6/2019.",
+      "Quyết định số 847-QĐ-BTTTT ngày 17/6/2021.",
+      "Quyết định số 784-QĐ-BTTTT ngày 17/6/2020."
+    ],
+    "answer": 0,
+    "explanation": "Bộ Quy tắc ứng xử trên mạng xã hội được ban hành kèm Quyết định 874/QĐ-BTTTT ngày 17/6/2021 của Bộ Thông tin và Truyền thông. Số hiệu chuẩn dùng dấu gạch chéo: 874/QĐ-BTTTT.",
+    "needReview": false
+  },
+  {
+    "id": "it-t1",
+    "chapter": 2,
+    "type": "tf",
+    "number": 1,
+    "prompt": "Các phát biểu sau đây đúng hay sai? Xét hub và switch lớp 2 thông thường, không tích hợp chức năng định tuyến.",
+    "statements": [
+      {
+        "text": "Không thể chỉ sử dụng hub hay switch để kết nối hai máy tính thuộc hai mạng cục bộ khác nhau qua Internet.",
+        "answer": true,
+        "explanation": "Hub và switch lớp 2 làm việc trong mạng cục bộ. Chúng không thay thế chức năng định tuyến IP cần thiết để đi qua các mạng khác nhau trên Internet."
+      },
+      {
+        "text": "Hub và switch là các thiết bị trong mạng cục bộ và có thể tự định tuyến dữ liệu giữa mạng LAN với Internet.",
+        "answer": false,
+        "explanation": "Hub không định tuyến; switch lớp 2 chuyển tiếp khung dựa trên địa chỉ MAC. Dữ liệu từ thiết bị nối với switch vẫn có thể đi ra Internet nhờ router hoặc thiết bị có chức năng định tuyến."
+      },
+      {
+        "text": "Để kết nối hai máy tính thuộc hai mạng cục bộ khác nhau qua Internet, cần sử dụng thiết bị có chức năng định tuyến như router.",
+        "answer": true,
+        "explanation": "Các gói IP cần được router định tuyến giữa các mạng. Kết nối thực tế còn cần đường truyền, địa chỉ, cấu hình phù hợp và có thể đi qua nhiều router; một router đơn lẻ không tự bảo đảm toàn bộ kết nối."
+      },
+      {
+        "text": "Router là thiết bị mạng không có khả năng định tuyến dữ liệu giữa các mạng khác nhau, bao gồm cả mạng cục bộ và mạng Internet.",
+        "answer": false,
+        "explanation": "Chức năng chính của router chính là định tuyến và chuyển tiếp gói IP giữa các mạng khác nhau."
+      }
+    ],
+    "needReview": false,
+    "originalPrompt": "Các phát biểu sau đây đúng hay sai?",
+    "originalStatements": [
+      "Không thể sử dụng hub hay switch để kết nối hai máy tính thuộc hai mạng cục bộ khác nhau qua Internet.",
+      "Hub và switch là các thiết bị mạng trong một mạng cục bộ và có khả năng truyền dữ liệu qua mạng Internet.",
+      "Để kết nối hai máy tính thuộc hai mạng cục bộ khác nhau qua Internet, cần sử dụng một router.",
+      "Router là thiết bị mạng không có khả năng định tuyến dữ liệu giữa các mạng khác nhau, bao gồm cả mạng cục bộ và mạng Internet."
+    ],
+    "editNote": "Nêu rõ phạm vi hub/switch lớp 2 thông thường và thêm ‘chỉ’ ở ý a. Làm rõ ý b xét khả năng tự định tuyến, vì switch vẫn có thể tham gia đường đi của dữ liệu ra Internet qua router. Ý c nêu yêu cầu có chức năng định tuyến, không hàm ý chỉ một router là đủ."
+  },
+  {
+    "id": "it-t2",
+    "chapter": 2,
+    "type": "tf",
+    "number": 2,
+    "prompt": "Xác định nhận định “Khi tường lửa (Firewall) bị tắt” dưới đây là Đúng (Đ) hay Sai (S)?",
+    "statements": [
+      {
+        "text": "Máy tính dễ bị tấn công bởi virus, phần mềm gián điệp hoặc tin tặc hơn.",
+        "answer": true,
+        "explanation": "Tắt tường lửa làm mất một lớp kiểm soát lưu lượng mạng, có thể tăng nguy cơ truy cập trái phép và lây nhiễm qua mạng. Tường lửa không thay thế phần mềm chống mã độc hay các biện pháp bảo mật khác."
+      },
+      {
+        "text": "Mọi kết nối mạng đều bị chặn hoàn toàn, không thể truy cập Internet.",
+        "answer": false,
+        "explanation": "Tắt tường lửa không đồng nghĩa tắt kết nối mạng. Nếu đường truyền và cấu hình mạng bình thường, máy tính vẫn có thể truy cập Internet."
+      },
+      {
+        "text": "Các chương trình độc hại có thể gửi và nhận dữ liệu qua mạng mà không chịu sự kiểm soát của tường lửa đã bị tắt.",
+        "answer": true,
+        "explanation": "Tường lửa đã tắt không còn áp dụng các quy tắc lọc lưu lượng của nó. Những lớp bảo vệ khác, như tường lửa ở router hoặc phần mềm bảo mật, vẫn có thể kiểm soát lưu lượng."
+      },
+      {
+        "text": "Người dùng vẫn có thể truy cập Internet nhưng mất đi một lớp bảo vệ của tường lửa.",
+        "answer": true,
+        "explanation": "Truy cập Internet vẫn có thể hoạt động. Tắt tường lửa làm giảm lớp bảo vệ tương ứng; mức rủi ro thực tế còn tùy cấu hình mạng và các biện pháp bảo mật khác."
+      }
+    ],
+    "needReview": false,
+    "originalStatements": [
+      "Máy tính dễ bị tấn công bởi virus, phần mềm gián điệp hoặc tin tặc hơn.",
+      "Mọi kết nối mạng đều bị chặn hoàn toàn, không thể truy cập Internet.",
+      "Các chương trình độc hại có thể gửi và nhận dữ liệu qua mạng mà không bị kiểm soát.",
+      "Người dùng vẫn có thể truy cập Internet nhưng mức độ an toàn giảm đáng kể."
+    ],
+    "editNote": "Ý c giới hạn việc mất kiểm soát ở chính tường lửa bị tắt, vì các lớp bảo vệ khác có thể vẫn hoạt động. Ý d thay khẳng định mức độ giảm an toàn ‘đáng kể’ bằng việc mất một lớp bảo vệ có thể xác định được."
+  },
+  {
+    "id": "it-t3",
+    "chapter": 1,
+    "type": "tf",
+    "number": 3,
+    "prompt": "AI có khả năng tự học và tối ưu hóa quá trình suy luận, nhưng liệu AI có thể vượt qua sự kiểm soát của con người không? Một số cảnh báo đã được đưa ra về vấn đề này. Các nhận định sau đây là đúng hay sai?",
+    "statements": [
+      {
+        "text": "Một số hệ thống AI được thiết kế có thể tự cập nhật mô hình hoặc điều chỉnh hành vi từ dữ liệu trong phạm vi quyền đã cấp, không cần con người can thiệp ở từng lần cập nhật.",
+        "answer": true,
+        "explanation": "Các hệ thống học trực tuyến hoặc thích nghi có thể cập nhật theo cơ chế được thiết kế sẵn. Điều này không có nghĩa mọi AI đều tự nâng cấp vô hạn hoặc đương nhiên vượt qua kiểm soát của con người."
+      },
+      {
+        "text": "AI không có khả năng học hỏi từ những kinh nghiệm trước đây như con người.",
+        "answer": false,
+        "explanation": "Học máy có thể cải thiện kết quả dựa trên dữ liệu, phản hồi hoặc kinh nghiệm tương tác trước đó. Cơ chế này không nhất thiết giống cách con người học và không phải mọi hệ thống AI đều tự học khi đang sử dụng."
+      },
+      {
+        "text": "Kiểm soát AI cần phải được ưu tiên hàng đầu để đảm bảo an toàn cho cộng đồng.",
+        "answer": true,
+        "explanation": "Cần đánh giá rủi ro, giới hạn quyền, kiểm thử và giám sát phù hợp để giảm tác hại, nhất là khi AI được dùng trong các lĩnh vực có ảnh hưởng lớn đến con người."
+      },
+      {
+        "text": "Sự phát triển AI nên được khuyến khích mà không cần bất kỳ sự hạn chế nào từ xã hội.",
+        "answer": false,
+        "explanation": "Phát triển AI cần đi cùng quy định pháp luật, chuẩn mực đạo đức và biện pháp quản trị tương xứng với rủi ro, thay vì hoàn toàn không có giới hạn."
+      }
+    ],
+    "needReview": false,
+    "originalStatements": [
+      "Các hệ thống AI có thể tự nâng cấp và phát triển những tính năng mới mà không cần sự can thiệp của con người.",
+      "AI không có khả năng học hỏi từ những kinh nghiệm trước đây như con người.",
+      "Kiểm soát AI cần phải được ưu tiên hàng đầu để đảm bảo an toàn cho cộng đồng.",
+      "Sự phát triển AI nên được khuyến khích mà không cần bất kỳ sự hạn chế nào từ xã hội."
+    ],
+    "editNote": "Làm rõ ý a là khả năng thích nghi của một số hệ thống được thiết kế cho việc đó, trong phạm vi quyền cho phép; tránh suy diễn mọi AI đều tự tạo tính năng mới hoặc tự vượt quyền kiểm soát."
+  },
+  {
+    "id": "it-t4",
+    "chapter": 1,
+    "type": "tf",
+    "number": 4,
+    "prompt": "Trí tuệ nhân tạo (AI) đang cách mạng hoá ngành giáo dục bằng cách cá nhân hoá quá trình học tập và phát triển các công cụ học tập thông minh, nâng cao hiệu quả giảng dạy và học tập. Sau đây là các phát biểu về những ảnh hưởng của AI đối với ngành giáo dục.",
+    "statements": [
+      {
+        "text": "AI có thể tự động đánh giá kết quả học tập của học sinh.",
+        "answer": true,
+        "explanation": "AI có thể hỗ trợ chấm một số dạng bài, phân tích quá trình học và đưa ra phản hồi. Kết quả đánh giá vẫn cần được kiểm tra, nhất là với nhiệm vụ mở hoặc quyết định quan trọng."
+      },
+      {
+        "text": "AI thay thế hoàn toàn vai trò của giáo viên trong lớp học.",
+        "answer": false,
+        "explanation": "Giáo viên còn đảm nhiệm hướng dẫn, giáo dục, tương tác xã hội và đánh giá có bối cảnh. AI hỗ trợ chứ không bảo đảm thay thế hoàn toàn các vai trò đó."
+      },
+      {
+        "text": "AI có thể cá nhân hoá việc học tập cho mỗi học sinh.",
+        "answer": true,
+        "explanation": "AI có thể phân tích năng lực và tiến độ để đề xuất nội dung, bài tập hoặc phản hồi phù hợp với từng học sinh."
+      },
+      {
+        "text": "AI tự động giải quyết mọi vấn đề trong giáo dục.",
+        "answer": false,
+        "explanation": "AI có giới hạn về dữ liệu, độ chính xác, tính công bằng và khả năng hiểu hoàn cảnh. Nhiều vấn đề giáo dục cần quyết định và sự tham gia của con người."
+      }
+    ],
+    "needReview": false,
+    "originalPrompt": "Trí tuệ nhân tạo (Al) đang cách mạng hoá ngành giáo dục bằng cách cá nhân hoá quá trình học tập và phát triển các công cụ học tập thông minh, nâng cao hệu quả giảng dạy và học tập. Sau đây là các phát biểu về những ảnh hưởng của Al đối với ngành giáo dục.",
+    "originalStatements": [
+      "Al Có thể tự động đánh giá kết quả học tập của học sinh.",
+      "Al thay thế hoàn toàn vai trò của giáo viên trong lớp học.",
+      "Al có thế cá nhân hoá việc học tâp cho mỗi học sinh.",
+      "Al tự động giải quyết mọi vấn đế trong giáo dục."
+    ],
+    "editNote": "Sửa lỗi đánh máy ‘Al’ thành ‘AI’ và các lỗi chính tả; giữ nguyên ý nghĩa bốn nhận định."
+  },
+  {
+    "id": "it-t5",
+    "chapter": 3,
+    "type": "tf",
+    "number": 5,
+    "prompt": "Ứng xử nhân văn khi giao tiếp trong không gian mạng sau đây đúng hay sai?",
+    "statements": [
+      {
+        "text": "Thể hiện sự tôn trọng người khác là một cách ứng xử nhân văn trong không gian mạng.",
+        "answer": true,
+        "explanation": "Tôn trọng danh dự, quyền riêng tư và sự khác biệt của người khác là nền tảng của giao tiếp nhân văn."
+      },
+      {
+        "text": "Việc sử dụng ngôn từ khiêu khích hoặc phân biệt chủng tộc là chấp nhận được trong một số tình huống.",
+        "answer": false,
+        "explanation": "Không dùng ngôn từ để khiêu khích, kỳ thị hoặc hạ thấp người khác. Tranh luận nên tập trung vào sự việc bằng lập luận lịch sự, tôn trọng."
+      },
+      {
+        "text": "Kiểm tra tính chính xác của thông tin trước khi chia sẻ là không cần thiết trong không gian mạng.",
+        "answer": false,
+        "explanation": "Cần kiểm chứng nguồn, thời điểm và bối cảnh trước khi chia sẻ để tránh tiếp tay lan truyền tin giả hoặc gây hại cho người khác."
+      },
+      {
+        "text": "Hỗ trợ người khác phát triển là một biểu hiện của ứng xử nhân văn.",
+        "answer": true,
+        "explanation": "Chia sẻ kiến thức hữu ích, hỗ trợ khi cần và góp ý mang tính xây dựng giúp tạo môi trường mạng tích cực."
+      }
+    ],
+    "needReview": false
+  },
+  {
+    "id": "it-t6",
+    "chapter": 1,
+    "type": "tf",
+    "number": 6,
+    "prompt": "Phát biểu sau đây đúng hay sai về việc cảnh báo về ứng dụng AI?",
+    "statements": [
+      {
+        "text": "AI có khả năng tự động hoá nhiều công việc, dẫn đến áp lực thất nghiệp.",
+        "answer": true,
+        "explanation": "Tự động hoá có thể thay thế một số nhiệm vụ và gây áp lực chuyển đổi việc làm. AI đồng thời có thể tạo nghề mới, nên tác động không chỉ theo một chiều."
+      },
+      {
+        "text": "Không vi phạm quyền riêng tư khi dữ liệu cá nhân bị lạm dụng.",
+        "answer": false,
+        "explanation": "Lạm dụng dữ liệu cá nhân có thể xâm phạm quyền riêng tư và các quy định bảo vệ dữ liệu; cần sử dụng đúng mục đích và căn cứ phù hợp."
+      },
+      {
+        "text": "Hệ thống AI có thể bị đe dọa an ninh khi bị tấn công xâm nhập hoặc thay đổi dữ liệu.",
+        "answer": true,
+        "explanation": "Xâm nhập hệ thống hoặc làm sai lệch dữ liệu có thể khiến AI đưa ra kết quả sai, rò rỉ thông tin hoặc thực hiện hành động gây hại."
+      },
+      {
+        "text": "AI có thể bị lạm dụng để tác động đến nhận thức, hành vi của con người theo cách không mong muốn.",
+        "answer": true,
+        "explanation": "Nội dung giả mạo, thông tin sai lệch và thông điệp nhắm mục tiêu có thể ảnh hưởng đến nhận thức, lựa chọn và hành vi. Điều đó không đồng nghĩa AI có khả năng kiểm soát trực tiếp ý thức của mọi người."
+      }
+    ],
+    "needReview": false,
+    "originalStatements": [
+      "AI có khả năng tự động hoá nhiều công việc, dẫn đến áp lực thất nghiệp",
+      "Không vi phạm quyền riêng tư khi dữ liệu cá nhân bị lạm dụng",
+      "Đe dọa an ninh hệ thống khi bị tấn công xâm nhập hoặc thay đổi dữ liệu",
+      "Có thể kiểm soát hoặc thay đổi ý thức, hành vi con người một cách không mong muốn."
+    ],
+    "editNote": "Bổ sung chủ ngữ cho ý c; làm rõ ý d là nguy cơ tác động đến nhận thức và hành vi khi AI bị lạm dụng, tránh khẳng định AI có thể trực tiếp kiểm soát ý thức con người."
+  },
+  {
+    "id": "it-t7",
+    "chapter": 2,
+    "type": "tf",
+    "number": 7,
+    "prompt": "Những quy định sau đây cần có với vai trò là giao thức mạng trên Internet đúng hay sai?",
+    "statements": [
+      {
+        "text": "Các máy tính cần có địa chỉ và quy định cách tìm đường để dữ liệu được truyền chính xác tới máy nhận trên phạm vi toàn cầu.",
+        "answer": true,
+        "explanation": "Liên lạc qua các mạng IP cần cơ chế địa chỉ và định tuyến. IP hỗ trợ chuyển gói theo địa chỉ; bản thân IP không bảo đảm mọi gói đều đến nơi, nên còn cần các cơ chế bổ sung khi yêu cầu truyền tin đáng tin cậy."
+      },
+      {
+        "text": "Quy định các cá nhân, tổ chức phải đăng ký sử dụng các dịch vụ truyền dữ liệu trên Internet.",
+        "answer": false,
+        "explanation": "Đăng ký dịch vụ là vấn đề cung cấp và quản lý dịch vụ, không phải quy tắc kỹ thuật cốt lõi của giao thức trao đổi dữ liệu."
+      },
+      {
+        "text": "Quy định người dùng phải trả phí cho các dịch vụ trao đổi dữ liệu theo lượng sử dụng.",
+        "answer": false,
+        "explanation": "Thu phí và cách tính phí thuộc chính sách kinh doanh hoặc hợp đồng của nhà cung cấp, không phải nhiệm vụ của giao thức mạng."
+      },
+      {
+        "text": "Các giao thức trong bộ TCP/IP quy định cách tổ chức dữ liệu thành các đơn vị truyền có thông tin điều khiển như địa chỉ và cơ chế kiểm tra lỗi phù hợp với từng giao thức.",
+        "answer": true,
+        "explanation": "Mỗi giao thức quy định khuôn dạng và cơ chế xử lý riêng: IP có địa chỉ nguồn/đích, TCP có số thứ tự và checksum. Không nên hiểu rằng mọi giao thức hay mọi phiên bản IP đều có cùng loại mã kiểm tra."
+      }
+    ],
+    "needReview": false,
+    "originalStatements": [
+      "Các máy tính cần có địa chỉ và quy định cách tìm đường để dữ liệu được truyền chính xác tới máy nhận trên phạm vi toàn cầu.",
+      "Quy định các cá nhân, tổ chức phải đăng ký sử dụng các dịch vụ truyền dữ liệu trên Internet.",
+      "Quy định người dùng phải trả phí cho các dịch vụ trao đổi dữ liệu theo lượng sử dụng.",
+      "Quy định chia dữ liệu thành các gói tương tự như giao thức Ethernet, ngoài dữ liệu trao đổi có kèm các dữ liệu địa chỉ nơi gửi, nơi nhận, mã kiểm tra để kiểm soát chất lượng truyền dữ liệu."
+    ],
+    "editNote": "Làm rõ ý d xét vai trò của các giao thức trong bộ TCP/IP, tránh đồng nhất gói IP với khung Ethernet hoặc khẳng định mọi giao thức đều có cùng cơ chế kiểm tra lỗi."
+  },
+  {
+    "id": "it-t8",
+    "chapter": 3,
+    "type": "tf",
+    "number": 8,
+    "prompt": "Xác định các phát biểu dưới đây là Đúng (Đ) hay Sai (S) khi nói về “trách nhiệm và hành vi ứng xử của người dùng trong không gian mạng”?",
+    "statements": [
+      {
+        "text": "Người dùng Internet phải chịu trách nhiệm về nội dung mình đăng tải hoặc chia sẻ.",
+        "answer": true,
+        "explanation": "Người dùng cần cân nhắc, kiểm chứng thông tin và chịu trách nhiệm phù hợp với hành vi và quy định áp dụng; không thể coi môi trường mạng là nơi được miễn trách nhiệm."
+      },
+      {
+        "text": "Chia sẻ thông tin sai lệch, tin giả có thể là hành vi vi phạm pháp luật.",
+        "answer": true,
+        "explanation": "Việc phát tán thông tin sai lệch có thể bị xử lý khi thỏa các điều kiện của quy định pháp luật. Cần xem nội dung, hành vi và bối cảnh; không phải mọi nhầm lẫn đều tự động cấu thành cùng một vi phạm."
+      },
+      {
+        "text": "Có thể dùng lời lẽ xúc phạm, công kích cá nhân người khác chỉ vì chúng đúng với cảm nhận cá nhân của mình.",
+        "answer": false,
+        "explanation": "Cảm nhận cá nhân không biện minh cho việc xúc phạm hay bắt nạt. Có thể góp ý hoặc phản biện hành vi, quan điểm một cách có căn cứ, lịch sự và tôn trọng quyền của người khác."
+      },
+      {
+        "text": "Ứng xử có văn hóa trên mạng góp phần xây dựng môi trường mạng lành mạnh.",
+        "answer": true,
+        "explanation": "Giao tiếp tôn trọng, kiểm chứng thông tin và hỗ trợ cộng đồng giúp hạn chế xung đột, tin giả và hành vi gây hại."
+      }
+    ],
+    "needReview": false,
+    "originalStatements": [
+      "Người dùng Internet phải chịu trách nhiệm về nội dung mình đăng tải hoặc chia sẻ.",
+      "Chia sẻ thông tin sai lệch, tin giả là hành vi vi phạm pháp luật.",
+      "Có thể bình luận tiêu cực về người khác nếu đúng với cảm nhận cá nhân.",
+      "Ứng xử có văn hóa trên mạng góp phần xây dựng môi trường mạng lành mạnh."
+    ],
+    "editNote": "Ý b dùng ‘có thể’ để tránh khẳng định mọi trường hợp chia sẻ sai đều tự động vi phạm pháp luật. Ý c làm rõ hành vi xúc phạm, công kích, phân biệt với phê bình hoặc phản biện có căn cứ, lịch sự."
+  },
+  {
+    "id": "it-t9",
+    "chapter": 1,
+    "type": "tf",
+    "number": 9,
+    "prompt": "Việc sử dụng AI trong các lĩnh vực nhạy cảm như y tế và an ninh quốc gia đã làm dấy lên lo ngại về rủi ro tiềm ẩn. Các nhận định sau đây là đúng hay sai?",
+    "statements": [
+      {
+        "text": "AI có thể giúp phát hiện bệnh sớm nhưng cũng có thể gây ra hậu quả nếu không được kiểm soát chặt chẽ.",
+        "answer": true,
+        "explanation": "AI có thể hỗ trợ phát hiện dấu hiệu bệnh từ dữ liệu, nhưng sai sót, dữ liệu lệch hoặc sử dụng ngoài phạm vi kiểm định có thể gây hại. Cần kiểm định và giám sát chuyên môn phù hợp."
+      },
+      {
+        "text": "AI không bao giờ có khả năng ra quyết định một cách độc lập mà không cần sự cho phép của con người.",
+        "answer": false,
+        "explanation": "Một số hệ thống được giao quyền ra quyết định tự động trong phạm vi đã thiết kế mà không hỏi con người từng lần. Vì vậy cần giới hạn quyền và giám sát phù hợp; không thể khẳng định tuyệt đối ‘không bao giờ’."
+      },
+      {
+        "text": "Phát triển AI yêu cầu đặt ra các chuẩn mực đạo đức nghiêm ngặt hơn.",
+        "answer": true,
+        "explanation": "Các ứng dụng có tác động lớn cần chuẩn mực phù hợp về an toàn, công bằng, quyền riêng tư, minh bạch và trách nhiệm để bảo vệ con người."
+      },
+      {
+        "text": "AI chỉ nên được sử dụng trong các lĩnh vực không liên quan đến tính mạng và quyền lợi của con người.",
+        "answer": false,
+        "explanation": "AI vẫn có thể được dùng trong y tế và các lĩnh vực quan trọng nếu được kiểm định, tuân thủ quy định và có giám sát tương xứng. Rủi ro cần được quản trị thay vì cấm tuyệt đối mọi ứng dụng."
+      }
+    ],
+    "needReview": false
+  },
+  {
+    "id": "it-t10",
+    "chapter": 3,
+    "type": "tf",
+    "number": 10,
+    "prompt": "Phát biểu sau đây đúng hay sai về ưu điểm và nhược điểm của giao tiếp trong không gian mạng?",
+    "statements": [
+      {
+        "text": "Giao tiếp trong không gian mạng chủ yếu bằng văn bản thường thiếu các tín hiệu phi ngôn ngữ như giọng điệu, nét mặt và cử chỉ.",
+        "answer": true,
+        "explanation": "Tin nhắn văn bản không truyền đầy đủ giọng nói, nét mặt và cử chỉ như khi gặp trực tiếp. Cuộc gọi có âm thanh hoặc hình ảnh có thể truyền một phần các tín hiệu này."
+      },
+      {
+        "text": "Không gian mạng giúp tiết kiệm thời gian và chi phí trong giao tiếp.",
+        "answer": true,
+        "explanation": "Giao tiếp trực tuyến có thể giảm thời gian đi lại và chi phí tổ chức gặp mặt, đồng thời giúp liên lạc từ xa nhanh chóng."
+      },
+      {
+        "text": "Mối quan hệ được xây dựng trong không gian mạng thường chặt chẽ hơn so với giao tiếp trực tiếp.",
+        "answer": false,
+        "explanation": "Độ gắn bó phụ thuộc chất lượng tương tác, mức độ tin cậy và hoàn cảnh. Không có cơ sở để khẳng định quan hệ trực tuyến thường chặt chẽ hơn quan hệ hình thành qua gặp gỡ trực tiếp."
+      },
+      {
+        "text": "Công cụ giao tiếp trong không gian mạng thường ít đa dạng.",
+        "answer": false,
+        "explanation": "Công cụ giao tiếp rất đa dạng: thư điện tử, nhắn tin, diễn đàn, mạng xã hội, gọi thoại và hội nghị truyền hình."
+      }
+    ],
+    "needReview": false,
+    "originalPrompt": "Phát biểu sau đây đúng hay sai về Ưu điểm và nhược điểm của giao tiếp trong không gian mạng?",
+    "originalStatements": [
+      "Giao tiếp trong không gian mạng thiếu tín hiệu phi ngôn ngữ.",
+      "Không gian mạng giúp tiết kiệm thời gian và chi phí trong giao tiếp.",
+      "Mối quan hệ được xây dựng trong không gian mạng thường chặt chẽ hơn so với giao tiếp trực tiếp.",
+      "Công cụ giao tiếp trong không gian mạng thường ít đa dạng."
+    ],
+    "editNote": "Giới hạn ý a ở giao tiếp chủ yếu bằng văn bản, vì gọi thoại và gọi video vẫn truyền được một phần tín hiệu phi ngôn ngữ."
+  },
+  {
+    "id": "it-e1",
+    "chapter": 3,
+    "type": "essay",
+    "number": 1,
+    "prompt": "Trình bày các quy tắc ứng xử cơ bản trên không gian mạng giúp duy trì môi trường giao tiếp văn minh, an toàn. Phân biệt sự khác nhau cơ bản trong thái độ ứng xử giữa hành vi giao tiếp có văn hóa và hành vi ứng xử thiếu văn hóa trên mạng xã hội.",
+    "modelAnswer": "1. Các quy tắc ứng xử cơ bản:\n• Tôn trọng người khác: dùng ngôn từ lịch sự; không xúc phạm, miệt thị, phân biệt đối xử hoặc bắt nạt trên mạng.\n• Tuân thủ pháp luật: không phát tán thông tin giả, không xâm phạm quyền riêng tư hay bản quyền; không đăng tải nội dung trái pháp luật.\n• Bảo đảm an toàn: bảo vệ mật khẩu và dữ liệu cá nhân; không công khai thông tin, hình ảnh riêng tư của người khác khi chưa được phép.\n• Có trách nhiệm: kiểm chứng thông tin và cân nhắc hậu quả trước khi đăng, bình luận hoặc chia sẻ; sẵn sàng đính chính khi đăng sai.\n\n2. Phân biệt thái độ ứng xử:\n• Giao tiếp có văn hóa: lịch sự, tôn trọng khác biệt, biết lắng nghe; phản biện dựa trên lý lẽ và thông tin có căn cứ, không công kích con người.\n• Giao tiếp thiếu văn hóa: dùng lời tục tĩu, chế giễu, xúc phạm, công kích cá nhân; tung tin đồn hoặc kích động người khác bắt nạt, gây tổn hại danh dự và tinh thần.\nVí dụ: góp ý “Mình chưa đồng ý vì số liệu này chưa có nguồn” là phản biện văn minh; chửi bới người viết là ứng xử thiếu văn hóa.",
+    "criteria": [
+      {
+        "text": "Nêu được các quy tắc tôn trọng, tuân thủ pháp luật, an toàn/bảo mật và trách nhiệm khi đăng/chia sẻ.",
+        "weight": 0.5
+      },
+      {
+        "text": "Phân biệt rõ thái độ lịch sự, lắng nghe, phản biện có lý lẽ với xúc phạm, công kích và bắt nạt.",
+        "weight": 0.5
+      }
+    ],
+    "needReview": false
+  },
+  {
+    "id": "it-e2",
+    "chapter": 3,
+    "type": "essay",
+    "number": 2,
+    "prompt": "Hiện nay, tình trạng thông tin giả (fake news), tin đồn thất thiệt và nội dung kích động bạo lực xuất hiện khá phổ biến trên các nền tảng mạng xã hội. Em hãy phân tích những tác hại tiêu cực của các hành vi trên đối với cá nhân và cộng đồng. Từ đó, đưa ra các giải pháp/hành động cụ thể mà một học sinh THPT cần thực hiện khi tiếp nhận một thông tin chưa được kiểm chứng trên mạng.",
+    "modelAnswer": "1. Tác hại:\n• Với cá nhân: tin giả có thể gây lo âu, hoang mang; làm tổn hại danh dự, uy tín và các mối quan hệ; dẫn đến lừa đảo, mất tiền hoặc quyết định sai. Nội dung kích động có thể thúc đẩy hành vi bạo lực và gây tổn thương tinh thần.\n• Với cộng đồng: làm sai lệch nhận thức, gây chia rẽ, kích động thù ghét, ảnh hưởng an ninh trật tự; làm giảm niềm tin vào các nguồn thông tin đáng tin cậy và khiến môi trường mạng độc hại.\n\n2. Hành động của học sinh khi gặp thông tin chưa kiểm chứng:\n• Dừng lại, không vội tin hay bấm thích, bình luận cổ vũ và chia sẻ; không phát tán lại chỉ để hỏi người khác xem có thật hay không.\n• Kiểm tra tác giả, cơ quan đăng, địa chỉ trang, thời điểm, ngữ cảnh và bằng chứng. Đọc toàn bộ nội dung, đối chiếu với nhiều nguồn độc lập đáng tin cậy, thông báo của cơ quan liên quan hoặc hỏi thầy cô/người lớn. Không coi một tên miền hay ảnh chụp màn hình là bằng chứng duy nhất về độ chính xác.\n• Nếu chưa xác minh được, không chia sẻ và nêu rõ chưa có căn cứ khi cần trao đổi riêng.\n• Dùng tính năng báo cáo đối với nội dung giả mạo/kích động; thông báo cho quản trị viên hoặc người lớn. Nếu đã chia sẻ sai, gỡ hoặc đính chính rõ ràng, tránh tiếp tục lan truyền nội dung gây hại.",
+    "criteria": [
+      {
+        "text": "Phân tích tác hại đối với cá nhân: tinh thần, danh dự, tài sản hoặc quyết định/hành vi.",
+        "weight": 0.25
+      },
+      {
+        "text": "Phân tích tác hại đối với cộng đồng: chia rẽ, trật tự xã hội, niềm tin và môi trường mạng.",
+        "weight": 0.25
+      },
+      {
+        "text": "Đề xuất dừng chia sẻ và kiểm chứng tác giả, nguồn, thời điểm, bằng chứng bằng nhiều nguồn đáng tin cậy.",
+        "weight": 0.25
+      },
+      {
+        "text": "Nêu cách báo cáo, nhờ hỗ trợ và gỡ/đính chính nếu đã chia sẻ sai; không khuếch tán nội dung gây hại.",
+        "weight": 0.25
+      }
+    ],
+    "needReview": false
+  },
+  {
+    "id": "it-e3",
+    "chapter": 3,
+    "type": "essay",
+    "number": 3,
+    "prompt": "Một người bạn trong lớp của em vô tình bị kẻ xấu đăng tải những hình ảnh cá nhân nhạy cảm/chế giễu lên mạng xã hội, dẫn đến việc bạn bị nhiều tài khoản mạng lăng mạ, bắt nạt trực tuyến (cyberbullying). Em hãy đề xuất các bước xử lý văn minh, đúng pháp luật và phù hợp với quy tắc ứng xử trên không gian mạng để giúp bạn giải quyết tình huống trên.",
+    "modelAnswer": "Bước 1. Bình tĩnh, hỗ trợ bạn và giữ bằng chứng phù hợp: lắng nghe, khẳng định bạn không đáng bị bắt nạt; ghi lại đường dẫn, tên tài khoản, thời gian và các tin nhắn/bình luận cần thiết. Giữ bằng chứng riêng để nhờ người có trách nhiệm hỗ trợ; không đăng lại hoặc chuyển tiếp hình ảnh nhạy cảm, ảnh chế giễu.\n\nBước 2. Không trả đũa: không chửi bới, đe dọa hay kêu gọi người khác công kích ngược. Không tiếp tục tranh cãi với tài khoản bắt nạt; tránh bình luận làm bài viết lan rộng.\n\nBước 3. Hạn chế tổn hại và báo cáo: báo cáo bài viết, tài khoản vi phạm với nền tảng/quản trị viên, đề nghị gỡ nội dung xâm phạm quyền riêng tư; chặn hoặc hạn chế liên hệ sau khi giữ thông tin cần thiết. Cùng bạn kiểm tra quyền riêng tư, đổi mật khẩu nếu có dấu hiệu lộ tài khoản, bật xác thực hai yếu tố.\n\nBước 4. Tìm sự giúp đỡ: trao đổi ngay với cha mẹ, giáo viên chủ nhiệm hoặc nhà trường để được bảo vệ và hỗ trợ tâm lý. Nếu có đe dọa, tống tiền hoặc phát tán nội dung nghiêm trọng, nhờ người lớn liên hệ cơ quan có thẩm quyền; nếu có nguy hiểm tức thời, ưu tiên đến nơi an toàn và tìm trợ giúp ngay. Chỉ cung cấp bằng chứng qua kênh phù hợp, bảo vệ danh tính và sự riêng tư của bạn.",
+    "criteria": [
+      {
+        "text": "Giữ bình tĩnh, hỗ trợ nạn nhân, ghi lại bằng chứng riêng tư và không lan truyền hình ảnh gây hại.",
+        "weight": 0.25
+      },
+      {
+        "text": "Không trả đũa, đe dọa hoặc kêu gọi tấn công ngược.",
+        "weight": 0.25
+      },
+      {
+        "text": "Báo cáo/gỡ nội dung, chặn liên hệ và bảo vệ tài khoản, quyền riêng tư.",
+        "weight": 0.25
+      },
+      {
+        "text": "Nhờ cha mẹ, thầy cô/nhà trường và cơ quan có thẩm quyền khi cần; quan tâm an toàn và tinh thần của bạn.",
+        "weight": 0.25
+      }
+    ],
+    "needReview": false
+  },
+  {
+    "id": "it-e4",
+    "chapter": 3,
+    "type": "essay",
+    "number": 4,
+    "prompt": "Trong các buổi thảo luận nhóm trực tuyến (qua Zoom, Google Meet hay nhóm Zalo/Facebook của lớp), một số học sinh thường có thói quen bật mic ngắt lời người khác, gửi các hình ảnh meme chế giễu hoặc dùng ngôn ngữ suồng sã, thiếu tôn trọng. Em hãy xây dựng một 'Bộ quy tắc ứng xử văn minh trong học tập trực tuyến' gồm 4 quy định ngắn gọn, thiết thực dành cho học sinh THPT.",
+    "modelAnswer": "BỘ QUY TẮC ỨNG XỬ VĂN MINH TRONG HỌC TẬP TRỰC TUYẾN\n\n1. Vào lớp đúng giờ, dùng tên nhận diện phù hợp, trang phục lịch sự; tắt micro khi không phát biểu để tránh làm ồn. Bật camera theo yêu cầu phù hợp của lớp và điều kiện riêng tư.\n2. Tôn trọng lượt nói: dùng tính năng giơ tay hoặc xin phép trước khi phát biểu; không ngắt lời; lắng nghe và góp ý dựa trên nội dung, không công kích cá nhân.\n3. Dùng ngôn ngữ lịch sự trong lời nói và khung chat; không gửi spam, ảnh chế giễu, lời xúc phạm hoặc liên kết không liên quan đến bài học.\n4. Bảo vệ lớp học và quyền riêng tư: không đưa đường dẫn/mật khẩu phòng học cho người ngoài; không tự ý ghi âm, quay/chụp hoặc phát tán hình ảnh, thông tin của thầy cô và bạn học khi chưa được phép.",
+    "criteria": [
+      {
+        "text": "Quy định đúng giờ, tác phong và sử dụng micro/camera phù hợp.",
+        "weight": 0.25
+      },
+      {
+        "text": "Quy định giơ tay, tôn trọng lượt nói và lắng nghe.",
+        "weight": 0.25
+      },
+      {
+        "text": "Quy định ngôn từ lịch sự, không spam hay gửi nội dung chế giễu.",
+        "weight": 0.25
+      },
+      {
+        "text": "Quy định bảo mật lớp học và bảo vệ quyền riêng tư, không tự ý ghi/phát tán hình ảnh.",
+        "weight": 0.25
+      }
+    ],
+    "needReview": false
+  },
+  {
+    "id": "it-e5",
+    "chapter": 4,
+    "type": "essay",
+    "number": 5,
+    "prompt": "Trình bày khái niệm ngôn ngữ đánh dấu siêu văn bản HTML. Cho biết vai trò của khai báo <!DOCTYPE html> và các thẻ <html>, <head>, <body> trong cấu trúc cơ bản của một trang web HTML5.",
+    "modelAnswer": "HTML là viết tắt của HyperText Markup Language (ngôn ngữ đánh dấu siêu văn bản). HTML dùng các thẻ để mô tả và tổ chức cấu trúc, ý nghĩa của nội dung trang web như tiêu đề, đoạn văn, liên kết, hình ảnh và danh sách. HTML là ngôn ngữ đánh dấu, không phải ngôn ngữ lập trình.\n\n• <!DOCTYPE html>: là khai báo kiểu tài liệu đặt ở đầu tài liệu HTML5, giúp trình duyệt xử lý trang ở chế độ chuẩn. Đây không phải thẻ HTML và không có thẻ đóng.\n• <html>...<\/html>: là phần tử gốc bao bọc các phần tử của tài liệu, thường gồm <head> và <body>. Có thể thêm lang=\"vi\" để khai báo ngôn ngữ tiếng Việt.\n• <head>...<\/head>: chứa siêu dữ liệu và thông tin thiết lập của tài liệu, như bảng mã <meta charset=\"UTF-8\">, tiêu đề <title>, liên kết CSS. Nội dung phần này không hiển thị như nội dung chính của trang; riêng <title> thể hiện trên thẻ/cửa sổ trình duyệt.\n• <body>...<\/body>: chứa nội dung chính hiển thị trong trang, chẳng hạn tiêu đề, đoạn văn, hình ảnh, liên kết, bảng và danh sách.",
+    "criteria": [
+      {
+        "text": "Nêu đúng tên đầy đủ HTML và chức năng đánh dấu, tổ chức cấu trúc nội dung trang web.",
+        "weight": 0.4
+      },
+      {
+        "text": "Giải thích <!DOCTYPE html> là khai báo HTML5/chế độ chuẩn, không phải cặp thẻ.",
+        "weight": 0.15
+      },
+      {
+        "text": "Giải thích <html> là phần tử gốc của tài liệu.",
+        "weight": 0.15
+      },
+      {
+        "text": "Giải thích <head> chứa siêu dữ liệu, tiêu đề, bảng mã và các thiết lập.",
+        "weight": 0.15
+      },
+      {
+        "text": "Giải thích <body> chứa nội dung chính hiển thị của trang.",
+        "weight": 0.15
+      }
+    ],
+    "needReview": false,
+    "originalPrompt": "Trình bày khái niệm ngôn ngữ đánh dấu siêu văn bản HTML. Cho biết vai trò của cặp thẻ <!DOCTYPE html>, <html>, <head> và <body> trong cấu trúc cơ bản của một trang web HTML5.",
+    "editNote": "Thay “cặp thẻ <!DOCTYPE html>, ...” bằng “khai báo <!DOCTYPE html> và các thẻ ...”: DOCTYPE là khai báo, không phải một thẻ hay cặp thẻ HTML."
+  },
+  {
+    "id": "it-e6",
+    "chapter": 4,
+    "type": "essay",
+    "number": 6,
+    "prompt": "Em hãy viết đoạn mã HTML chuẩn hoàn chỉnh để tạo một trang web đơn giản giới thiệu về bản thân. Trang web cần bao gồm:\n- Tiêu đề trang web hiển thị trên thanh tiêu đề trình duyệt: 'Giới thiệu bản thân'\n- Một thẻ tiêu đề chính (h1) chứa tên của em.\n- Một thẻ đoạn văn (p) giới thiệu ngắn gọn về sở thích hoặc mục tiêu học tập.\n- Một danh sách không phân cấp (ul/li) liệt kê 3 môn học em yêu thích nhất.",
+    "modelAnswer": "<!DOCTYPE html>\n<html lang=\"vi\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Giới thiệu bản thân<\/title>\n<\/head>\n<body>\n  <h1>Nguyễn Văn A<\/h1>\n  <p>Mình là học sinh lớp 12, yêu thích lập trình và mong muốn học tốt môn Tin học.<\/p>\n  <h2>Ba môn học yêu thích<\/h2>\n  <ul>\n    <li>Tin học<\/li>\n    <li>Toán học<\/li>\n    <li>Tiếng Anh<\/li>\n  <\/ul>\n<\/body>\n<\/html>",
+    "criteria": [
+      {
+        "text": "Có cấu trúc tài liệu hoàn chỉnh với <!DOCTYPE html>, <html>, <head>, <body>; các thẻ được đóng/lồng đúng.",
+        "weight": 0.25
+      },
+      {
+        "text": "Đặt <title>Giới thiệu bản thân<\/title> trong <head>.",
+        "weight": 0.25
+      },
+      {
+        "text": "Có <h1> chứa tên và <p> giới thiệu sở thích hoặc mục tiêu học tập.",
+        "weight": 0.25
+      },
+      {
+        "text": "Có danh sách không phân cấp <ul> gồm đúng ba mục <li> về ba môn học yêu thích.",
+        "weight": 0.25
+      }
+    ],
+    "needReview": false,
+    "modelFormat": "code"
+  }
+];
+
+/* Chủ đề do biên soạn phân nhóm; giữ nguyên số câu và thứ tự các phần của tài liệu. */
+const FIGURES = {};
+const CHAPTERS = {
+  1: {name:'Trí tuệ nhân tạo', description:'Khả năng, ứng dụng và rủi ro của AI'},
+  2: {name:'Mạng máy tính & Internet', description:'Thiết bị mạng, giao thức và chia sẻ dữ liệu'},
+  3: {name:'Giao tiếp & ứng xử số', description:'Giao tiếp văn minh, an toàn và có trách nhiệm'},
+  4: {name:'Ngôn ngữ HTML', description:'Cấu trúc trang web và thực hành viết mã'}
+};
+const TYPES = {mcq:'A/B/C/D', tf:'Đúng–sai', essay:'Tự luận'};
+const PARTS = {mcq:'PHẦN I', tf:'PHẦN II', essay:'PHẦN III'};
+const LETTERS = ['A','B','C','D'];
+const HISTORY_KEY = 'tinhoc12-gk1-2026-history-v1';
+const DURATION = 45 * 60;
+let state = {screen:'home',filter:'mixed',chapter:'all',session:null};
+let timerId = null, toastId = null, lastFocus = null, drawerFocus = null, historyMemory = [], storageWarning = false;
+const $ = selector => document.querySelector(selector);
+const escapeHTML = value => String(value == null ? '' : value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const icon = (name, size=18) => {
+  const paths = {
+    book:'<path d="M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-3H4z"/><path d="M20 4h-4a3 3 0 0 0-3 3v14a4 4 0 0 1 4-3h3z"/>',
+    clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    arrow:'<path d="M5 12h14m-5-5 5 5-5 5"/>',
+    flag:'<path d="M5 21V4m0 0c5-4 9 4 14 0v10c-5 4-9-4-14 0"/>',
+    grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+    check:'<path d="m5 12 4 4L19 6"/>',
+    close:'<path d="m6 6 12 12M6 18 18 6"/>',
+    code:'<path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/>',
+    flask:'<path d="M9 3h6m-5 0v6L4 19a1 1 0 0 0 1 2h14a1 1 0 0 0 1-2L14 9V3M7 15h10"/><path d="M10 18h.01M14 17h.01"/>',
+    history:'<path d="M3 11a9 9 0 1 1 2 7M3 4v7h7m2-4v5l3 2"/>',
+    shield:'<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6z"/><path d="m8 12 3 3 5-6"/>',
+    home:'<path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-7h6v7"/>'
+  };
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] || paths.book}</svg>`;
+};
+function toast(message) {
+  clearTimeout(toastId); $('#toast').textContent = message; $('#toast').classList.remove('hidden');
+  toastId = setTimeout(() => $('#toast').classList.add('hidden'), 4500);
+}
+function formatTime(seconds) {
+  seconds = Math.max(0, Math.floor(seconds));
+  return [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60].map(n => String(n).padStart(2,'0')).join(':');
+}
+function formatDate(date) { return new Date(date).toLocaleString('vi-VN', {hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit',year:'numeric'}); }
+function getHistory() {
+  try {
+    const data = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+    if (!Array.isArray(data)) return historyMemory;
+    historyMemory = data.filter(x => x && typeof x.title === 'string' && (x.score===null || Number.isFinite(x.score)) && Number.isFinite(x.elapsed) && Number.isFinite(x.date)).slice(0,100);
+  } catch (e) { storageWarning = true; }
+  return historyMemory;
+}
+function saveHistory(record) {
+  historyMemory = [record, ...getHistory()].slice(0,100);
+  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(historyMemory)); }
+  catch (e) { storageWarning = true; toast('Trình duyệt không cho lưu lịch sử. Kết quả hiện tại vẫn xem được.'); }
+}
+function renderHeader() {
+  $('#header').className = 'site-header';
+  $('#header').innerHTML = `<div class="wrap brand-row"><button class="brand" data-action="home" aria-label="Trang chủ Tin học 12"><span class="logo">${icon('code',27)}</span><span><strong>Tin học 12</strong><small>TRẠM ÔN TẬP</small></span></button><div class="header-note">${icon('shield',16)}<span>Giữa học kỳ I<span class="desktop-only"> · Sẵn sàng bứt phá</span></span></div></div>`;
+}
+function historyHTML() {
+  const history = getHistory();
+  if (!history.length) return `<div class="empty">${icon('history',30)}Chưa có bài làm nào. Bắt đầu một đề để ghi lại tiến bộ của bạn.</div>`;
+  return `<table class="history-table"><thead><tr><th>Đề ôn tập</th><th>Chế độ</th><th>Trắc nghiệm / 10</th><th>Thời gian</th><th>Ngày làm</th></tr></thead><tbody>${history.map(h => `<tr><td>${escapeHTML(h.title)}</td><td>${h.mode === 'practice' ? 'Luyện tập' : 'Thi thử'}</td><td class="score-small">${h.score===null?'Tự chấm':h.score.toFixed(2)}</td><td>${formatTime(h.elapsed)}</td><td>${formatDate(h.date)}</td></tr>`).join('')}</tbody></table>`;
+}
+function examSpec(chapter, filter) {
+  const chapterNumber = chapter === 'all' ? null : Number(chapter);
+  const list = QUESTIONS.filter(q => (!chapterNumber || q.chapter === chapterNumber) && (filter === 'mixed' || q.type === filter));
+  const title = chapterNumber ? CHAPTERS[chapterNumber].name : 'Tổng ôn giữa học kỳ I';
+  return {chapter:String(chapter),filter,title,list};
+}
+function renderHome() {
+  state.screen='home'; clearInterval(timerId); renderHeader(); $('#footer').classList.remove('hidden');
+  const chapters=(state.chapter==='all'?['all',...Object.keys(CHAPTERS)]:[state.chapter]).filter(ch=>examSpec(ch,state.filter).list.length);
+  const counts=Object.keys(TYPES).map(type=>QUESTIONS.filter(q=>q.type===type).length);
+  $('#main').innerHTML=`<div class="wrap">
+  <section class="hero"><div><div class="eyebrow">TIN HỌC 12 / GIỮA HỌC KỲ I · 2026–2027</div><h1>Vững kiến thức.<br><span>Tự tin học công nghệ.</span></h1><p>Từ trí tuệ nhân tạo đến những dòng HTML đầu tiên.<br>Luyện từng câu, hiểu từng đáp án, sẵn sàng cho bài kiểm tra.</p><div class="hero-chips"><span class="pill">${icon('book',14)}4 chủ đề trọng tâm</span><span class="pill">${icon('check',14)}Đáp án & lời giải</span><span class="pill">${icon('grid',14)}Tùy chọn đảo đề</span></div></div><div class="overview"><div class="ring"><div class="ring-inner"><strong>${QUESTIONS.length}</strong><small>CÂU ÔN TẬP</small></div></div><div><h2>Trọn bộ đề cương của bạn</h2><p><i class="dot"></i>${counts[0]} câu chọn A / B / C / D</p><p><i class="dot light"></i>${counts[1]} câu đúng–sai · ${counts[1]*4} ý</p><p><i class="dot" style="background:var(--green)"></i>${counts[2]} câu tự luận có đáp án mẫu</p></div></div></section>
+  <section aria-labelledby="exam-list-title"><div class="section-heading"><div><h2 id="exam-list-title">Danh sách đề ôn tập</h2><p>Luyện tập để hiểu bài · Thi thử để kiểm tra năng lực</p></div><span class="pill green">${icon('clock',14)}45 phút / đề</span></div>
+  <div class="toolbar"><div class="tabs" role="group" aria-label="Lọc loại câu hỏi">${[['mixed','Tổng hợp'],['mcq','A/B/C/D'],['tf','Đúng–Sai'],['essay','Tự luận']].map(([key,label])=>`<button class="tab ${state.filter===key?'active':''}" data-action="filter" data-filter="${key}" aria-pressed="${state.filter===key}">${label}</button>`).join('')}</div><label class="filter" for="chapter-filter">Chủ đề <select id="chapter-filter"><option value="all">Tất cả chủ đề</option>${Object.keys(CHAPTERS).map(k=>`<option value="${k}">${CHAPTERS[k].name}</option>`).join('')}</select></label></div>
+  <div class="exam-cards">${chapters.map(ch=>{
+    const spec=examSpec(ch,state.filter);
+    const summary=Object.keys(TYPES).map(type=>{const n=spec.list.filter(q=>q.type===type).length;return n?`${n} ${TYPES[type]}`:'';}).filter(Boolean).join(' · ');
+    return `<article class="card exam-card ${ch==='all'?'comprehensive':''}"><div class="card-top"><span class="chapter-icon">${icon(ch==='all'?'grid':ch==='4'?'code':'book',25)}</span><span class="pill">${ch==='all'?'TOÀN BỘ':'CHỦ ĐỀ '+ch}</span></div><div><h3>${ch==='all'?'Tổng ôn giữa học kỳ I':CHAPTERS[ch].name}</h3><p class="description">${ch==='all'?'Toàn bộ câu hỏi của đề cương, giữ thứ tự các phần.':CHAPTERS[ch].description}</p></div><div class="meta"><span>${icon('book',16)}${spec.list.length} câu</span><span>${icon('clock',16)}45 phút</span></div><div class="card-bottom"><span>${summary}</span><button class="btn primary" data-action="setup" data-chapter="${ch}">Làm bài ${icon('arrow',16)}</button></div></article>`;
+  }).join('')||'<div class="card empty">Chủ đề này không có loại câu hỏi đã chọn. Hãy chọn tab hoặc chủ đề khác.</div>'}</div>
+  <div class="note"><strong>Cách chấm:</strong> A/B/C/D đúng = 1 điểm; mỗi ý đúng–sai đúng = 0,25 điểm. Điểm trắc nghiệm /10 = điểm đạt ÷ số câu trắc nghiệm × 10. <strong>Tự luận tự chấm riêng</strong> theo checklist, mỗi câu tối đa 1 điểm; không cộng vào điểm trắc nghiệm. Chủ đề được nhóm lại để dễ ôn, số câu gốc vẫn giữ. Câu biên tập có ghi chú và bản gốc khi xem đáp án.</div></section>
+  <section class="history-section" aria-labelledby="history-title"><div class="section-heading"><div><h2 id="history-title">Lịch sử làm bài</h2><p>Chỉ lưu kết quả trên trình duyệt và thiết bị này.</p></div>${getHistory().length?'<button class="text-button" data-action="clear-history">Xóa lịch sử</button>':''}</div><div class="card history-box">${historyHTML()}</div>${storageWarning?'<p class="aside-note">Lưu trữ cục bộ không khả dụng; lịch sử chỉ giữ trong phiên mở trang này.</p>':''}</section></div>`;
+  $('#chapter-filter').value=state.chapter;
+}
+/* Hộp thoại hỗ trợ bàn phím, không dùng thư viện ngoài. */
+function showModal(title, body) {
+  closeDrawer(); lastFocus=document.activeElement;
+  $('#modal-root').innerHTML=`<div class="modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1"><div class="modal-head"><h2 id="modal-title">${escapeHTML(title)}</h2><button class="icon-button" data-action="close-modal" aria-label="Đóng">${icon('close',18)}</button></div><div class="modal-body">${body}</div></section></div>`;
+  document.body.style.overflow='hidden'; $('.modal').focus();
+}
+function closeModal(restore=true) {
+  $('#modal-root').innerHTML=''; document.body.style.overflow='';
+  if (restore && lastFocus && document.contains(lastFocus)) lastFocus.focus();
+}
+let pendingSpec = null, pendingMode = 'practice';
+function setupExam(chapter,filter=state.filter) {
+  pendingSpec=examSpec(chapter,filter); pendingMode='practice';
+  if(!pendingSpec.list.length){toast('Không có câu hỏi thuộc lựa chọn này.');return;}
+  showModal('Sẵn sàng làm bài?',`<p class="modal-description">${escapeHTML(pendingSpec.title)}<br>${pendingSpec.list.length} câu · 45 phút · ${filter==='mixed'?'A/B/C/D → Đúng–sai → Tự luận':TYPES[filter]}</p><div class="field"><label>Chế độ làm bài</label><div class="mode-buttons"><button class="mode-button active" data-action="mode" data-mode="practice" aria-pressed="true"><strong>Luyện tập</strong><small>Giải thích ngay sau khi trả lời. Đáp án đã kiểm tra được khóa.</small></button><button class="mode-button" data-action="mode" data-mode="exam" aria-pressed="false"><strong>Thi thử</strong><small>Tự do sửa câu trả lời. Xem đáp án sau khi nộp.</small></button></div></div><div class="field"><label for="shuffle-mode">Thứ tự câu hỏi & đáp án</label><select id="shuffle-mode"><option value="none">Giữ nguyên thứ tự</option><option value="questions">Đảo câu hỏi</option><option value="options">Đảo đáp án A/B/C/D</option><option value="both">Đảo cả câu hỏi và A/B/C/D</option></select></div><div class="modal-note">${icon('shield',16)} Luôn giữ A/B/C/D trước, đúng–sai sau, tự luận cuối cùng. Chỉ đảo câu trong từng phần; không đảo các ý a–b–c–d. Tự luận tự chấm riêng. Hết giờ sẽ tự nộp; bài đang làm không được lưu khi tải lại hoặc đóng trang.</div><div class="modal-actions"><button class="btn" data-action="close-modal">Để sau</button><button class="btn primary" data-action="start">Bắt đầu làm bài ${icon('arrow',16)}</button></div>`);
+}
+function shuffled(array) {
+  const copy=array.slice();
+  for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
+  return copy;
+}
+function startExam() {
+  const shuffle=$('#shuffle-mode').value, spec=pendingSpec;
+  const make=q=>({...q,order:q.type==='mcq'?(shuffle==='options'||shuffle==='both'?shuffled([0,1,2,3]):[0,1,2,3]):null});
+  let sections=Object.keys(TYPES).map(type=>spec.list.filter(q=>q.type===type).map(make));
+  if(shuffle==='questions'||shuffle==='both')sections=sections.map(shuffled);
+  closeModal(false);
+  state.session={spec:{chapter:spec.chapter,filter:spec.filter,title:spec.title},mode:pendingMode,shuffle,questions:[].concat(...sections),answers:{},flags:{},selfChecks:{},models:{},assessed:{},current:0,view:'single',startedAt:Date.now(),deadline:Date.now()+DURATION*1000,submitted:false};
+  state.screen='exam'; renderExam(); window.scrollTo(0,0); updateTimer(); timerId=setInterval(updateTimer,500);
+}
+function countAnswered(q,s=state.session) {
+  const a=s.answers[q.id]; if(q.type==='essay')return typeof a==='string'&&a.trim()?1:0;
+  return q.type==='mcq'?(Number.isInteger(a)?1:0):(Array.isArray(a)?a.filter(v=>typeof v==='boolean').length:0);
+}
+function isComplete(q,s=state.session) {return countAnswered(q,s)===(q.type==='tf'?4:1);}
+function answerCount(s=state.session) {return s.questions.filter(q=>isComplete(q,s)).length;}
+function pointsFor(q,s=state.session) {
+  const a=s.answers[q.id];
+  if(q.type==='essay')return 0; // Là bài tự chấm, không tự động chấm văn bản.
+  if(q.type==='mcq')return a===q.answer?1:0;
+  return q.statements.reduce((sum,st,i)=>sum+(a && a[i]===st.answer ? 0.25 : 0),0);
+}
+function questionState(q,s=state.session) {
+  const count=countAnswered(q,s);
+  if(s.submitted){if(q.type==='essay')return count?'self-assess':'blank';if(!count)return 'blank';const points=pointsFor(q,s);return points===1?'correct':points>0?'partial-score':'incorrect';}
+  if(s.flags[q.id])return 'flagged';
+  return isComplete(q,s)?'answered':count?'partial':'';
+}
+function renderExam() {
+  const s=state.session, review=s.submitted;
+  $('#footer').classList.add('hidden'); $('#header').className='exam-topbar';
+  $('#header').innerHTML=`<div class="wrap"><div class="exam-title">${escapeHTML(s.spec.title)}<div class="exam-subtitle">${review?'Xem lại bài làm':s.mode==='practice'?'Luyện tập':'Thi thử'} · ${s.questions.length} câu</div></div><div class="timer-box"><div class="timer-label">${review?'Thời gian đã làm':'Thời gian còn lại'}</div><div id="timer" class="timer">${review?formatTime(s.elapsed):formatTime(Math.ceil((s.deadline-Date.now())/1000))}</div></div><div class="top-actions">${review?'<button class="btn home-review" data-action="home">Trang chủ</button><button class="btn primary" data-action="result">Kết quả</button>':`<button class="btn primary" data-action="submit">Nộp bài ${icon('check',16)}</button>`}</div></div>`;
+  $('#main').innerHTML=`<div class="wrap exam-layout"><section class="question-column" aria-label="Nội dung bài làm"><div class="exam-tools"><span>${review?'Đối chiếu đáp án và lời giải':'Mỗi câu là một bước tiến bộ.'}</span><div class="tabs" role="group" aria-label="Cách hiển thị câu hỏi"><button class="tab ${s.view==='single'?'active':''}" data-action="view" data-view="single" aria-pressed="${s.view==='single'}">Từng câu</button><button class="tab ${s.view==='all'?'active':''}" data-action="view" data-view="all" aria-pressed="${s.view==='all'}">Tất cả câu</button></div></div><div id="questions-area"></div></section><aside id="question-aside" class="card question-aside" aria-label="Bảng câu hỏi"></aside></div><div id="drawer-overlay" class="drawer-overlay hidden" data-action="close-drawer"></div><button class="btn primary mobile-grid-toggle" data-action="drawer" aria-controls="question-aside" aria-expanded="false">${icon('grid',18)} Bảng câu hỏi <span id="mobile-progress"></span></button>`;
+  renderQuestions();renderGrid();resizeEssays();
+}
+function originalDetails(q) {
+  if(!q.editNote && !q.needReview)return '';
+  return `<details class="edit-details"><summary>${q.editNote?'Đã biên tập · Xem ghi chú & bản gốc':'Cần kiểm tra · Xem lưu ý đáp án'}</summary>${q.editNote?`<p><strong>Điều chỉnh:</strong> ${escapeHTML(q.editNote)}</p><p>Nhãn A/B/C/D trong ghi chú và bản gốc là thứ tự trước khi đảo đáp án.</p>`:''}${q.reviewNote?`<p><strong>Cần kiểm tra:</strong> ${escapeHTML(q.reviewNote)}</p>`:''}${q.originalPrompt?`<div class="original-text"><strong>Câu gốc:</strong> ${escapeHTML(q.originalPrompt)}</div>`:''}${q.originalOptions?`<div class="original-text">${q.originalOptions.map((x,i)=>`${LETTERS[i]}. ${escapeHTML(x)}`).join('\n')}</div>`:''}${q.originalStatements?`<div class="original-text">${q.originalStatements.map((x,i)=>`${'abcd'[i]}. ${escapeHTML(typeof x==='string'?x:x.text)}`).join('\n')}</div>`:''}</details>`;
+}
+function questionHTML(q,i) {
+  const s=state.session,a=s.answers[q.id],answered=countAnswered(q),feedback=s.submitted||s.mode==='practice'&&answered>0;
+  let content='';
+  if(q.type==='mcq') {
+    content=`<div class="options" role="group" aria-label="Chọn một đáp án cho câu ${i+1}">${q.order.map((originalIndex,displayIndex)=>{
+      const selected=a===originalIndex,right=originalIndex===q.answer;
+      const cls=feedback?(right?'correct':selected?'incorrect':''):selected?'selected':'';
+      return `<button class="option ${cls}" data-action="answer" data-index="${i}" data-option="${originalIndex}" aria-pressed="${selected}" ${feedback?'disabled':''}><span class="letter">${LETTERS[displayIndex]}</span><span class="choice-content">${escapeHTML(q.options[originalIndex])}</span>${feedback&&right?'<span class="choice-mark">Đáp án đúng</span>':feedback&&selected?'<span class="choice-mark">Bạn chọn</span>':''}</button>`;
+    }).join('')}</div>${feedback?`<div class="answer-summary">Bạn chọn: <strong>${Number.isInteger(a)?LETTERS[q.order.indexOf(a)]:'Bỏ trống'}</strong> · Đáp án đúng: <strong>${LETTERS[q.order.indexOf(q.answer)]}</strong></div><div class="explanation"><strong>Giải thích</strong>${escapeHTML(q.explanation)}</div>`:''}`;
+  } else if(q.type==='tf') {
+    content=q.statements.map((st,j)=>{
+      const chosen=a&&a[j],hasChoice=typeof chosen==='boolean',show=s.submitted||s.mode==='practice'&&hasChoice;
+      const right=hasChoice&&chosen===st.answer;
+      return `<div class="statement ${show&&hasChoice?(right?'correct':'incorrect'):''}"><div class="statement-row"><div class="statement-text"><strong>${'abcd'[j]}.</strong> ${escapeHTML(st.text)}</div><div class="tf-controls" role="group" aria-label="Ý ${'abcd'[j]} câu ${i+1}">${[true,false].map(v=>`<button class="tf-choice ${show&&v===st.answer?'right':show&&hasChoice&&chosen===v?'wrong':hasChoice&&chosen===v?'selected':''}" data-action="tf-answer" data-index="${i}" data-statement="${j}" data-value="${v}" aria-pressed="${hasChoice&&chosen===v}" ${show?'disabled':''}>${v?'Đúng':'Sai'}</button>`).join('')}</div></div>${show?`<div class="statement-feedback"><strong>${hasChoice?`Bạn chọn: ${chosen?'Đúng':'Sai'}`:'Bỏ trống'} · Đáp án: ${st.answer?'Đúng':'Sai'}</strong><br>${escapeHTML(st.explanation)}</div>`:''}</div>`;
+    }).join('');
+    if(s.submitted)content+=`<div class="answer-summary">Điểm câu này: <strong>${pointsFor(q).toFixed(2)} / 1</strong> · Trả lời ${answered}/4 ý.</div>`;
+  }
+  if(q.type==='essay')content=essayHTML(q,i);
+  const showNote=s.submitted||(s.mode==='practice'&&(q.type==='essay'?s.models[q.id]:isComplete(q)));
+  return `<article id="question-${i}" class="card question-card" data-qindex="${i}" aria-labelledby="question-title-${i}"><div class="question-heading"><h2 id="question-title-${i}">Câu ${i+1}:<span class="question-source">${CHAPTERS[q.chapter].name} · ${TYPES[q.type]} · Câu ${q.number} trong đề gốc</span></h2>${q.needReview?'<span class="pill orange">Cần kiểm tra</span>':''}</div>${q.needReview?'<div class="review-alert">Đáp án tham khảo cần được giáo viên đối chiếu; câu này vẫn được tính điểm theo đáp án đã soạn.</div>':''}<div class="question-text">${escapeHTML(q.prompt)}</div>${FIGURES[q.id]?`<img class="question-image" src="${FIGURES[q.id].src}" alt="${escapeHTML(FIGURES[q.id].alt)}" width="${FIGURES[q.id].width}" height="${FIGURES[q.id].height}">`:''}${content}${showNote?originalDetails(q):''}<div class="question-actions"><div class="navigation"><button class="btn" data-action="navigate" data-index="${i-1}" ${i===0?'disabled':''}>← Câu trước</button><button class="btn soft" data-action="navigate" data-index="${i+1}" ${i===s.questions.length-1?'disabled':''}>Câu sau →</button></div>${!s.submitted?`<button class="flag-button ${s.flags[q.id]?'flagged':''}" data-action="flag" data-index="${i}" aria-pressed="${!!s.flags[q.id]}">${icon('flag',14)} ${s.flags[q.id]?'Đã đánh dấu':'Đánh dấu xem lại'}</button>`:''}</div></article>`;
+}
+function renderQuestions() {
+  const s=state.session;
+  const partHeading=q=>`<div class="part-label"><span>${PARTS[q.type]}</span>${q.type==='mcq'?'Trắc nghiệm nhiều lựa chọn':q.type==='tf'?'Trắc nghiệm đúng–sai':'Tự luận · Tự chấm theo đáp án mẫu'}</div>`;
+  $('#questions-area').innerHTML=s.view==='single'?partHeading(s.questions[s.current])+questionHTML(s.questions[s.current],s.current):s.questions.map((q,i)=>(i===0||q.type!==s.questions[i-1].type?partHeading(q):'')+questionHTML(q,i)).join('');
+}
+function renderGrid() {
+  const s=state.session,complete=answerCount(),total=s.questions.length;
+  $('#question-aside').innerHTML=`<div class="aside-title"><h2>Bảng câu hỏi</h2><button class="close-drawer" data-action="close-drawer" aria-label="Đóng bảng câu hỏi">${icon('close',18)}</button></div><p class="aside-progress">Đã hoàn thành <strong>${complete}/${total}</strong> câu</p><div class="progress-track"><div class="progress-fill" style="width:${complete/total*100}%"></div></div>${Object.keys(TYPES).map(type=>{
+    const qs=s.questions.map((q,i)=>({q,i})).filter(x=>x.q.type===type);
+    if(!qs.length)return '';
+    return `<div class="grid-label">${TYPES[type]}</div><div class="question-grid">${qs.map(({q,i})=>`<button class="q-number ${questionState(q)} ${i===s.current?'current':''}" data-action="navigate" data-index="${i}" ${i===s.current?'aria-current="true"':''} aria-label="Câu ${i+1}, ${s.submitted&&q.type==='essay'?(countAnswered(q)?'đã viết, tự chấm':'bỏ trống'):s.submitted?(countAnswered(q)===0?'bỏ trống':pointsFor(q)===1?'đúng':pointsFor(q)>0?'đúng một phần':'sai'):s.flags[q.id]?'đánh dấu xem lại':isComplete(q)?'đã làm':countAnswered(q)?'đã làm một phần':'chưa làm'}">${i+1}</button>`).join('')}</div>`;
+  }).join('')}<div class="legend">${s.submitted?'<span><i class="green"></i>Đúng</span><span><i class="red"></i>Sai</span><span><i class="orange"></i>Đúng một phần</span><span><i class="gray"></i>Bỏ trống</span><span><i class="blue"></i>Tự luận đã viết</span>':'<span><i></i>Chưa làm</span><span><i class="blue"></i>Đã làm</span><span><i class="orange"></i>Xem lại</span><span><i style="background:#EEF4FF;border-color:#8DB6FF"></i>Làm một phần</span>'}</div><p class="aside-note">${s.submitted?'Đúng–sai có điểm từng phần; tự luận tô xanh dương khi đã viết, cần tự chấm theo checklist.':s.mode==='practice'?'Luyện tập: câu A/B/C/D và từng ý đúng–sai đã trả lời được khóa sau khi hiện giải thích.':'Bạn có thể thay đổi đáp án trước khi nộp bài. Viền đậm đánh dấu câu đang xem.'}</p>`;
+  $('#mobile-progress').textContent=`${complete}/${total}`;
+}
+function updateGridCurrent() {
+  if(!state.session)return;
+  document.querySelectorAll('.q-number').forEach(b=>{const active=Number(b.dataset.index)===state.session.current;b.classList.toggle('current',active);if(active)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});
+}
+function navigate(index) {
+  const s=state.session;if(index<0||index>=s.questions.length)return;
+  s.current=index;closeDrawer();
+  if(s.view==='single'){renderQuestions();resizeEssays();window.scrollTo({top:0,behavior:'auto'});}
+  else $('#question-'+index).scrollIntoView({behavior:'smooth',block:'start'});
+  updateGridCurrent();
+}
+function updateQuestion(index) {
+  const s=state.session,old=$('#question-'+index),active=document.activeElement;
+  const focusData=old&&active&&old.contains(active)?Object.assign({},active.dataset):null;
+  if(old)old.outerHTML=questionHTML(s.questions[index],index);
+  renderGrid();resizeEssays();
+  // Giữ vị trí bàn phím khi câu hỏi được vẽ lại sau một thao tác.
+  if(focusData){
+    const card=$('#question-'+index);
+    const replacement=Array.from(card.querySelectorAll('button')).find(b=>!b.disabled&&Object.keys(focusData).every(k=>b.dataset[k]===focusData[k]));
+    if(replacement)replacement.focus({preventScroll:true});
+    else {card.setAttribute('tabindex','-1');card.focus({preventScroll:true});}
+  }
+}
+function updateTimer() {
+  const s=state.session;if(!s||s.submitted||state.screen!=='exam')return;
+  const remaining=Math.max(0,Math.ceil((s.deadline-Date.now())/1000));
+  const el=$('#timer');if(el){el.textContent=formatTime(remaining);el.classList.toggle('urgent',remaining<300);}
+  if(remaining<=0)finishExam(true);
+}
+function canAnswer() {
+  const s=state.session;if(!s||s.submitted)return false;
+  if(Date.now()>=s.deadline){finishExam(true);return false;}return true;
+}
+function confirmSubmit() {
+  if(!canAnswer())return;
+  const s=state.session,done=answerCount(),partial=s.questions.filter(q=>countAnswered(q)>0&&!isComplete(q)).length;
+  showModal('Xác nhận nộp bài',`<p>Bạn đã làm <strong>${done}/${s.questions.length}</strong> câu, còn <strong>${s.questions.length-done}</strong> câu chưa làm xong. Bạn có chắc muốn nộp?</p>${partial?`<p class="modal-description">Có ${partial} câu đúng–sai mới làm một phần; các ý đã trả lời vẫn được chấm điểm.</p>`:''}<div class="modal-actions"><button class="btn" data-action="close-modal">Tiếp tục làm</button><button class="btn primary" data-action="finish">Nộp bài</button></div>`);
+}
+function finishExam(auto=false) {
+  const s=state.session;if(!s||s.submitted)return;
+  clearInterval(timerId);s.submitted=true;s.autoSubmitted=auto;
+  s.elapsed=Math.min(DURATION,Math.max(0,Math.floor((Date.now()-s.startedAt)/1000)));
+  s.quiz=s.questions.filter(q=>q.type!=='essay');
+  s.totalPoints=s.quiz.reduce((sum,q)=>sum+pointsFor(q,s),0);s.score=s.quiz.length?s.totalPoints/s.quiz.length*10:null;
+  closeModal(false);closeDrawer();
+  saveHistory({title:s.spec.title+' · '+(s.spec.filter==='mixed'?'Tổng hợp':TYPES[s.spec.filter]),mode:s.mode,score:s.score,elapsed:s.elapsed,date:Date.now()});
+  renderResult();window.scrollTo(0,0);if(auto)toast('Đã hết 45 phút. Bài làm của bạn đã tự động được nộp.');
+}
+/* Tự luận: lưu trong bộ nhớ phiên; checklist là tự đánh giá, không chấm văn bản tự động. */
+function wordCount(text) {return String(text||'').trim()?String(text).trim().split(/\s+/).length:0;}
+function selfPoints(q,s=state.session) {
+  const checks=s.selfChecks[q.id]||[];
+  if(!countAnswered(q,s))return 0;
+  return q.criteria.reduce((sum,c,j)=>sum+(checks[j]?c.weight:0),0);
+}
+function essayHTML(q,i) {
+  const s=state.session,text=s.answers[q.id]||'',available=s.submitted||s.mode==='practice',open=!!s.models[q.id];
+  return `<label class="essay-label" for="essay-${i}">Bài làm của bạn <span>1,0 điểm · Tự chấm</span></label><textarea id="essay-${i}" class="essay-input ${q.modelFormat==='code'?'code-input':''}" data-essay-index="${i}" placeholder="${q.modelFormat==='code'?'Viết mã HTML tại đây…':'Viết câu trả lời của bạn tại đây…'}" spellcheck="${q.modelFormat==='code'?'false':'true'}" ${s.submitted?'readonly':''}>${escapeHTML(text)}</textarea><div class="essay-meta"><span id="words-${i}">${wordCount(text)} từ</span><span>${s.submitted?'Bài làm đã nộp':'Tự giãn theo nội dung · Chưa lưu khi đóng trang'}</span></div>${available?`<button class="btn soft" data-action="model" data-index="${i}" aria-expanded="${open}" aria-controls="model-${i}">${icon('book',16)}${open?'Ẩn đáp án mẫu':'Xem đáp án mẫu'}</button><div id="model-${i}" ${open?'':'hidden'}><div class="model-answer"><h3>Đáp án mẫu</h3>${q.modelFormat==='code'?`<pre><code>${escapeHTML(q.modelAnswer)}</code></pre>`:`<div class="model-text">${escapeHTML(q.modelAnswer)}</div>`}</div><div class="rubric"><h3>Các ý chính cần đạt</h3><p class="aside-note">Tự tick các ý bài làm của bạn đã đạt. Đây là điểm tự đánh giá, không phải kết quả chấm tự động.</p>${q.criteria.map((c,j)=>`<label class="criterion"><input type="checkbox" data-criterion="${j}" data-question-index="${i}" ${(s.selfChecks[q.id]||[])[j]?'checked':''} ${!text.trim()?'disabled':''}><span>${escapeHTML(c.text)}</span><strong>${c.weight.toFixed(2)}đ</strong></label>`).join('')}<div class="rubric-bottom"><strong id="self-score-${i}">Tự chấm: ${selfPoints(q).toFixed(2)} / 1,00</strong><button class="btn" data-action="assess" data-index="${i}" ${!text.trim()?'disabled':''}>Ghi nhận tự chấm</button></div><p id="assess-note-${i}" class="aside-note">${s.assessed&&s.assessed[q.id]?'Đã ghi nhận tự chấm trong phiên này.':text.trim()?'Đối chiếu bài viết với đáp án trước khi ghi nhận.':'Viết câu trả lời trước khi tự chấm.'}</p></div></div>`:'<div class="modal-note">Thi thử: đáp án mẫu và checklist sẽ mở sau khi nộp bài.</div>'}`;
+}
+function resizeEssays() {
+  document.querySelectorAll('.essay-input').forEach(el=>{el.style.height='auto';el.style.height=Math.max(170,el.scrollHeight+2)+'px';});
+}
+function renderResult() {
+  state.screen='result';renderHeader();$('#footer').classList.remove('hidden');
+  const s=state.session,quiz=s.quiz,total=quiz.length,essays=s.questions.filter(q=>q.type==='essay');
+  const correct=quiz.filter(q=>pointsFor(q)===1).length,blank=quiz.filter(q=>!countAnswered(q)).length,wrong=total-correct-blank;
+  const partial=quiz.filter(q=>{const p=pointsFor(q);return p>0&&p<1;}).length;
+  const tf=quiz.filter(q=>q.type==='tf'),tfRight=tf.reduce((n,q)=>n+pointsFor(q)*4,0),tfBlank=tf.reduce((n,q)=>n+4-countAnswered(q),0);
+  const written=essays.filter(q=>countAnswered(q)).length,self=essays.reduce((n,q)=>n+(s.assessed[q.id]?selfPoints(q):0),0),assessed=essays.filter(q=>s.assessed&&s.assessed[q.id]).length;
+  const percentage=total?Math.round(s.totalPoints/total*100):Math.round(written/essays.length*100);
+  const headline=total?(s.score>=8?'Một bước tiến thật vững!':s.score>=5?'Tiếp tục luyện, bạn sẽ tiến bộ!':'Cùng xem lại để hiểu bài hơn.'):'Đã hoàn thành phần tự luận';
+  $('#main').innerHTML=`<div class="result-wrap"><div class="breadcrumb">Ôn tập / ${escapeHTML(s.spec.title)} / Kết quả</div><section class="card result-card"><span class="pill ${s.autoSubmitted?'orange':'green'}">${icon('check',14)}${s.autoSubmitted?'Hết giờ · Đã tự nộp':'Đã nộp bài'}</span><h1>${headline}</h1><p>${escapeHTML(s.spec.title)} · ${s.mode==='practice'?'Luyện tập có xem đáp án':'Thi thử'}</p><div class="result-main"><div class="ring result-ring" style="background:conic-gradient(var(--blue) ${percentage}%,#E9EFF8 0)"><div class="ring-inner"><strong>${percentage}%</strong><small>${total?'ĐIỂM TRẮC NGHIỆM':'TỰ LUẬN ĐÃ VIẾT'}</small></div></div><div><div class="big-score">${total?s.score.toFixed(2):written}<small> / ${total?'10':essays.length}</small></div><div class="score-caption">${total?`Trắc nghiệm · ${s.totalPoints.toFixed(2)} / ${total} điểm gốc`:'Câu tự luận đã viết · Chưa chấm tự động'}</div></div></div><div class="result-stats">${total?`<div class="stat"><strong class="green-text">${correct}</strong><span>Câu TN đúng hoàn toàn</span></div><div class="stat"><strong class="red-text">${wrong}</strong><span>Câu TN sai / chưa đủ đúng</span></div><div class="stat"><strong>${blank}</strong><span>Câu TN bỏ trống toàn bộ</span></div>`:`<div class="stat"><strong>${written}</strong><span>Tự luận đã viết</span></div><div class="stat"><strong>${essays.length-written}</strong><span>Tự luận bỏ trống</span></div><div class="stat"><strong>${assessed}/${essays.length}</strong><span>Câu đã tự chấm</span></div>`}<div class="stat"><strong style="font-size:19px">${formatTime(s.elapsed)}</strong><span>Thời gian làm bài</span></div></div>${essays.length?`<div class="essay-result"><strong>Tự luận: ${written}/${essays.length} câu đã viết</strong><p>${assessed?`Tự đánh giá hiện tại: ${self.toFixed(2)} / ${essays.length} điểm; đã ghi nhận ${assessed}/${essays.length} câu.`:'Mở “Xem lại bài làm”, xem đáp án mẫu và tự tick các ý đã đạt để tự chấm.'} Điểm tự luận không cộng vào điểm trắc nghiệm.</p></div>`:''}<div class="result-actions"><button class="btn primary" data-action="review">Xem lại bài làm ${icon('arrow',16)}</button><button class="btn" data-action="retry">Làm lại</button><button class="btn" data-action="home">Về trang chủ</button></div></section><section class="card result-detail"><h2>Cách tính điểm của bài này</h2>${total?`<p>A/B/C/D đúng = 1 điểm. Mỗi ý đúng–sai đúng = 0,25 điểm. Điểm trắc nghiệm /10 = ${s.totalPoints.toFixed(2)} ÷ ${total} × 10 = <strong>${s.score.toFixed(2)}</strong>. Không trừ điểm câu sai/bỏ trống.</p>`:'<p>Bài này chỉ có tự luận, không có điểm chấm tự động. Mỗi câu có checklist tự chấm tối đa 1 điểm theo đáp án mẫu.</p>'}${tf.length?`<p>Phần đúng–sai: <strong>${tfRight}/${tf.length*4}</strong> ý đúng, ${tf.length*4-tfRight-tfBlank} ý sai, ${tfBlank} ý bỏ trống. ${partial} câu đạt điểm một phần được gộp vào “sai / chưa đủ đúng”.</p>`:''}<p>${s.mode==='practice'?'Kết quả luyện tập có hiển thị đáp án trong lúc làm. ':''}Lịch sử chỉ lưu kết quả tổng hợp; không lưu nội dung bài tự luận hay tự chấm. Câu biên tập có ghi chú và bản gốc khi xem lại.</p></section></div>`;
+}
+
+function openDrawer() {
+  drawerFocus=document.activeElement;$('#question-aside').classList.add('drawer-open');$('#drawer-overlay').classList.remove('hidden');
+  $('.mobile-grid-toggle').setAttribute('aria-expanded','true');document.body.style.overflow='hidden';
+  $('#question-aside').setAttribute('role','dialog');$('#question-aside').setAttribute('aria-modal','true');$('.close-drawer').focus();
+}
+function closeDrawer() {
+  const aside=$('#question-aside');if(!aside)return;
+  const opened=aside.classList.contains('drawer-open');aside.classList.remove('drawer-open');aside.removeAttribute('role');aside.removeAttribute('aria-modal');
+  $('#drawer-overlay').classList.add('hidden');$('.mobile-grid-toggle').setAttribute('aria-expanded','false');
+  document.body.style.overflow='';if(opened&&drawerFocus&&document.contains(drawerFocus))drawerFocus.focus();
+}
+/* Dùng một bộ xử lý sự kiện, không tạo hàng trăm hàm onclick trong HTML. */
+document.addEventListener('click',event=>{
+  const button=event.target.closest('[data-action]');if(!button||button.disabled)return;
+  const action=button.dataset.action,s=state.session;
+  if(action==='close-modal'){closeModal();return;}
+  if(action==='home'){
+    if(s&&!s.submitted&&state.screen==='exam')return;
+    closeModal(false);closeDrawer();renderHome();window.scrollTo(0,0);
+  } else if(action==='filter'){state.filter=button.dataset.filter;renderHome();}
+  else if(action==='setup')setupExam(button.dataset.chapter);
+  else if(action==='mode'){
+    pendingMode=button.dataset.mode;document.querySelectorAll('.mode-button').forEach(b=>{b.classList.toggle('active',b.dataset.mode===pendingMode);b.setAttribute('aria-pressed',b.dataset.mode===pendingMode);});
+  } else if(action==='start')startExam();
+  else if(action==='view'){
+    s.view=button.dataset.view;closeDrawer();renderExam();window.scrollTo(0,0);
+    if(s.view==='all')$('#question-'+s.current).scrollIntoView({block:'start'});
+  } else if(action==='navigate')navigate(Number(button.dataset.index));
+  else if(action==='flag'){
+    if(!canAnswer())return;const i=Number(button.dataset.index),q=s.questions[i];s.flags[q.id]=!s.flags[q.id];updateQuestion(i);
+  } else if(action==='answer'){
+    if(!canAnswer())return;const i=Number(button.dataset.index),q=s.questions[i];if(s.mode==='practice'&&countAnswered(q))return;
+    s.answers[q.id]=Number(button.dataset.option);updateQuestion(i);
+  } else if(action==='tf-answer'){
+    if(!canAnswer())return;const i=Number(button.dataset.index),j=Number(button.dataset.statement),q=s.questions[i];
+    if(!s.answers[q.id])s.answers[q.id]=[null,null,null,null];
+    if(s.mode==='practice'&&typeof s.answers[q.id][j]==='boolean')return;
+    s.answers[q.id][j]=button.dataset.value==='true';updateQuestion(i);
+  } else if(action==='drawer')openDrawer();
+  else if(action==='close-drawer')closeDrawer();
+  else if(action==='model'){
+    const i=Number(button.dataset.index),q=s.questions[i];
+    if(!s.submitted&&s.mode!=='practice')return;
+    s.models[q.id]=!s.models[q.id];updateQuestion(i);
+  } else if(action==='assess'){
+    const i=Number(button.dataset.index),q=s.questions[i];
+    if(!countAnswered(q))return;
+    s.assessed[q.id]=true;$('#assess-note-'+i).textContent='Đã ghi nhận tự chấm trong phiên này.';toast('Đã ghi nhận tự chấm câu '+(i+1)+'.');
+  }
+  else if(action==='submit')confirmSubmit();
+  else if(action==='finish')finishExam(Date.now()>=s.deadline);
+  else if(action==='review'){state.screen='review';s.current=0;renderExam();window.scrollTo(0,0);}
+  else if(action==='result'){closeDrawer();renderResult();window.scrollTo(0,0);}
+  else if(action==='retry')setupExam(s.spec.chapter,s.spec.filter);
+  else if(action==='clear-history')showModal('Xóa lịch sử làm bài?',`<p>Toàn bộ kết quả đã lưu trên trình duyệt này sẽ bị xóa.</p><div class="modal-actions"><button class="btn" data-action="close-modal">Giữ lại</button><button class="btn danger" data-action="confirm-clear">Xóa lịch sử</button></div>`);
+  else if(action==='confirm-clear'){
+    historyMemory=[];try{localStorage.removeItem(HISTORY_KEY);}catch(e){storageWarning=true;}
+    closeModal();renderHome();toast('Đã xóa lịch sử làm bài.');
+  }
+});
+document.addEventListener('change',e=>{
+  const el=e.target,s=state.session;
+  if(el.id==='chapter-filter'){state.chapter=el.value;renderHome();}
+  else if(el.hasAttribute('data-criterion')&&s){
+    const i=Number(el.dataset.questionIndex),q=s.questions[i],j=Number(el.dataset.criterion);
+    if(!s.submitted&&s.mode!=='practice')return;
+    if(!s.selfChecks[q.id])s.selfChecks[q.id]=[];
+    s.selfChecks[q.id][j]=el.checked;s.assessed[q.id]=false;
+    $('#assess-note-'+i).textContent='Checklist đã thay đổi. Bấm Ghi nhận tự chấm để xác nhận.';
+    $('#self-score-'+i).textContent='Tự chấm: '+selfPoints(q).toFixed(2)+' / 1,00';
+  }
+});
+document.addEventListener('input',e=>{
+  const el=e.target;if(!el.hasAttribute('data-essay-index')||!canAnswer())return;
+  const s=state.session,i=Number(el.dataset.essayIndex),q=s.questions[i];
+  s.answers[q.id]=el.value;s.assessed[q.id]=false;
+  el.style.height='auto';el.style.height=Math.max(170,el.scrollHeight+2)+'px';
+  $('#words-'+i).textContent=wordCount(el.value)+' từ';
+  const card=$('#question-'+i);
+  const note=$('#assess-note-'+i);if(note)note.textContent=el.value.trim()?'Bài viết đã thay đổi. Hãy đối chiếu checklist và ghi nhận lại tự chấm.':'Viết câu trả lời trước khi tự chấm.';
+  card.querySelectorAll('[data-criterion],[data-action="assess"]').forEach(input=>input.disabled=!el.value.trim());
+  const score=$('#self-score-'+i);if(score)score.textContent='Tự chấm: '+selfPoints(q).toFixed(2)+' / 1,00';
+  if(!el.value.trim()){s.selfChecks[q.id]=[];s.assessed[q.id]=false;card.querySelectorAll('[data-criterion]').forEach(input=>input.checked=false);}
+  renderGrid();
+});
+document.addEventListener('keydown',e=>{
+  const modal=$('.modal'),drawer=$('.question-aside.drawer-open'),scope=modal||drawer;
+  if(e.key==='Escape'){if(modal)closeModal();else if(drawer)closeDrawer();return;}
+  if(e.key==='Tab'&&scope){
+    const items=Array.from(scope.querySelectorAll('button:not(:disabled),select,textarea,input:not(:disabled),a[href],summary,[tabindex="0"]')).filter(el=>el.getClientRects().length);
+    if(!items.length){e.preventDefault();return;}
+    const first=items[0],last=items[items.length-1];
+    if(e.shiftKey&&(document.activeElement===first||document.activeElement===scope)){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&(document.activeElement===last||document.activeElement===scope)){e.preventDefault();first.focus();}
+  }
+});
+let scrollQueued=false;
+window.addEventListener('scroll',()=>{
+  if(scrollQueued||!state.session||state.session.view!=='all'||!['exam','review'].includes(state.screen))return;
+  scrollQueued=true;requestAnimationFrame(()=>{
+    scrollQueued=false;let current=0;const top=($('#header').offsetHeight||80)+40;
+    document.querySelectorAll('.question-card').forEach(el=>{if(el.getBoundingClientRect().top<=top)current=Number(el.dataset.qindex);});
+    if(current!==state.session.current){state.session.current=current;updateGridCurrent();}
+  });
+},{passive:true});
+window.addEventListener('resize',()=>{if(window.innerWidth>760&&$('.drawer-open'))closeDrawer();});
+window.addEventListener('beforeunload',e=>{if(state.session&&!state.session.submitted){e.preventDefault();e.returnValue='';}});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateTimer();});
+/* Kiểm tra cấu trúc dữ liệu trước khi cho người dùng bắt đầu. */
+function validateQuestions() {
+  const ids=new Set();
+  return QUESTIONS.length===41&&QUESTIONS.every(q=>{
+    if(ids.has(q.id)||!CHAPTERS[q.chapter]||!q.prompt)return false;ids.add(q.id);
+    return q.type==='mcq'?q.options.length===4&&q.options.every(x=>typeof x==='string'&&x.trim())&&Number.isInteger(q.answer)&&q.answer>=0&&q.answer<4&&!!q.explanation:q.type==='tf'?q.statements.length===4&&q.statements.every(st=>typeof st.answer==='boolean'&&st.text&&st.explanation):q.type==='essay'&&!!q.modelAnswer&&q.criteria.length>0&&q.criteria.every(c=>c.text&&c.weight>0)&&Math.abs(q.criteria.reduce((n,c)=>n+c.weight,0)-1)<1e-6;
+  });
+}
+if(validateQuestions())renderHome();
+else {renderHeader();$('#main').innerHTML='<div class="wrap"><div class="note">Dữ liệu câu hỏi chưa hợp lệ. Hãy kiểm tra lại const QUESTIONS trước khi làm bài.</div></div>';}
+</script>
+</body>
+</html>
